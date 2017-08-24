@@ -35,28 +35,24 @@ As discussed in [Accessing Satellite Imagery](https://geohackweek.github.io/Goog
 * Filter for the precipitation data band and dates desired (2016)
 * **Reduce** 365 "raster" images of daily precipitation into one raster image of annual precipitation totals (aka sum raster by pixel)
 
-<<<<<<< Updated upstream
-{% highlight javascript %}
-// Temporal aggregations: a sum reducer ------------------------------------- 
-=======
 #### Get and filter the ImageCollection
 First, we need to identify the **ImageCollection ID** for the GRIDMET data product and the **band name** for the precipitation data (and check any relevant metadata). You can find this either in the [data catalog](https://code.earthengine.google.com/datasets/) or directly in the [GEE Code Editor](https://code.earthengine.google.com/) at the top above  the center panel.
 
 <img = src="../fig/codeEditor_datasetSearch.png" border = "10">
->>>>>>> Stashed changes
 
 We now know the ImageCollection ID = 'IDAHO_EPSCOR/GRIDMET' and the precipitation band name is 'pr'. We will specificially `select` this band only.
 
-```javascript
+{% highlight javascript %}
 // load precip data (mm, daily total): 365 images per year 
 var cPrecip = ee.ImageCollection('IDAHO_EPSCOR/GRIDMET')
                     .select('pr')
                     .filterDate('2016-01-01', '2016-12-31');
 //print(cPrecip);  
-```
+{% endhighlight %}
+
 By printing the resulting collection to the Console, we can see we've loaded 365 images, each with 1 band named 'pr'.
 
-```javascript
+{% highlight javascript %}
 // reduce the image collection to one image by summing the 365 daily rasters
 var annualPrecip = cPrecip.sum();
 //print(annualPrecip)
