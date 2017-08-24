@@ -14,7 +14,7 @@ keypoints:
 
 Test javaScript syntax highlighting
 
-```js
+```javascript
 // Temporal aggregations: a sum reducer ------------------------------------- 
 
 // set year of interest
