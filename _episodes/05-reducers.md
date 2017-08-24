@@ -33,7 +33,7 @@ Processing Overview
 * Filter for the precipitation data band and dates desired (2016)
 * _Reduce_ 365 "raster" images of daily precipitation into one raster image of annual precipitation totals (aka sum raster by pixel)
 
-```javascript
+{% highlight javascript %}
 // Temporal aggregations: a sum reducer ------------------------------------- 
 
 // set year of interest
@@ -56,4 +56,4 @@ var annualPrecip = cPrecip.sum();
 // visualize annual precipitation 
 var precipPal = ['white','blue'] // store palette as variable
 Map.addLayer(annualPrecip, {min: 60, max: 5900, palette: precipPal}, 'precip');
-```
+{% endhighlight %}
