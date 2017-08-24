@@ -1,6 +1,6 @@
 ---
-title: "introduction to Google Earth Engine"
-teaching: 0
+title: "Time Series"
+teaching: 15
 exercises: 0
 questions:
 - "?"
@@ -9,3 +9,4 @@ objectives:
 keypoints:
 - " "
 ---
+
