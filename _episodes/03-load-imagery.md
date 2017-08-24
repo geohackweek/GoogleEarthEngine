@@ -1,6 +1,6 @@
 ---
-title: "Access Satellite Imagery"
-teaching: 10
+title: "Accessing Satellite Imagery"
+teaching: 15
 exercises: 0
 questions:
 - "?"

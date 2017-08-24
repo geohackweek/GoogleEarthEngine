@@ -1,5 +1,5 @@
 ---
-title: "Classify Satellite Imagery"
+title: "Classifying Satellite Imagery"
 teaching: 15
 exercises: 0
 questions:

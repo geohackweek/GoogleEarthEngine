@@ -1,6 +1,6 @@
 ---
-title: "introduction to Google Earth Engine"
-teaching: 5
+title: "GEE Access and JavaScript Cheat Sheet"
+teaching: 0
 exercises: 0
 questions:
 - "?"
