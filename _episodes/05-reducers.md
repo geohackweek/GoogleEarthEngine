@@ -42,7 +42,6 @@ First, we need to identify the **ImageCollection ID** for the GRIDMET data produ
 
 We now know the ImageCollection ID = 'IDAHO_EPSCOR/GRIDMET' and the precipitation band name is 'pr'. We will specificially `select` this band only.
 
-```
 {% highlight javascript %}
 // load precip data (mm, daily total): 365 images per year 
 var cPrecip = ee.ImageCollection('IDAHO_EPSCOR/GRIDMET')
@@ -50,7 +49,7 @@ var cPrecip = ee.ImageCollection('IDAHO_EPSCOR/GRIDMET')
                     .filterDate('2016-01-01', '2016-12-31');
 print(cPrecip);  
 {% endhighlight %}
-```
+
 
 By printing the resulting collection to the Console, we can see we've loaded 365 images, each with 1 band named 'pr'.
 
