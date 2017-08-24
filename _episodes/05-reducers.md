@@ -38,7 +38,9 @@ As discussed in [Accessing Satellite Imagery](https://geohackweek.github.io/Goog
 #### Get and filter the ImageCollection
 First, we need to identify the **ImageCollection ID** for the GRIDMET data product and the **band name** for the precipitation data (and check any relevant metadata). You can find this either in the [data catalog](https://code.earthengine.google.com/datasets/) or directly in the [GEE Code Editor](https://code.earthengine.google.com/) at the top above  the center panel.
 
-<img src="../fig/codeEditor_datasetSearch.PNG" border = "10">
+<br><br>
+<img src="../fig/codeEditor_datasetSearch2.png" border = "10">
+<br><br>
 
 We now know the ImageCollection ID = 'IDAHO_EPSCOR/GRIDMET' and the precipitation band name is 'pr'. We will specificially `select` this band only.
 
