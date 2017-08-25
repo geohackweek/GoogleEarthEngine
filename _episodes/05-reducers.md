@@ -52,7 +52,7 @@ print(cPrecip);
 
 By printing the resulting collection to the Console, we can see we've accessed 365 images, each with 1 band named 'pr'.
 
-#### Apply a Sum Reducer
+#### Apply a Sum Reducer and Visualize Results
 The `imageCollection.reduce()` operator allows you to apply any function of class `ee.Reducer()` to all images in the collection. If your `ImageCollection` had multiple bands, the reducer is applied separately to all bands (unless the reducer has multiple inputs, in which case the collection band number and number of inputs must match). You can find available reducers and their descriptions in the searchable API reference under the **Docs* tab in the upper left panel of the code editor.
 
 <br>
@@ -73,6 +73,8 @@ var annualPrecip = cPrecip.sum();
 var precipPal = ['white','blue'] // store palette as variable
 Map.addLayer(annualPrecip, {min: 0, max: 3000, palette: precipPal}, 'precip');
 {% endhighlight %}
+
+By printing the resulting image to the Console, we can see we now have 1 image with 1 band named 'pr_sum'.
 
 <br>
 <img src="../fig/05_annualPrecipMap.PNG" border = "10">
