@@ -132,7 +132,7 @@ Map.addLayer(greenest, {bands: ['B4', 'B3', 'B2'], min: 0, max: 2000}, 'WA tcc',
 
 {% highlight javascript %}
 // select only the ndvi band
-var ndvi = greenest.select('ndvi');
+var ndvi = greenest.select('NDVI');
 
 // Export to your folder on Google Drive 
 // (note: need to hit 'Run' in the task tab in upper right panel) 
@@ -140,7 +140,7 @@ Export.image.toDrive({
   image: ndvi,
   description: 'Washington_NDVI_2016',
   scale: 30,
-  region: boundary,
+  region: boundary.geometry().bounds(), // .geometry().bounds() needed for multipolygon
   crs: 'EPSG:5070',
   folder: 'GEE_geohackweek',
   maxPixels: 2000000000
@@ -150,11 +150,11 @@ Export.image.toDrive({
 // (note: need to hit 'Run' in the task tab in upper right panel) 
 Export.image.toAsset({
   image: ndvi,
-  description: 'Washington_NDVI_2016',
-  assetId: 'users/yourname/2016_WA_ndvi'
+  description: 'Washington_NDVI_2016_asset',
+  assetId: 'users/yourname/2016_WA_ndvi',
   scale: 30,
-  region: boundary,
-  pyramindingPolicy: {'.default':'mean'}, // use {'.default':'sample'} for discrete data
+  region: boundary.geometry().bounds(),
+  pyramidingPolicy: {'.default':'mean'}, // use {'.default':'sample'} for discrete data
   maxPixels: 2000000000
 });
 {% endhighlight %}
