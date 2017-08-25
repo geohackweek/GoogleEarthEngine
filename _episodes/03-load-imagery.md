@@ -22,7 +22,7 @@ keypoints:
 var image = ee.Image('LANDSAT/LC8_SR/LC80460272016209')
 
 // view the image metadata in the Console
-print(image)
+print(image);
 
 // add the image to the map, setting the bands to use for RGB
 Map.addLayer(image, {bands: ['B4', 'B3', 'B2'], min: 0, max: 2000}, 'L8 SR');
@@ -59,6 +59,10 @@ var boundary = ee.FeatureCollection('users/jdeines/vector/examples/WA');
 print(boundary);
 Map.addLayer(boundary, {}, 'WA');
 {% endhighlight %}
+
+<br>
+<img src="../fig/03_waBound.png" border = "10">
+<br><br>
 
 ### Load an image collection based on filter criteria
 
@@ -123,3 +127,35 @@ Map.addLayer(greenest, {bands: ['B4', 'B3', 'B2'], min: 0, max: 2000}, 'WA tcc',
 <br>
 <img src="../fig/03_waTCC.png" border = "10">
 <br><br>
+
+## Exporting Composite Images
+
+{% highlight javascript %}
+// select only the ndvi band
+var ndvi = greenest.select('ndvi');
+
+// Export to your folder on Google Drive 
+// (note: need to hit 'Run' in the task tab in upper right panel) 
+Export.image.toDrive({
+  image: ndvi,
+  description: 'Washington_NDVI_2016',
+  scale: 30,
+  region: boundary,
+  crs: 'EPSG:5070',
+  folder: 'GEE_geohackweek',
+  maxPixels: 2000000000
+});
+
+// Export to your ASSET folder 
+// (note: need to hit 'Run' in the task tab in upper right panel) 
+Export.image.toAsset({
+  image: ndvi,
+  description: 'Washington_NDVI_2016',
+  assetId: 'users/yourname/2016_WA_ndvi'
+  scale: 30,
+  region: boundary,
+  pyramindingPolicy: {'.default':'mean'}, // use {'.default':'sample'} for discrete data
+  maxPixels: 2000000000
+});
+{% endhighlight %}
+
