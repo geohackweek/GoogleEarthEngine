@@ -6,8 +6,9 @@ questions:
 - "How do I summarize data for specific regions or time periods?"
 objectives:
 - Reduce an daily image collection to annual values
-- Summarize values within polygon regions
+- Summarize values within polygon regions utilizing a vector dataset
 - Use climate data products available through GEE
+- Export tabular data
 keypoints:
 - " "
 ---
@@ -74,10 +75,97 @@ var precipPal = ['white','blue'] // store palette as variable
 Map.addLayer(annualPrecip, {min: 0, max: 3000, palette: precipPal}, 'precip');
 {% endhighlight %}
 
-By printing the resulting image to the Console, we can see we now have 1 image with 1 band named 'pr_sum'.
+By printing the resulting image to the Console, we can see we now have 1 image with 1 band named 'pr_sum'. Here's what it looks like:
 
 <br>
 <img src="../fig/05_annualPrecipMap.PNG" border = "10">
 <br><br>
 
 ### Part 2: Spatial Reducer: Get Image Statistics By Regions
+The objective of Part 2 is to take the image of annual precipitation we just created and get the mean annual precipitation by county in the United States. To get image statistics for multiple regions, we can use an [image.reduceRegions()](https://developers.google.com/earth-engine/reducers_reduce_regions) call. We will use a [FeatureCollection](https://developers.google.com/earth-engine/feature_collections) to store our vector dataset of counties. Note that there is also a [image.reduceRegion()](https://developers.google.com/earth-engine/reducers_reduce_region) operator if you wanted to summarize one polygon region only. The result of the `reduceRegions()` operation is added to the properties of each feature in the `FeatureCollection`.
+
+**An important note on the scale parameter**
+GEE uses lazy code evaluation that only executes parts of your script needed for results - in the case of the JavaScript API code editor environment, that means things needed to fulfill print statements, Map visualizations, or export tasks. *GEE will run your computations at the resolution of your current map view in the code editor unless you tell it otherwise.* Whenever possible, explicitly set the scale arguments to force GEE to work in a scale that makes sense for your imagery/analysis.
+
+#### Load the County Boundaries (Vector Data)
+There are three ways to use vector data in GEE:
+
+* [Upload a shapefile](https://developers.google.com/earth-engine/importing) to your personal *Asset* folder in the top left panel. You can set sharing permissions on these as needed.
+* Import an existing [Google Fusion Table](https://support.google.com/fusiontables#topic=1652595), or [create your own](https://fusiontables.google.com/data?dsrcid=implicit) fusion table from a KML in WGS84.  Each fusion table has a unique Id (File > About this table) that can be used to load it into GEE
+* Manually draw points, lines, and polygons using the code editor
+
+Here, we will use an [existing public fusion table of county boundaries](https://fusiontables.google.com/data?docid=1xdysxZ94uUFIit9eXmnw1fYc6VcQiXhceFd_CVKa#map:id=2) from the US Census Bureau.
+
+This dataset includes entities outside of the contiguous US such as Alaska, Puerto Rico, and American Samoa. We will remove these based on their unique ID's in a property attribute containing "state" FIPS codes to demonstrate vector filtering.
+
+{% highlight javascript %}
+// load regions: counties from a public fusion table, removing non-conus states
+// by using a custom filter
+var nonCONUS = [2,15,60,66,69,72,78] // state FIPS codes that we don't want
+var counties = ee.FeatureCollection('ft:1ZMnPbFshUI3qbk9XE0H7t1N5CjsEGyl8lZfWfVn4')
+        .filter(ee.Filter.inList('STATEFP',nonCONUS).not());
+print(counties);
+
+// visualize 
+Map.addLayer(counties,{},'counties');  
+{% endhighlight %}
+
+By printing the county featureCollection, we see there are 3108 county polygons and 11 columns of attribute data. 
+
+<br>
+<img src="../fig/05_countyMap.png" border = "10">
+<br><br>
+
+#### Apply the spatial reducer
+
+{% highlight javascript %}
+// get mean precipitation values by county polygon
+var countyPrecip = annualPrecip.reduceRegions({
+  collection: counties,
+  reducer: ee.Reducer.mean(),
+  scale: 4000 // the resolution of the GRIDMET dataset
+});
+print(countyPrecip);
+{% endhighlight %}
+
+By printing the countyPrecip featureCollection, we see there are 3108 county polygons and now 12 columns of attribute data, with the addition of the "mean" column. 
+
+#### Format and Export Results
+GEE can export tables in CSV (default), GeoJSON, KML, or KMZ. Here, we do a little formatting to prepare our FeatureCollection for export as a CSV. 
+
+Formatting includes:
+
+* removing the .geo column for a tidier dataset (this column can get quite large when polygons are highly detailed, but there's no reason that you have to do this step)
+* Adding a Column Attribute for the year of the precip data to demonstrate attribute manipulation. This can only be done to Features, so we map a function to do this over the features within the Feature Collection
+
+{% highlight javascript %}
+// drop .geo column (not needed if goal is tabular data)
+var polyOut = countyPrecip.select(['.*'],null,false);
+  
+// add a new column for year
+polyOut = polyOut.map(function(f){
+  return f.set('Year',2016);
+});
+
+// Export ---------------------------------------------------------------------
+// An example for how to export
+Export.table.toDrive({
+  collection: polyOut,
+  description: 'GRIDMET_annual_precip_by_county',
+  folder: 'GEE_geohackweek',
+  fileFormat: 'CSV'
+});   
+{% endhighlight %}
+
+Note on the folder name: If this folder exists within  your Google Drive, GEE will find it and export here regardless of the full file path for the folder. If the folder doesn't exist, GEE will create it upon export.
+
+**Final Step**
+In order to actually export your data, you have to explicitly hit the "Run" button under the "Tasks" tab in the upper right panel of the code editor. It should take 20-30 seconds to export, depending on GEE user loads.
+
+<br>
+<img src="../fig/05_runTask.png" border = "10">
+<br><br>
+
+
+
+
