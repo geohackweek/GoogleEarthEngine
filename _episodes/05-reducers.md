@@ -3,7 +3,9 @@ title: "Temporal and Spatial Reducers"
 teaching: 5
 exercises: 10
 questions:
-- "How do I summarize data by vector regions or time periods, and export?"
+- How do I aggregate a time series of raster data over a time period?
+- How do I summarize data by vector regions?
+- How do I export tabular data summaries?
 objectives:
 - Use reducers to aggregate a daily image collection to annual values
 - Import vector data to summarize values by polygon regions

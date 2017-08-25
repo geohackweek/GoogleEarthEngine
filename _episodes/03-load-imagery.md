@@ -5,6 +5,8 @@ exercises: 10
 questions:
 - How do I acquire satellite imagery?
 - How can I make image mosaics?
+- How can I use my own vector data?
+- How do I export images?
 objectives:
 - Learn how to access images based on filter criteria
 - Perform basic image manipulation, mosaicking, and visualization
