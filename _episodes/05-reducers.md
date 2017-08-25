@@ -39,11 +39,7 @@ As discussed in [Accessing Satellite Imagery](https://geohackweek.github.io/Goog
 #### Get and Filter the ImageCollection
 First, we need to identify the **ImageCollection ID** for the GRIDMET data product and the **band name** for the precipitation data (and check any relevant metadata). You can find this either in the [data catalog](https://code.earthengine.google.com/datasets/) or directly in the [GEE Code Editor](https://code.earthengine.google.com/) at the top above  the center panel:
 
-<br>
-<img src="../fig/codeEditor_datasetSearch2.png" border = "10">
-<br><br>
-
-From the [GRIDMET description](https://code.earthengine.google.com/dataset/IDAHO_EPSCOR/GRIDMET), we now know the ImageCollection ID = 'IDAHO_EPSCOR/GRIDMET' and the precipitation band name is 'pr'. We will specificially `select` this band only.
+From the [GRIDMET description](https://code.earthengine.google.com/dataset/IDAHO_EPSCOR/GRIDMET), we know the ImageCollection ID = 'IDAHO_EPSCOR/GRIDMET' and the precipitation band name is 'pr'. We will specificially `select` this band only.
 
 {% highlight javascript %}
 // load precip data (mm, daily total): 365 images per year 
@@ -60,7 +56,7 @@ By printing the resulting collection to the Console, we can see we've accessed 3
 The `imageCollection.reduce()` operator allows you to apply any function of class `ee.Reducer()` to all images in the collection. If your `ImageCollection` had multiple bands, the reducer is applied separately to all bands (unless the reducer has multiple inputs, in which case the collection band number and number of inputs must match). You can find available reducers and their descriptions in the searchable API reference under the **Docs* tab in the upper left panel of the code editor.
 
 <br>
-<img src="../fig/05_reducerMenu.png" border = "10">
+<img src="../fig/05_reducerMenu.PNG" border = "10">
 <br><br>
 
 Some commonly used reducers have shortcut syntax, such as `imageCollection.mean()`, `imageCollection.min()`, and conveniently, `imageCollection.sum()`. Both are demonstrated in the following code chunk.
@@ -79,7 +75,7 @@ Map.addLayer(annualPrecip, {min: 0, max: 3000, palette: precipPal}, 'precip');
 {% endhighlight %}
 
 <br>
-<img src="../fig/05_annualPrecipMap.png" border = "10">
+<img src="../fig/05_annualPrecipMap.PNG" border = "10">
 <br><br>
 
 ### Part 2: Spatial Reducer: Get Image Statistics By Regions
