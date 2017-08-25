@@ -3,10 +3,10 @@ title: "Temporal and Spatial Reducers"
 teaching: 5
 exercises: 10
 questions:
-- "How do I summarize data for specific regions or time periods?"
+- "How do I summarize data by vector regions or time periods, and export?"
 objectives:
-- Reduce an daily image collection to annual values
-- Summarize values within polygon regions utilizing a vector dataset
+- Use reducers to aggregate a daily image collection to annual values
+- Import vector data to summarize values by polygon regions
 - Use climate data products available through GEE
 - Export tabular data
 keypoints:
@@ -85,6 +85,7 @@ By printing the resulting image to the Console, we can see we now have 1 image w
 The objective of Part 2 is to take the image of annual precipitation we just created and get the mean annual precipitation by county in the United States. To get image statistics for multiple regions, we can use an [image.reduceRegions()](https://developers.google.com/earth-engine/reducers_reduce_regions) call. We will use a [FeatureCollection](https://developers.google.com/earth-engine/feature_collections) to store our vector dataset of counties. Note that there is also a [image.reduceRegion()](https://developers.google.com/earth-engine/reducers_reduce_region) operator if you wanted to summarize one polygon region only. The result of the `reduceRegions()` operation is added to the properties of each feature in the `FeatureCollection`.
 
 **An important note on the scale parameter**
+
 GEE uses lazy code evaluation that only executes parts of your script needed for results - in the case of the JavaScript API code editor environment, that means things needed to fulfill print statements, Map visualizations, or export tasks. *GEE will run your computations at the resolution of your current map view in the code editor unless you tell it otherwise.* Whenever possible, explicitly set the scale arguments to force GEE to work in a scale that makes sense for your imagery/analysis.
 
 #### Load the County Boundaries (Vector Data)
@@ -130,7 +131,7 @@ print(countyPrecip);
 
 By printing the countyPrecip featureCollection, we see there are 3108 county polygons and now 12 columns of attribute data, with the addition of the "mean" column. 
 
-#### Format and Export Results
+## Format and Export Results
 GEE can export tables in CSV (default), GeoJSON, KML, or KMZ. Here, we do a little formatting to prepare our FeatureCollection for export as a CSV. 
 
 Formatting includes:
@@ -155,11 +156,14 @@ Export.table.toDrive({
   folder: 'GEE_geohackweek',
   fileFormat: 'CSV'
 });   
+
+// AND HIT 'RUN' IN THE TASKS TAB IN THE UPPER RIGHT PANEL
 {% endhighlight %}
 
 Note on the folder name: If this folder exists within  your Google Drive, GEE will find it and export here regardless of the full file path for the folder. If the folder doesn't exist, GEE will create it upon export.
 
 **Final Step**
+
 In order to actually export your data, you have to explicitly hit the "Run" button under the "Tasks" tab in the upper right panel of the code editor. It should take 20-30 seconds to export, depending on GEE user loads.
 
 <br>
