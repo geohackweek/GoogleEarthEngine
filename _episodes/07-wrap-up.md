@@ -8,5 +8,6 @@ objectives:
 - "Recap what you've learned"
 keypoints:
 - "A summary of everything so far"
----
+- "Reminders for resources: forum, guides, etc"
 
+---
