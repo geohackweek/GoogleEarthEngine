@@ -12,3 +12,36 @@ keypoints:
 ---
 
 ## Code Editor: Overview
+
+
+Things to discuss
+
+Importing and Exporting
+- Scripts
+- Assets
+- Tasks
+
+Checking Things outputs
+- Console (print is your friend)
+- Inspector
+
+Viewing things
+- map Viewer
+- adding vector data
+- baselayers
+- stretching images
+
+Coding things
+- code Editor
+- turn on/off suggestions
+
+Getting Help with things
+- Users Guide
+- Help Forum
+- Docs
+
+
+
+
+
+## Code Editor: Overview
