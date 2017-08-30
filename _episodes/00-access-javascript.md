@@ -10,7 +10,7 @@ objectives:
 - Have a JavaScript resource
 keypoints:
 - "Anyone can sign up for Google Earth Engine, just apply to be a trusted tester."
-- "JavaScript is a programming language used in the GEE API that is also widely used in web development."
+- "GEE has a user-friendly JavaScript API that is how we will get started. JavaScript is a programming language that is also widely used in web development."
 ---
 ## Getting Approved as a Trusted Tester
 
