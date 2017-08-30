@@ -9,10 +9,13 @@ objectives:
 - Gain access to Google Earth Engine
 - Have a JavaScript resource
 keypoints:
-- " "
+- "Anyone can sign up for Google Earth Engine, just apply to be a trusted tester."
+- "JavaScript is a programming language used in the GEE API that is also widely used in web development."
 ---
 
-<img src="../fig/01_spaceland.png border = "10">
+<br>
+<img src="../fig/01_spaceland.png" border = "10">
+<br><br>
 
 ## Getting Approved as a Trusted Tester
 
