@@ -28,13 +28,13 @@ As Gorelick et al (2017) write in the new *[Remote Sensing of the Environment](h
 
 ## Why GEE? Planetary Scale Change: The Hansen Dataset
 
-Google Earth Engine enables users to compute on petabytes of data on the fly without having the navigate the complexities of cloud-based parallelization. Enhancing inclusive access has spurred the growth of environmental projects conducted at scales previously unimaginable. An example of this is [Global Forest Watch](http://www.globalforestwatch.org/). Global Forest Watch is a global forest monitoring and conservation tool that was made possible by Google Earth Engine. The image below shows rapid forest loss in Indonesia derived from Landsat imagery.
+Google Earth Engine enables users to compute on petabytes of data on the fly without having the navigate the complexities of cloud-based parallelization. Enhancing inclusive access has spurred the growth of environmental projects conducted at scales previously unimaginable. An example of this is [Global Forest Watch](http://www.globalforestwatch.org/). Global Forest Watch is a forest monitoring and conservation tool that was made possible by Google Earth Engine. The image below shows rapid forest loss in Indonesia derived from Landsat imagery.
 
+***
 ![alt text](https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/76fuygfd.gif)
 
 Forest loss in Sumatra's Riau province, Indonesia, 2000-2012. Credit: Hansen, Potapov, Moore, Hancher et al., 2013
-
-Read more at: https://phys.org/news/2013-11-global-forest.html#jCp
+***
 
 ## How does it work?
 
