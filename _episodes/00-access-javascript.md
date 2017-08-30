@@ -12,11 +12,6 @@ keypoints:
 - "Anyone can sign up for Google Earth Engine, just apply to be a trusted tester."
 - "JavaScript is a programming language used in the GEE API that is also widely used in web development."
 ---
-
-<br>
-<img src="../fig/01_spaceland.png" border = "10">
-<br><br>
-
 ## Getting Approved as a Trusted Tester
 
 In order to use Google Earth Engine, you need to sign up for the platform and be approved as a trusted tester. Use the steps below to sign up.
@@ -40,3 +35,7 @@ JavaScript uses camelCase. JavaScript (according to W3 academy) is easy to learn
 For in-depth industry guidance, Google publishes their own definitive [JavaScript style guide](http://google.github.io/styleguide/jsguide.html).
 
 Dana Tomlin has also created a short [JavaScript Quick Start Guide](https://drive.google.com/file/d/0B3H1GYZLzLKCckwwVjZfVmdPNDA/view) which only takes a few minutes to work through but hits some of the basics. You can find it by going to the GEE homepage, clicking on the EDU tab in the upper left, and scrolling down to the Geospatial Software Design Exercises section.
+
+<br>
+<img src="../fig/00_spaceland.png" border = "10">
+<br><br>
