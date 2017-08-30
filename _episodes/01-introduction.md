@@ -15,13 +15,15 @@ keypoints:
 ---
 
 
-## What is Google Earth Engine & why do I want to use it?
+## What is Google Earth Engine?
 
 The new *Remote Sensing of the Environment* paper says it best:
 
-###### *Google Earth Engine is a cloud-based platform for planetary-scale geospatial analysis that brings Google's massive computational capabilities to bear on a variety of high-impact societal issues including deforestation, drought, disaster, disease, food security, water management, climate monitoring and environmental protection.*  - [Gorelick et al., 2017](http://www.sciencedirect.com/science/article/pii/S0034425717302900)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Google Earth Engine is a cloud-based platform &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for planetary-scale geospatial analysis that &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brings Google's massive computational &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;capabilities to bear on a variety of &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;high-impact societal issues including &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deforestation, drought, disaster, disease, food &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;security, water management, climate monitoring &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and environmental protection.*  - [Gorelick et &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;al., 2017](http://www.sciencedirect.com/science/article/pii/S0034425717302900)
 
-## Planetary Scale Change: The Hansen Dataset
+## Why GEE? Planetary Scale Change: The Hansen Dataset
+
+Google Earth Engine enables users to compute on petabytes of data on the fly without having the navigate the complexities of cloud-based parallelization. Enhancing inclusive access has spurred the growth of environmental projects conducted at scales previously unimaginable. An example of this is [Global Forest Watch](http://www.globalforestwatch.org/). Global Forest Watch is a global forest monitoring and conservation tool that was made possible by Google Earth Engine. The image below shows rapid forest loss in Indonesia derived from Landsat imagery.
 
 ![alt text](https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/76fuygfd.gif)
 
@@ -40,7 +42,7 @@ Google Earth Engine brings together three key data science concepts:
 <img src="../fig/01_GEEinterfaces.png" border = "10">
 <br><br>
 
-## What datasets are available?
+### What datasets are available?
 
 The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, including the entire Landsat mission (!!). Other remote sensing missions represented include Sentinel 1, Sentinel 2, MODIS and others. In addition to earth observing images, GEE also hosts produced datasets for precipitation, population density, topography, land cover and climate. Over 6000 scenes being added daily from active satellite missions. [Table 1](http://www.sciencedirect.com/science/article/pii/S0034425717302900) in Gorelick et. al., (2017) describes the frequently used datasets, the [Google Earth Engine](https://earthengine.google.com/datasets/) website has a general dataset descriptions, or you can browse the datasets directly through the [Google Earth Engine API](https://explorer.earthengine.google.com/#index).
 
@@ -50,7 +52,7 @@ Users can also recommend datasets from the Javascript API Code Editor window.
 <img src="../fig/01_datasetsuggest.png">
 <br><br>
 
-## What can I do with GEE?
+### What can I do with GEE?
 
 - operate on petabytes of imagery using Google's cloud
 - export your analysis
@@ -59,7 +61,7 @@ Users can also recommend datasets from the Javascript API Code Editor window.
 - store, share and version control your code
 - share your uploaded personal assets with other users
 
-## What things is GEE NOT designed to do?
+### What things is GEE NOT designed to do?
 
 - Cartography
 - Heavy duty vector operations
