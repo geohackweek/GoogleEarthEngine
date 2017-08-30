@@ -34,7 +34,9 @@ Google Earth Engine enables users to compute on petabytes of data on the fly wit
 ![alt text](https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/76fuygfd.gif)
 
 Forest loss in Sumatra's Riau province, Indonesia, 2000-2012. Credit: Hansen, Potapov, Moore, Hancher et al., 2013
+
 ***
+
 
 ## How does it work?
 
