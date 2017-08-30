@@ -16,15 +16,8 @@ keypoints:
 
 #### **Google Earth Engine is a cloud-based platform for planetary-scale geospatial analysis that brings Google's massive computational capabilities to bear on a variety of high-impact societal issues including deforestation, drought, disaster, disease, food security, water management, climate monitoring and environmental protection.**  - [Gorelick et al., 2017](http://www.sciencedirect.com/science/article/pii/S0034425717302900)
 
-## test 1
-
-<br>
-<img src="../fig/01_ooohhhahhh.gif" border = "10">
-<br><br>
-
-
 ## test 2
-![alt text](../fig/01_ooohhhahhh.gif "Logo Title Text 1")
+![alt text](https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/76fuygfd.gif)
 
 Forest loss in Sumatra's Riau province, Indonesia, 2000-2012. Credit: Hansen, Potapov, Moore, Hancher et al., 2013
 
