@@ -17,9 +17,14 @@ keypoints:
 
 ## What is Google Earth Engine?
 
-The new *Remote Sensing of the Environment* paper says it best:
+As Gorelick et al (2017) write in the new *[Remote Sensing of the Environment](http://www.sciencedirect.com/science/article/pii/S0034425717302900)* article:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Google Earth Engine is a cloud-based platform &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for planetary-scale geospatial analysis that &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brings Google's massive computational &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;capabilities to bear on a variety of &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;high-impact societal issues including &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deforestation, drought, disaster, disease, food &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;security, water management, climate monitoring &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and environmental protection.*  - [Gorelick et &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;al., 2017](http://www.sciencedirect.com/science/article/pii/S0034425717302900)
+> Google Earth Engine is a cloud-based platform for planetary-scale
+> geospatial analysis that brings Google's massive computational
+> capabilities to bear on a variety of high-impact societal issues
+> including deforestation, drought, disaster, disease, food security,
+> water management, climate monitoring and environmental protection.
+
 
 ## Why GEE? Planetary Scale Change: The Hansen Dataset
 
@@ -34,9 +39,9 @@ Read more at: https://phys.org/news/2013-11-global-forest.html#jCp
 ## How does it work?
 
 Google Earth Engine brings together three key data science concepts:
-⋅⋅* Free massive cloud computing including algorithm primitives
-⋅⋅* Archive of standard remote sensing + supporting data in one place (the cloud)
-⋅⋅* Co-locating computing with data
+- Free massive cloud computing including algorithm primitives
+- Archive of standard remote sensing + supporting data in one place (the cloud)
+- Co-locating computing with data
 
 <br>
 <img src="../fig/01_GEEinterfaces.png" border = "10">
@@ -49,7 +54,7 @@ The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, incl
 Users can also recommend datasets from the Javascript API Code Editor window.
 
 <br>
-<img src="../fig/01_datasetsuggest.png">
+<img src="../fig/01_datasetsuggest.png" border = "10">
 <br><br>
 
 ### What can I do with GEE?
@@ -63,6 +68,6 @@ Users can also recommend datasets from the Javascript API Code Editor window.
 
 ### What things is GEE NOT designed to do?
 
-- Cartography
-- Heavy duty vector operations
+- cartography
+- heavy duty vector operations
 - DIY parallelization
