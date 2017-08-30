@@ -20,6 +20,7 @@ The Earth Engine JavaScript API has a integrated development environment (IDE) d
 
 ## Exercise: Exploring the Code Editor
 
+
 ## Coding things
 
 The Code Editor has number of features to help make programming in this environment easier. To access the Code Editor, type the following url into your browser: [code.earthengine.google.com](code.earthengine.google.com)
@@ -44,6 +45,7 @@ For example, you can write comments by using a double slash. Type the following 
 // This is just a comment.
 {% endhighlight %}
 
+
 ## The Console
 
 You can also use `print()` to display things to the console. Type this and click "Run":
@@ -60,13 +62,18 @@ The Editor will mark statements as incomplete ('i') if you write them without a 
 print("This appears in the Console tab")
 {% endhighlight %}
 
+
 ## Saving, Sharing, Importing and Exporting
 
 ### Saving & Sharing
 
 Now that you have written your first few lines of JavaScript, you can share this by clicking the "Save" button, naming the script file and then clicking "Get Link". A url will appear in your browser address field. Share this link to give other people access to your code.
 
-** Hot Tip: When posted on the help forum, ALWAYS include a link to your code so people can help troubleshoot.**
+<br>
+<img src="../fig/02_getlink.png" border = "10">
+<br><br>
+
+**Hot Tip: When posted on the help forum, ALWAYS include a link to your code so people can help troubleshoot.**
 
 ### Scripts
 
@@ -91,9 +98,10 @@ Instead of printing to the console, for larger tasks you may want to just export
 
 For detailed instructions on exports, see the [Exporting Data page](https://developers.google.com/earth-engine/exporting) on the GEE website .
 
+
 ## Mapping things
 
-One of the major benefits of the JavaScript versus Python API is hte ability to quickly render on-the-fly geovisualizations of your imagery and outputs.
+One of the major benefits of the JavaScript versus Python API is the ability to quickly render on-the-fly geovisualizations of your imagery and outputs. The mapping window has several useful functionalities described below. 
 
 ### Map viewer
 
@@ -116,6 +124,7 @@ Once we have layers added later in the tutorial, a "Layers" toolbar will appear 
 Besides importing vector data through the assets tab, you can also use the geometry drawing tools located on the upper left side of the map viewer to manually create points, line or polygons.
 
 We will explore how to configure geometries in the [Classifying Imagery](https://geohackweek.github.io/GoogleEarthEngine/04-classify-imagery/) section of this tutorial.
+
 
 ## Getting Help
 
@@ -140,6 +149,7 @@ The **Help** button is a gateway to many resources, including links to:
 ### Examples in the **Shared Scripts**
 
 A final place you can get help is by scrolling down and looking at the examples housed in the **Shared Scripts** in the **Scripts** tab.
+
 
 ## Enjoy!!!
 

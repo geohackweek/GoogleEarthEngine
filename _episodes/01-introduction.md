@@ -40,9 +40,9 @@ Forest loss in Sumatra's Riau province, Indonesia, 2000-2012. Credit: Hansen, Po
 ## How does it work?
 
 Google Earth Engine brings together three key data science concepts:
-- Free massive cloud computing including algorithm primitives
-- Archive of standard remote sensing + supporting data in one place (the cloud)
-- Co-locating computing with data
+ - Free massive cloud computing including algorithm primitives
+ - Archive of standard remote sensing + supporting data in one place (the cloud)
+ - Co-locating computing with data
 
 You can access Google Earth Engine through a few different channels, including a non-programming GUI, the JavaScript API and the Python API. For this class we are using the JavaScript API because it is the most developed, although [training materials on accessing GEE using Python](https://developers.google.com/earth-engine/python_install) are now available on the GEE website.
 
@@ -52,7 +52,7 @@ You can access Google Earth Engine through a few different channels, including a
 
 ### What datasets are available?
 
-The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, including the entire Landsat mission (!!). Other remote sensing missions represented include Sentinel 1, Sentinel 2, MODIS and others. In addition to earth observing images, GEE also hosts produced datasets for precipitation, population density, topography, land cover and climate. Over 6000 scenes being added daily from active satellite missions. [Table 1](http://www.sciencedirect.com/science/article/pii/S0034425717302900) in Gorelick et. al., (2017) describes the frequently used datasets, the [Google Earth Engine](https://earthengine.google.com/datasets/) website has a general dataset descriptions, or you can browse the datasets directly through the [Google Earth Engine API](https://explorer.earthengine.google.com/#index).
+The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, including the entire Landsat mission (!!). Other remote sensing missions represented include Sentinel 1, Sentinel 2, MODIS and others. In addition to earth observing images, GEE also hosts produced datasets for precipitation, population density, topography, land cover and climate. Over 6000 scenes are added daily from active satellite missions. [Table 1](http://www.sciencedirect.com/science/article/pii/S0034425717302900) in Gorelick et. al., (2017) describes the frequently used datasets, the [Google Earth Engine](https://earthengine.google.com/datasets/) website has a general dataset descriptions, or you can browse the datasets directly through the [Google Earth Engine API](https://explorer.earthengine.google.com/#index).
 
 <br>
 <img src="../fig/01_datasets.png" border = "10">
@@ -74,7 +74,7 @@ Users can also recommend datasets from the Javascript API Code Editor window.
 - store, share and version control your code
 - share your uploaded personal assets with other users
 
-### What things is GEE NOT designed to do?
+### What is GEE NOT designed for?
 
 - cartography
 - heavy duty vector operations

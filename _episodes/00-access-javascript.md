@@ -10,7 +10,8 @@ objectives:
 - Have a JavaScript resource
 keypoints:
 - "Anyone can sign up for Google Earth Engine, just apply to be a trusted tester."
-- "GEE has a user-friendly JavaScript API that is how we will get started. JavaScript is a programming language that is also widely used in web development."
+- "The Code Editor is a user friendly access point for Earth Engine that uses the JavaScript API."
+- " JavaScript is a programming language that is also widely used in web development."
 ---
 ## Getting Approved as a Trusted Tester
 
@@ -34,7 +35,7 @@ JavaScript uses camelCase. JavaScript (according to W3 academy) is easy to learn
 
 For in-depth industry guidance, Google publishes their own definitive [JavaScript style guide](http://google.github.io/styleguide/jsguide.html).
 
-Dana Tomlin has also created a short [JavaScript Quick Start Guide](https://drive.google.com/file/d/0B3H1GYZLzLKCckwwVjZfVmdPNDA/view) which only takes a few minutes to work through but hits some of the basics. You can find it by going to the GEE homepage, clicking on the EDU tab in the upper left, and scrolling down to the Geospatial Software Design Exercises section.
+Dana Tomlin has also created a short [JavaScript Quick Start Guide](https://drive.google.com/file/d/0B3H1GYZLzLKCckwwVjZfVmdPNDA/view) which only takes a few minutes to work through but hits some of the basics. You can find it clicking that link or by going to the GEE homepage, clicking on the EDU tab in the upper left, and scrolling down to the Geospatial Software Design Exercises section.
 
 <br>
 <img src="../fig/00_spaceland.png" border = "10">
