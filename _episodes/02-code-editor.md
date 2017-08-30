@@ -16,20 +16,19 @@ keypoints:
 
 ## Code Editor: Overview
 
-The Earth Engine JavaScript API has a integrated development environment (IDE) designed to make computing in GEE easy for users. This IDE is called the Code Editor.To use GEE, type the url for the code editor into your browser: [code.earthengine.google.com](code.earthengine.google.com)
+The Earth Engine JavaScript API has a integrated development environment (IDE) designed to make computing in GEE easy for users. This IDE is called the Code Editor. In this tutorial, we will go over many of the functionalities described identified in this figure, but for a more exhaustive description see the [Earth Engine Code Editor help page](https://developers.google.com/earth-engine/playground#api-reference-docs-tab) in the GEE User Guides.
+
+## Exercise: Exploring the Code Editor
+
+## Coding things
+
+The Code Editor has number of features to help make programming in this environment easier. To access the Code Editor, type the following url into your browser: [code.earthengine.google.com](code.earthengine.google.com)
 
 A  webpage like the following (without annotations) should appear:
 
 <br>
 <img src="../fig/02_codeeditor.png" border = "10">
 <br><br>
-
-In this tutorial, we will go over many of the functionalities described identified in this figure, but for a more exhaustive description see the [Earth Engine Code Editor help page](https://developers.google.com/earth-engine/playground#api-reference-docs-tab) in the GEE User Guides.
-
-
-## Coding things
-
-The Code Editor has number of features to help make programming in this environment easier.
 
 ### Search toolbar
 
