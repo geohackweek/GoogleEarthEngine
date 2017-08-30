@@ -6,7 +6,6 @@ questions:
 - "What are the key features of the online code editor?"
 objectives:
 - Get orientated to the tools available in the code editor
-- Review the data archive
 keypoints:
 - "The Code Editor is a one stop shop for accessing GEE data catalog and conducting geospatial analysis."
 - "You can use the code editor to develop, share and manage scripts."
@@ -150,3 +149,6 @@ A final place you can get help is by scrolling down and looking at the examples 
 <br><br>
 
 from Gorelick et. al. (2017)
+
+
+Link to the full code we used in this lesson: [https://code.earthengine.google.com/be0541e89d66904395656def37ed8932](https://code.earthengine.google.com/be0541e89d66904395656def37ed8932)
