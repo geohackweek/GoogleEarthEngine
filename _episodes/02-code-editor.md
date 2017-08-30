@@ -16,10 +16,9 @@ keypoints:
 
 ## Code Editor: Overview
 
-The Earth Engine JavaScript API has a integrated development environment (IDE) designed to make computing in GEE easy for users. This IDE is called the Code Editor. In this tutorial, we will go over many of the functionalities described identified in this figure, but for a more exhaustive description see the [Earth Engine Code Editor help page](https://developers.google.com/earth-engine/playground#api-reference-docs-tab) in the GEE User Guides.
+The Earth Engine JavaScript API has a integrated development environment (IDE) designed to make computing in GEE easy for users. This IDE is called the Code Editor. In this tutorial, we will go over many of the functionalities described identified in this figure, but for a more exhaustive description see the [Earth Engine Code Editor help page](https://developers.google.com/earth-engine/playground#api-reference-docs-tab) in the GEE User Guides.  
 
 ## Exercise: Exploring the Code Editor
-
 
 ## Coding things
 
@@ -96,12 +95,12 @@ For detailed instructions on uploading, sharing and managing assets, see the [As
 ### Exporting & the Tasks Tab
 Instead of printing to the console, for larger tasks you may want to just export the outputs to your Google Drive or Cloud Storage. Once you start an export task, you will be prompted to enter details about the resolution, size, format and destination. You can hover your mouse over the task and click the "?" icon to see the status and also to get the task number. If your task isn't executing, you can share this number as a reference on the developers forum.
 
-For detailed instructions on exports, see the [Exporting Data page](https://developers.google.com/earth-engine/exporting) on the GEE website .
+For detailed instructions on exports, see the [Exporting Data page](https://developers.google.com/earth-engine/exporting) on the GEE website.  
 
 
 ## Mapping things
 
-One of the major benefits of the JavaScript versus Python API is the ability to quickly render on-the-fly geovisualizations of your imagery and outputs. The mapping window has several useful functionalities described below. 
+One of the major benefits of the JavaScript versus Python API is the ability to quickly render on-the-fly geovisualizations of your imagery and outputs. The mapping window has several useful functionalities described below.
 
 ### Map viewer
 
@@ -123,7 +122,7 @@ Once we have layers added later in the tutorial, a "Layers" toolbar will appear 
 
 Besides importing vector data through the assets tab, you can also use the geometry drawing tools located on the upper left side of the map viewer to manually create points, line or polygons.
 
-We will explore how to configure geometries in the [Classifying Imagery](https://geohackweek.github.io/GoogleEarthEngine/04-classify-imagery/) section of this tutorial.
+We will explore how to configure geometries in the [Classifying Imagery](https://geohackweek.github.io/GoogleEarthEngine/04-classify-imagery/) section of this tutorial.  
 
 
 ## Getting Help
@@ -148,7 +147,7 @@ The **Help** button is a gateway to many resources, including links to:
 
 ### Examples in the **Shared Scripts**
 
-A final place you can get help is by scrolling down and looking at the examples housed in the **Shared Scripts** in the **Scripts** tab.
+A final place you can get help is by scrolling down and looking at the examples housed in the **Shared Scripts** in the **Scripts** tab.  
 
 
 ## Enjoy!!!
