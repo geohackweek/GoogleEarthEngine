@@ -19,17 +19,22 @@ keypoints:
 
 The Earth Engine JavaScript API has a integrated development environment (IDE) designed to make computing in GEE easy for users. This IDE is called the Code Editor.To use GEE, type the url for the code editor into your browser: [code.earthengine.google.com](code.earthengine.google.com)
 
-A  webpage like the following (without code and imagery of course) should appear:
+A  webpage like the following (without annotations) should appear:
 
 <br>
-<img src="../fig/02_JSAPI_gorelick2017.jpg" border = "10">
+<img src="../fig/02_codeeditor.png" border = "10">
 <br><br>
 
-from Gorelick et. al. (2017)
+In this tutorial, we will go over many of the functionalities described identified in this figure, but for a more exhaustive description see the [Earth Engine Code Editor help page](https://developers.google.com/earth-engine/playground#api-reference-docs-tab) in the GEE User Guides.
+
 
 ## Coding things
 
 The Code Editor has number of features to help make programming in this environment easier.
+
+### Search toolbar
+
+To query the [GEE data catalog](https://earthengine.google.com/datasets/), you can enter key words into the search toolbar. You can also use the search toolbar to locate places in geographic space. If you select a dataset, you can click **Import** to load it into the Code Editor.
 
 ### The JavaScript Editor
 
@@ -105,7 +110,7 @@ In the upper right, switch to the inspector console and click anywhere on the ma
 Once we have layers added later in the tutorial, a "Layers" toolbar will appear in the upper right hand corner of the map (like below). This toolbar will allow you to click layers on and off as well as adjust their transparency and interactively configure each layer's visualization parameters.  
 
 <br>
-<img src="../fig/02_layermanager" border = "10">
+<img src="../fig/02_layermanager.png" border = "10">
 <br><br>
 
 ### Geometry Tools
@@ -122,18 +127,26 @@ There are many entry points for getting help tucked into the Code Editor. Famili
 
 Next to the **Scripts** tab is the **Docs** tab, which has the complete, searchable JavaScript API documentation for every function and call.
 
-### Help Buttom
+### Help Button
 
 The **Help** button is a gateway to many resources, including links to:
 
-- the **Developers Guide** for official GEE tutorials, reference and guides. This is the first place I go when I need to look up how to write some code.
+ - the **Developers Guide** for official GEE tutorials, reference and guides. This is the first place I go when I need to look up how to write some code.
 
-- the developers **Help Forum** where you can post questions and get answers. If I can't find a guide for my specific question on the GEE Guides, I then go search for key words from my problem/question on the forum. Since people share links to their codes, you can often find great examples of solutions here.
+ - the developers **Help Forum** where you can post questions and get answers. If I can't find a guide for my specific question on the GEE Guides, I then go search for key words from my problem/question on the forum. Since people share links to their codes, you can often find great examples of solutions here.
 
-- A list of keyboard shortcuts
+ - A list of keyboard shortcuts
 
-- links to the **Suggest a Dataset** page
+ - links to the **Suggest a Dataset** page
 
 ### Examples in the **Shared Scripts**
 
 A final place you can get help is by scrolling down and looking at the examples housed in the **Shared Scripts** in the **Scripts** tab.
+
+## Enjoy!!!
+
+<br>
+<img src="../fig/02_fancycodeeditor.jpg" border = "10">
+<br><br>
+
+from Gorelick et. al. (2017)
