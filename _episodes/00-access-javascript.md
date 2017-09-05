@@ -49,7 +49,44 @@ var the_answer = 42;
 var my_variable = 'I am a string';
 
 // string objects can also use double quotes, but don't mix and match
-var my_other_variable = "Iam al also a string";
+var my_other_variable = "I am also a string";
+{% endhighlight %}
+
+Statements should end in a semi-colon, or the editor complains.
+{% highlight javascript %}
+var test = 'I feel incomplete...'
+var test2 = 'I feel complete!';
+{% endhighlight %}
+
+Passing function parameters and using lists
+{% highlight javascript %}
+// Parentheses are used to pass parameters to functions
+print('This string will print in the Console tab.');
+
+/* Square brackets are used for items in a list.
+The zero index refers to the first item in a list*/
+var my_list = ['eggplant','apple','wheat'];
+print(my_list[0]); // would print 'eggplant'
+{% endhighlight %}
+
+Using dictionaries
+{% highlight javascript %}
+// Curly brackets (or braces) can be used to define dictionaries (key:value pairs).
+var my_dict = {'food':'bread', 'color':'red', 'number':42};
+
+// Square brackets can be used to access dictionary items by key.
+print(my_dict['color']);
+
+//Or you can use the dot notation to get the same result.
+print(my_dict.color);
+{% endhighlight %}
+
+Functions can be defined as a way to reuse code and make it easier to read.
+{% highlight javascript %}
+var my_hello_function = function(string) {
+  return 'Hello ' + string + '!';
+};
+print(my_hello_function('world'));
 {% endhighlight %}
 
 
