@@ -17,7 +17,7 @@ keypoints:
 
 ## What is Google Earth Engine?
 
-As Gorelick et al (2017) write in the new *[Remote Sensing of the Environment](http://www.sciencedirect.com/science/article/pii/S0034425717302900)* article:
+As Gorelick et al. (2017) write in the new *[Remote Sensing of the Environment](http://www.sciencedirect.com/science/article/pii/S0034425717302900)* article:
 
 > Google Earth Engine is a cloud-based platform for planetary-scale
 > geospatial analysis that brings Google's massive computational
@@ -52,7 +52,7 @@ You can access Google Earth Engine through a few different channels, including a
 
 ### What datasets are available?
 
-The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, including the entire Landsat mission (!!). Other remote sensing missions represented include Sentinel 1, Sentinel 2, MODIS and others. In addition to earth observing images, GEE also hosts produced datasets for precipitation, population density, topography, land cover and climate. Over 6000 scenes are added daily from active satellite missions. [Table 1](http://www.sciencedirect.com/science/article/pii/S0034425717302900) in Gorelick et. al., (2017) describes the frequently used datasets, the [Google Earth Engine](https://earthengine.google.com/datasets/) website has a general dataset descriptions, or you can browse the datasets directly through the [Google Earth Engine API](https://explorer.earthengine.google.com/#index).
+The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, including the entire Landsat mission (!!). Other remote sensing missions represented include Sentinel 1, Sentinel 2, MODIS and others. In addition to earth observing images, GEE also hosts produced datasets for precipitation, population density, topography, land cover and climate. Over 6000 scenes are added daily from active satellite missions. [Table 1](http://www.sciencedirect.com/science/article/pii/S0034425717302900) in Gorelick et al. (2017) describes the frequently used datasets, the [Google Earth Engine](https://earthengine.google.com/datasets/) website has a general dataset descriptions, or you can browse the datasets directly through the [Google Earth Engine API](https://explorer.earthengine.google.com/#index).
 
 <br>
 <img src="../fig/01_datasets.png" border = "10">
@@ -78,4 +78,4 @@ Users can also recommend datasets from the Javascript API Code Editor window.
 
 - cartography
 - heavy duty vector operations
-- DIY parallelization
+- DIY parallelization. As stated in Gorelick et al. 2017, "The price of liberation from these details is that the user is unable to influence them.”
