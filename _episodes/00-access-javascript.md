@@ -29,8 +29,31 @@ Not sure if you have access? Use [this link](https://code.earthengine.google.com
 
 ## Javascript Tips
 
-JavaScript, not to be confused with Java, is a dynamic, general-purpose programming language often used in web development alongside HTML and CSS. Google Earth Engine can also be accessed through a JavaScript API, which is what we are using at GeoHack.
+JavaScript, not to be confused with Java, is a dynamic, general-purpose programming language often used in web development alongside HTML and CSS. Google Earth Engine (GEE) can also be accessed through a JavaScript API, which is what we are using at GeoHack.
 
+### JavaScript API Basics
+It's not necessary to formally learn JavaScript before learning how to work with the GEE JavaScript API. Here are a few basics useful for GEE, reproduced from the [Earth Engine 101 Beginner's Curriculum](https://docs.google.com/document/d/1ZxRKMie8dfTvBmUNOO0TFMkd7ELGWf3WjX0JvESZdOE/edit).
+
+{% highlight javascript %}
+// Line comments start with two forward slashes. Like this line.
+
+/* Multi-line comments start with a forward slash and a star,
+and end with a star and a forward slash. */
+{% endhighlight %}
+
+Variables are used to store objects and are defined using the keyword **var**.
+{% highlight javascript %}
+var the_answer = 42;
+
+// string objects start and end with a single quote
+var my_variable = 'I am a string';
+
+// string objects can also use double quotes, but don't mix and match
+var my_other_variable = "Iam al also a string";
+{% endhighlight %}
+
+
+### Other JavaScript Resources
 JavaScript uses camelCase. JavaScript (according to W3 academy) is easy to learn. Like other programming languages, you can use style guides to learn how to write standard, reproducible (marketable!) code.
 
 For in-depth industry guidance, Google publishes their own definitive [JavaScript style guide](http://google.github.io/styleguide/jsguide.html).
