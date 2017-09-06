@@ -17,10 +17,10 @@ keypoints:
 ## Code Editor: Overview
 
 The Earth Engine JavaScript API has a integrated development environment (IDE) designed to make computing in GEE easy for users. This IDE is called the Code Editor. In this tutorial, we will go over many of the functionalities identified in this figure, but for a more exhaustive description see the [Earth Engine Code Editor help page](https://developers.google.com/earth-engine/playground#api-reference-docs-tab) in the GEE User Guides.  
-
+___
 ## Exercise: Exploring the Code Editor
 
-## Coding things
+### Writing Code
 
 The Code Editor has number of features to help make programming in this environment easier. To access the Code Editor, type the following url into your browser: [code.earthengine.google.com](code.earthengine.google.com)
 
@@ -30,11 +30,7 @@ A  webpage like the following (without annotations) should appear:
 <img src="../fig/02_codeeditor.png" border = "10">
 <br><br>
 
-### Search toolbar
-
-To query the [GEE data catalog](https://code.earthengine.google.com/datasets/), you can enter key words into the search toolbar. You can also use the search toolbar to locate places in geographic space. If you select a dataset, you can click **Import** to load it into the Code Editor.
-
-### The JavaScript Editor
+#### The JavaScript Editor
 
 Javascript code is typed in this window. The Editor also has a few helper functions, including autocomplete for Earth Engine functions, autocompletion for brackets, etc and some basic underlining and syntax hints.
 
@@ -44,8 +40,7 @@ For example, you can write comments by using a double slash. Type the following 
 // This is just a comment.
 {% endhighlight %}
 
-
-## The Console
+#### The Console
 
 You can also use `print()` to display things to the console. Type this and click "Run":
 
@@ -53,7 +48,7 @@ You can also use `print()` to display things to the console. Type this and click
 print("This appears in the Console tab");
 {% endhighlight %}
 
-### Autosuggestions
+#### Autosuggestions
 
 The Editor will mark statements as incomplete ('i') if you write them without a semicolon at the end. You can control these autosuggestions by going to the little grey wheel in the top right of the page and turning them on or off.
 
@@ -61,10 +56,14 @@ The Editor will mark statements as incomplete ('i') if you write them without a 
 print("This appears in the Console tab")
 {% endhighlight %}
 
+___
+### Searching, Importing, Saving, Sharing, and Exporting
 
-## Saving, Sharing, Importing and Exporting
+#### Search toolbar
 
-### Saving
+To query the [GEE data catalog](https://code.earthengine.google.com/datasets/), you can enter key words into the search toolbar. You can also use the search toolbar to locate places in geographic space. If you select a dataset, you can click **Import** to load it into the Code Editor.
+
+#### Saving Scripts
 
 Now that you have written your first few lines of JavaScript, you can save this by clicking the "Save" button. The dropdown arrow by the "Save" button allows you to `save as` to create a new script. To include a commit message with any save, use the dropdown arrow and select "Save with a description." These are stored in the revision history of each script saved.
 
@@ -72,18 +71,16 @@ Now that you have written your first few lines of JavaScript, you can save this 
 <img src="../fig/02_getlink.png" border = "10">
 <br><br>
 
-#### Scripts
-
 If you look at the top left panel, you can see the script is now saved in your **Scripts** manager. You have three categories of scripts: private, shared and examples. Each script is backed up on Git. If you move your mouse over the name of the script, three icons will pop up that allow you to revert to older versions, rename or delete the script. You can also make folders and move scripts by clicking and dragging them.
 
-### Sharing
+#### Sharing Scripts
 You can share a static version of anything in your code editor by clicking "Get Link". A url will appear in your browser address field. Share this link to give other people access to your code *as it is.* If you continue to make edits on this code, they will not update in the linked version. This option is useful to share examples with others.
 
 **Hot Tip: When posted on the help forum, ALWAYS include a link to your code so people can help troubleshoot. Be sure all personal assets you use are publicly shared so the script will run for others.**
 
 To collaborate on shared scripts with other users, you can create a shared folder, invite your collaborators and place scripts in that folder.
 
-### Importing Assets
+#### Importing Your Own Assets
 
 The **Assets** tab on the left is where you can import, share and manage your own assets. You can upload images or tables (vector data) here.
 
@@ -95,25 +92,24 @@ When posting on the forum, make sure you check the "Anyone Can Read" box on the 
 
 For detailed instructions on uploading, sharing and managing assets, see the [Assets Manager page](https://developers.google.com/earth-engine/asset_manager) on the GEE website .
 
-### Exporting & the Tasks Tab
+#### Exporting & the Tasks Tab
 Instead of printing to the console, for larger tasks you may want to just export the outputs to your Google Drive or Cloud Storage using the `Export` functions in your code. When run, these generate a new task in the `Task` tab in the upper right panel. You will need to then "Run" this task in order to actually start the export. Once you start an export task, you will be prompted to enter details about the resolution, size, format and destination if you did not include this in your code. You can hover your mouse over the task and click the "?" icon to see the status and also to get the task number. If your task isn't executing, you can share this number as a reference on the developers forum.
 
-For detailed instructions on exports, see the [Exporting Data page](https://developers.google.com/earth-engine/exporting) on the GEE website. We will also have small export examples in subsequent modules of this tutorial. 
-
-
-## Visualizations
+For detailed instructions on exports, see the [Exporting Data page](https://developers.google.com/earth-engine/exporting) on the GEE website. We will also have small export examples in subsequent modules of this tutorial.
+___
+### Visualizations
 
 One of the major benefits of the JavaScript versus Python API is the ability to quickly render on-the-fly geovisualizations of your imagery and outputs. The mapping window has several useful functionalities described below.
 
-### Map viewer
+#### Map viewer
 
 Once we load imagery into the Code Editor and add it to the map later in this tutorial, results will appear in the Map window. You can also toggle between the "Map" or "Satellite" buttons in the top right of the map panel to change the baselayer.
 
-### Inspector Tab
+#### Inspector Tab
 
 In the upper right, switch to the inspector console and click anywhere on the map. The Inspector console allows you to interactively query the map. If you have imagery loaded, it will give you information about that imagery at the point you clicked as well.
 
-### Layer Manager
+#### Layer Manager
 
 Once we have layers added later in the tutorial, a "Layers" toolbar will appear in the upper right hand corner of the map (like below). This toolbar will allow you to click layers on and off as well as adjust their transparency and interactively configure each layer's visualization parameters.  
 
@@ -121,22 +117,21 @@ Once we have layers added later in the tutorial, a "Layers" toolbar will appear 
 <img src="../fig/02_layermanager.png" border = "10">
 <br><br>
 
-### Geometry Tools
+#### Geometry Tools
 
 Besides importing vector data through the assets tab, you can also use the geometry drawing tools located on the upper left side of the map viewer to manually create points, line or polygons.
 
 We will explore how to configure geometries in the [Classifying Imagery](https://geohackweek.github.io/GoogleEarthEngine/04-classify-imagery/) section of this tutorial.  
-
-
-## Getting Help
+___
+### Getting Help
 
 There are many entry points for getting help tucked into the Code Editor. Familiarizing yourself with these tools can help soften the learning curve.
 
-### API reference (Docs tab)
+#### API reference (Docs tab)
 
 Next to the **Scripts** tab is the **Docs** tab, which has the complete, searchable JavaScript API documentation for every function and call. The documentation is organized by GEE data type. Each data type has a specific set of functions that can be applied to it.
 
-### Help Button
+#### Help Button
 
 The **Help** button is a gateway to many resources, including links to:
 
@@ -148,11 +143,10 @@ The **Help** button is a gateway to many resources, including links to:
 
  - links to the **Suggest a Dataset** page
 
-### Examples in the **Shared Scripts**
+#### Examples in the **Shared Scripts**
 
 A final place you can get help is by scrolling down and looking at the examples housed in the **Shared Scripts** in the **Scripts** tab.  
-
-
+___
 ## Enjoy!!!
 
 <br>
@@ -161,5 +155,5 @@ A final place you can get help is by scrolling down and looking at the examples 
 
 from Gorelick et. al. (2017)
 
-
+___
 Link to the full code we used in this lesson: [https://code.earthengine.google.com/be0541e89d66904395656def37ed8932](https://code.earthengine.google.com/be0541e89d66904395656def37ed8932)
