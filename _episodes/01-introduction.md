@@ -58,6 +58,8 @@ The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, incl
 <img src="../fig/01_datasets.png" border = "10">
 <br><br>
 
+### Can I suggest datasets?
+
 Users can also recommend datasets from the Javascript API Code Editor window.
 
 <br>
