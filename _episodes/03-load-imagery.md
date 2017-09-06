@@ -117,7 +117,9 @@ print(cWA);
 
 ### Mapping functions: mask clouds, calculate new band
 
+
 #### Mask clouds over an image collection
+Here, we explicitly define a new function called "maskClouds" and apply it to each image in the imageCollection by using `imageCollection.map()`. Functions need to explicitly **return** the final output.
 
 {% highlight javascript %}
 // create function to mask clouds, cloud shadows, snow
@@ -131,6 +133,7 @@ var cMasked = cWA.map(maskClouds);
 {% endhighlight %}
 
 #### Calculate NDVI and Add Band to Images
+You can also map anonymous functions over image collections instead of explicitly defining new functions. In the example below, we apply an anonymous function in which each image in the collection is referred to by the 'img' variable name.
 
 {% highlight javascript %}
 // Calculate NDVI and add as a new band
