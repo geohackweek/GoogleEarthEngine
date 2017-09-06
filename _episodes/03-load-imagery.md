@@ -24,7 +24,7 @@ In Google Earth Engine (GEE), raster data are called `Images`. Each image has 1 
 
 Here, we will load a specific image from the Landsat 8 Surface Reflectance product ([described here in the data catalog](https://code.earthengine.google.com/dataset/LANDSAT/LC8_SR)). These satellite images have already been processed to surface reflectance values using standard algorithms by the USGS and come with a cloud mask band ('cfmask').
 
-Note that each individual image in GEE has an Image ID. We will load an image over Seattle from July 28, 2016. The image ID is LC80460272016209. Landsat image ID's follow this pattern: **image collection + path number + row number + year + julian day**, or in this case, LC8 + 046 + 027 + 2016 + 209.
+Note that each individual image in GEE has an Image ID. We will load an image over Seattle from July 28, 2016. The image ID is LC80460272016209. Landsat image ID's follow this pattern: **image collection + path number + row number + year + julian day**, or in this case, LC8 + 046 + 027 + 2016 + 209. Images from other data products have similar logical naming patterns.
 
 We can look at the image we've loaded in two ways:
 
@@ -86,8 +86,8 @@ We'll work on making a composite satellite image for the state of Washington. Th
 
 There are three ways to use vector data in GEE:
 
-* [Upload a shapefile](https://developers.google.com/earth-engine/importing) to your personal *Asset* folder in the top left panel. You can set sharing permissions on these as needed. 
-* Import an existing [Google Fusion Table](https://support.google.com/fusiontables#topic=1652595), or [create your own](https://fusiontables.google.com/data?dsrcid=implicit) fusion table from a KML in WGS84.  Each fusion table has a unique Id (File > About this table) that can be used to load it into GEE. GEE only recently added the Asset option, so you may see folks still using fusion tables in the forums, etc. If you have the choice, I'd use an asset. We use a fusion table in the [Spatial and Temporal Reducers Module](https://geohackweek.github.io/GoogleEarthEngine/05-reducers/).
+* [Upload a shapefile](https://developers.google.com/earth-engine/importing) to your personal **Asset** folder in the top left panel. You can set sharing permissions on these as needed. 
+* Import an existing [Google Fusion Table](https://support.google.com/fusiontables#topic=1652595), or [create your own](https://fusiontables.google.com/data?dsrcid=implicit) fusion table from a KML in WGS84.  Each fusion table has a unique Id (File > About this table) that can be used to load it into GEE. You also need to set sharing permissions similar to other items in your Google Drive if you want others to be able to access your fusion table. GEE only recently added the Asset option, so you may see folks still using fusion tables in the forums, etc. If you have the choice, I'd use an asset. We use a fusion table in the [Spatial and Temporal Reducers Module](https://geohackweek.github.io/GoogleEarthEngine/05-reducers/).
 * Manually draw points, lines, and polygons using the geometry tools in the code editor. We do this in the [Classify Imagery Module](https://geohackweek.github.io/GoogleEarthEngine/04-classify-imagery/).
 
 Here, we will use a vector asset loaded to your instructor's personal asset folder and made publicly available through the sharing menu. The file location is 'users/jdeines/vector/examples/WA'. When you upload a vector file (called a table) to your asset folder using the "New" button under the **Assets tab** in the upper left panel of the code editor, it will be stored in 'users/yourUserName/filename' unless you create new folders within your Assets space. For more on importing vector files, see the [Developer's Guide section on Importing Table Data](https://developers.google.com/earth-engine/importing). Tip: when uploading a shapefile, you need to select all associated files (.dbf, .shx, .prf, etc) or upload a zipped file containing only one shapefile.
@@ -106,6 +106,7 @@ Map.addLayer(boundary, {}, 'WA');
 <br><br>
 
 ### Load an image collection based on filter criteria
+Here, we are selecting all imagery in the [Landsat 8 surface reflection collection](https://code.earthengine.google.com/dataset/LANDSAT/LC8_SR) (image collection IDs are found in the "Search" toolbar at the top of the code editor or through searcing the [data archive](https://code.earthengine.google.com/datasets/)) for the year 2016 that overlies the Washington state vector polygon we loaded above as the variable "boundary".
 
 {% highlight javascript %}
 var cWA = ee.ImageCollection('LANDSAT/LC8_SR')
