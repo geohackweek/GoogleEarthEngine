@@ -19,30 +19,31 @@ keypoints:
 
 ## Classifiers Overview
 
-The purpose is to get a classified map of land cover in an area of interest. In this exercise we will examine Landsat imagery, manually identify a set of training points for three classes (water, forest, urban). We will then use those training points to train a classifier. The classifier will then be used to classify the rest of the Landsat image into those three categories. We can then assess the accuracy of our classification using `classifier.confusionMatrix()`.
+The purpose is to get a classified map of land cover in an area of interest. In this exercise, we will examine Landsat imagery and manually identify a set of training points for three classes (water, forest, urban). We will then use those training points to train a classifier. The classifier will be used to classify the rest of the Landsat image into those three categories. We can then assess the accuracy of our classification using `classifier.confusionMatrix()`.
 
 
-// Adapted From: https://docs.google.com/document/d/1keJGLN-j5H5B-kQXdwy0ryx6E8j2D9KZVEUD-v9evys/edit#
+// Adapted from the Earth Engine 201 Intermediate workshop: https://docs.google.com/document/d/1keJGLN-j5H5B-kQXdwy0ryx6E8j2D9KZVEUD-v9evys/edit#
 
 
 ## Exercise: Creating a land cover classification from Landsat imagery
 
 ### Creating an ROI from coordinates
 
-First we need to define an area of interest (roi). We will use a single set of coordinates that we will manually define, but you could also import or draw your own polygon.
+First we need to define a region of interest (ROI). We will use a single coordinate that we will manually define, but you could also import or draw your own point using the geometry tools.
 
 {% highlight javascript %}
 // Define a region of interest as a point.  Change the coordinates
 // to select an ROI in your area of interest.
+// You can use the inspector tool to find your coordinates
 var roi = ee.Geometry.Point(-95.6223, 29.7381);
 {% endhighlight %}
 
 ### Loading an `ImageCollection` and filtering to a single image
 
-Now we will load Landsat imagery and filter to the area and dates of interest.  We can use `sort` to filter the `ImageCollection` by % cloud cover. We then filter the sorted `ImageCollection` to the `first` (least cloudy) `Image`.
+Now we will load Landsat imagery and filter to the area and dates of interest.  We can use `sort` to filter the `ImageCollection` by % cloud cover, a property included with the Landsat Top of Atmosphere (TOA) collection. We then select the `first` (least cloudy) `Image` from the sorted `ImageCollection` .
 
 {% highlight javascript %}
-// Load Landsat 5 input imagery.
+// Load Landsat 8 input imagery.
 var image = ee.Image(ee.ImageCollection('LANDSAT/LC8_L1T_TOA')
     // Filter to get only images under the region of interest.
     .filterBounds(roi)
@@ -65,7 +66,7 @@ The second step is to collect training data.  Using the imagery as guidance, hov
 <img src="../fig/03_geomConfig.png" border = "10">
 <br><br>
 
-When you are finished making a `FeatureCollection` for each class (3 total), you now can merge them into one `FeatureCollection` using `merge`. This will convert them into one collection in which the property **landcover** has a value that is the class (0, 1, 2).
+When you are finished making a `FeatureCollection` for each class (3 total), you now can merge them into one `FeatureCollection` using `featureCollection.merge()`. This will convert them into one collection in which the property **landcover** has a value that is the class (0, 1, 2).
 
 {% highlight javascript %}
 // Merge points together
@@ -77,7 +78,7 @@ The print statement will display the new collection in the **Console**.
 
 ## Sample Imagery at Training Points to Create Training datasets
 
-Now that you have created the points and labels, you need to sample the Landsat 8 imagery using `sampleRegions`. This command will extract the reflectance in the designated bands for each of the points you have created. We will use reflectance in the optical and NIR bands (B1 - B7).
+Now that you have created the points and labels, you need to sample the Landsat 8 imagery using `image.sampleRegions()`. This command will extract the reflectance in the designated bands for each of the points you have created. We will use reflectance in the optical, NIR, and SWIR bands (B2 - B7).
 
 <br>
 <img src="../fig/03_classificationsample.png" border = "10">
@@ -91,14 +92,14 @@ var bands = ['B2', 'B3', 'B4', 'B5', 'B6', 'B7'];
 var training = image.select(bands).sampleRegions({
   collection: newfc,
   properties: ['landcover'],
-  scale: 30
+  scale: 30  // should reflect the scale of your imagery
 });
 {% endhighlight %}
 
-The `FeatureCollection` called **Training** has the reflectance value from each band stored for every training point along with its class label.
+The `FeatureCollection` called **training** has the reflectance value from each band stored for every training point along with its class label.
 
 ## Train the classifier
-We will now instantiate a `classifier` using `ee.Classifier.randomForest()` and `train` it on the training data specifying the features to use (training), the landcover categories as the `classProperty` we want to categorize the imagery into, and the reflectance in B1 - B7 of the Landsat imagery as the `inputProperties`.
+We will now instantiate a `classifier` using `ee.Classifier.randomForest()` and `train` it on the training data specifying the features to use (training), the landcover categories as the `classProperty` we want to categorize the imagery into, and the reflectance in B2 - B7 of the Landsat imagery as the `inputProperties`.
 
 {% highlight javascript %}
 // Make a classifier and train it.
@@ -109,7 +110,7 @@ var classifier = ee.Classifier.randomForest().train({
 });
 {% endhighlight %}
 
-Other classifiers, including Support Vector Machines (SVM) and Classification and Regression Trees are available in Earth Engine. See the [Supervised Classification User Guide](https://developers.google.com/earth-engine/classification) for more examples.
+Other classifiers, including Support Vector Machines (SVM) and Classification and Regression Trees (CART) are available in Earth Engine. See the [Supervised Classification User Guide](https://developers.google.com/earth-engine/classification) for more examples.
 
 
 ## Classify the Image & Display the Results

@@ -29,8 +29,68 @@ Not sure if you have access? Use [this link](https://code.earthengine.google.com
 
 ## Javascript Tips
 
-JavaScript, not to be confused with Java, is a dynamic, general-purpose programming language often used in web development alongside HTML and CSS. Google Earth Engine can also be accessed through a JavaScript API, which is what we are using at GeoHack.
+JavaScript, not to be confused with Java, is a dynamic, general-purpose programming language often used in web development alongside HTML and CSS. Google Earth Engine (GEE) can also be accessed through a JavaScript API, which is what we are using at GeoHack.
 
+### JavaScript API Basics
+It's not necessary to formally learn JavaScript before learning how to work with the GEE JavaScript API. Here are a few basics useful for GEE, reproduced from the [Earth Engine 101 Beginner's Curriculum](https://docs.google.com/document/d/1ZxRKMie8dfTvBmUNOO0TFMkd7ELGWf3WjX0JvESZdOE/edit).
+
+{% highlight javascript %}
+// Line comments start with two forward slashes. Like this line.
+
+/* Multi-line comments start with a forward slash and a star,
+and end with a star and a forward slash. */
+{% endhighlight %}
+
+Variables are used to store objects and are defined using the keyword **var**.
+{% highlight javascript %}
+var the_answer = 42;
+
+// string objects start and end with a single quote
+var my_variable = 'I am a string';
+
+// string objects can also use double quotes, but don't mix and match
+var my_other_variable = "I am also a string";
+{% endhighlight %}
+
+Statements should end in a semi-colon, or the editor complains.
+{% highlight javascript %}
+var test = 'I feel incomplete...'
+var test2 = 'I feel complete!';
+{% endhighlight %}
+
+Passing function parameters and using lists
+{% highlight javascript %}
+// Parentheses are used to pass parameters to functions
+print('This string will print in the Console tab.');
+
+/* Square brackets are used for items in a list.
+The zero index refers to the first item in a list*/
+var my_list = ['eggplant','apple','wheat'];
+print(my_list[0]); // would print 'eggplant'
+{% endhighlight %}
+
+Using dictionaries
+{% highlight javascript %}
+// Curly brackets (or braces) can be used to define dictionaries (key:value pairs).
+var my_dict = {'food':'bread', 'color':'red', 'number':42};
+
+// Square brackets can be used to access dictionary items by key.
+print(my_dict['color']);
+
+//Or you can use the dot notation to get the same result.
+print(my_dict.color);
+{% endhighlight %}
+
+Functions can be defined as a way to reuse code and make it easier to read.
+{% highlight javascript %}
+var my_hello_function = function(string) {
+  return 'Hello ' + string + '!';
+};
+print(my_hello_function('world'));
+{% endhighlight %}
+
+
+### Other JavaScript Resources
 JavaScript uses camelCase. JavaScript (according to W3 academy) is easy to learn. Like other programming languages, you can use style guides to learn how to write standard, reproducible (marketable!) code.
 
 For in-depth industry guidance, Google publishes their own definitive [JavaScript style guide](http://google.github.io/styleguide/jsguide.html).
