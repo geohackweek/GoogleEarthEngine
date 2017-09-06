@@ -21,15 +21,13 @@ keypoints:
 
 The purpose is to get a classified map of land cover in an area of interest. In this exercise, we will examine Landsat imagery and manually identify a set of training points for three classes (water, forest, urban). We will then use those training points to train a classifier. The classifier will be used to classify the rest of the Landsat image into those three categories. We can then assess the accuracy of our classification using `classifier.confusionMatrix()`.
 
-
-// Adapted from the Earth Engine 201 Intermediate workshop: https://docs.google.com/document/d/1keJGLN-j5H5B-kQXdwy0ryx6E8j2D9KZVEUD-v9evys/edit#
-
+*Adapted from the[Earth Engine 201 Intermediate workshop](https://developers.google.com/earth-engine/classification)*
 
 ## Exercise: Creating a land cover classification from Landsat imagery
 
 ### Creating an ROI from coordinates
 
-First we need to define a region of interest (ROI). We will use a single coordinate that we will manually define, but you could also import or draw your own point using the geometry tools.
+First we need to define a region of interest (ROI). Instead of using an imported asset, we will use a single coordinate that we will manually define. I am interested in doing a classification around Houston, so I will use the city center as my lat/long.
 
 {% highlight javascript %}
 // Define a region of interest as a point.  Change the coordinates

@@ -27,7 +27,7 @@ In Google Earth Engine (GEE), [reducers](https://developers.google.com/earth-eng
 Reductions can also occur in space, over bands within an image, or over the attributes of a `FeatureCollection`. See the [Reducer Overview](https://developers.google.com/earth-engine/reducers_intro) in the Google Developer's Guide for more information.
 
 ## Exercise: Obtain climate data from GEE
-Here, we will demonstrate a temporal reducer and a spatial reducer by obtaining data on annual precipitation by US county. 
+Here, we will demonstrate a temporal reducer and a spatial reducer by obtaining data on annual precipitation by US county.
 
 ### GEE Data Catalog
 A secondary objective to this exercise is to use GEE to access common datasets stored in the data archive that may appeal to those not directly interested in remote sensing applications. As described in the [Introduction](https://geohackweek.github.io/GoogleEarthEngine/01-introduction/), GEE has co-located a number of datasets relevant to earth systems analyses. The full archive can be browsed [here](https://code.earthengine.google.com/datasets/). In this exercise, we will use the [GRIDMET Meteorological Dataset](https://code.earthengine.google.com/dataset/IDAHO_EPSCOR/GRIDMET) to obtain precipitation. Briefly, GRIDMET blends PRISM and NLDAS to produce a daily, 4 km gridded climate dataset for the contiguous United States from 1979 - present.
@@ -37,7 +37,7 @@ As discussed in [Accessing Satellite Imagery](https://geohackweek.github.io/Goog
 
 **Processing Overview**
 
-* "Load" the GRIDMET data as an `ImageCollection` 
+* "Load" the GRIDMET data as an `ImageCollection`
 * Filter for the precipitation data band and dates desired (2016)
 * **Reduce** 365 "raster" images of daily precipitation into one raster image of annual precipitation totals (aka sum rasters by pixel)
 * Visualize the result
@@ -48,7 +48,7 @@ First, we need to identify the **ImageCollection ID** for the GRIDMET data produ
 From the [GRIDMET description](https://code.earthengine.google.com/dataset/IDAHO_EPSCOR/GRIDMET), we know the ImageCollection ID = 'IDAHO_EPSCOR/GRIDMET' and the precipitation band name is 'pr'. We will specifically `select` this band only.
 
 {% highlight javascript %}
-// load precip data (mm, daily total): 365 images per year 
+// load precip data (mm, daily total): 365 images per year
 var cPrecip = ee.ImageCollection('IDAHO_EPSCOR/GRIDMET')
                     .select('pr')   // select  precip band only
                     .filterDate('2016-01-01', '2016-12-31');
@@ -112,11 +112,11 @@ var counties = ee.FeatureCollection('ft:1ZMnPbFshUI3qbk9XE0H7t1N5CjsEGyl8lZfWfVn
         .filter(ee.Filter.inList('STATEFP',nonCONUS).not());
 print(counties);
 
-// visualize 
+// visualize
 Map.addLayer(counties,{},'counties');  
 {% endhighlight %}
 
-By printing the county featureCollection, we see there are 3108 county polygons and 11 columns of attribute data. 
+By printing the county featureCollection, we see there are 3108 county polygons and 11 columns of attribute data.
 
 <br>
 <img src="../fig/05_countyMap.png" border = "10">
@@ -134,10 +134,10 @@ var countyPrecip = annualPrecip.reduceRegions({
 print(countyPrecip);
 {% endhighlight %}
 
-By printing the countyPrecip featureCollection, we see there are 3108 county polygons and now 12 columns of attribute data, with the addition of the "mean" column. 
+By printing the countyPrecip featureCollection, we see there are 3108 county polygons and now 12 columns of attribute data, with the addition of the "mean" column.
 
 ## Format and Export Results
-GEE can export tables in CSV (default), GeoJSON, KML, or KMZ. Here, we do a little formatting to prepare our FeatureCollection for export as a CSV. 
+GEE can export tables in CSV (default), GeoJSON, KML, or KMZ. Here, we do a little formatting to prepare our FeatureCollection for export as a CSV.
 
 Formatting includes:
 
@@ -145,9 +145,9 @@ Formatting includes:
 * Adding a Column Attribute for the year of the precip data to demonstrate attribute manipulation. This can only be done to Features, so we map a function to do this over the features within the Feature Collection
 
 {% highlight javascript %}
-// drop .geo column 
+// drop .geo column
 var polyOut = countyPrecip.select(['.*'],null,false);
-  
+
 // add a new column for year
 polyOut = polyOut.map(function(f){
   return f.set('Year',2016);
@@ -174,7 +174,3 @@ In order to actually export your data, you have to explicitly hit the "Run" butt
 <br>
 <img src="../fig/05_runTask.png" border = "10">
 <br><br>
-
-
-
-
