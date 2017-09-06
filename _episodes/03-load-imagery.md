@@ -15,12 +15,12 @@ objectives:
 keypoints:
 - Satellite data can be loaded by specific image names or by loading a full image collection and filtering based on criteria such as time period and location
 - Images can be manipulated similar to raster math, and new bands can be calculated by mapping functions over image collections
-- Image composites can be generated quite quickly 
+- Image composites can be generated quite quickly
 - Images can be exported for future use within GEE or for outside software
 ---
 
 ## Load a Satellite Image
-In Google Earth Engine (GEE), raster data are called `Images`. Each image has 1 or more named bands as well as metadata stored as properties. More information on Images can be found [here in the GEE Developer's Guide](https://developers.google.com/earth-engine/image_overview). 
+In Google Earth Engine (GEE), raster data are called `Images`. Each image has 1 or more named bands as well as metadata stored as properties. More information on Images can be found [here in the GEE Developer's Guide](https://developers.google.com/earth-engine/image_overview).
 
 Here, we will load a specific image from the Landsat 8 Surface Reflectance product ([described here in the data catalog](https://code.earthengine.google.com/dataset/LANDSAT/LC8_SR)). These satellite images have already been processed to surface reflectance values using standard algorithms by the USGS and come with a cloud mask band ('cfmask').
 
@@ -82,11 +82,11 @@ A stack or time series of images are called `Image Collections`. Each data sourc
 In order to generate images that cover large spatial areas and to fill in image gaps due to clouds, etc, we can load a full `ImageCollection` but filter the collection to return only the time periods or spatial locations that are of interest. There are shortcut filters for those commonly used (imageCollection.filterDate(), imageCollection.filterBounds()...), but any filter in the `ee.Filter()` section of the Docs tab can be used. Read more about [filters on the Developer's Guide](https://developers.google.com/earth-engine/ic_filtering).
 
 ### Load Vector Boundary
-We'll work on making a composite satellite image for the state of Washington. The easiest way to filter for an irregular location without having to identify the paths and rows of teh satellite image tiles is to use a vector polygon.
+We'll work on making a composite satellite image for the state of Washington. The easiest way to filter for an irregular location without having to identify the paths and rows of the satellite image tiles is to use a vector polygon.
 
 There are three ways to use vector data in GEE:
 
-* [Upload a shapefile](https://developers.google.com/earth-engine/importing) to your personal **Asset** folder in the top left panel. You can set sharing permissions on these as needed. 
+* [Upload a shapefile](https://developers.google.com/earth-engine/importing) to your personal **Asset** folder in the top left panel. You can set sharing permissions on these as needed.
 * Import an existing [Google Fusion Table](https://support.google.com/fusiontables#topic=1652595), or [create your own](https://fusiontables.google.com/data?dsrcid=implicit) fusion table from a KML in WGS84.  Each fusion table has a unique Id (File > About this table) that can be used to load it into GEE. You also need to set sharing permissions similar to other items in your Google Drive if you want others to be able to access your fusion table. GEE only recently added the Asset option, so you may see folks still using fusion tables in the forums, etc. If you have the choice, I'd use an asset. We use a fusion table in the [Spatial and Temporal Reducers Module](https://geohackweek.github.io/GoogleEarthEngine/05-reducers/).
 * Manually draw points, lines, and polygons using the geometry tools in the code editor. We do this in the [Classify Imagery Module](https://geohackweek.github.io/GoogleEarthEngine/04-classify-imagery/).
 
@@ -159,7 +159,7 @@ print(greenest);
 var ndviPalette = ['FFFFFF', 'CE7E45', 'DF923D', 'F1B555', 'FCD163', '99B718',
                '74A901', '66A000', '529400', '3E8601', '207401', '056201',
                '004C00', '023B01', '012E01', '011D01', '011301'];
-Map.addLayer(greenest.select('NDVI'), 
+Map.addLayer(greenest.select('NDVI'),
             {min:0.1, max: 1, palette: ndviPalette}, 'ndvi');
 {% endhighlight %}
 
@@ -183,8 +183,8 @@ Map.addLayer(greenest, {bands: ['B4', 'B3', 'B2'], min: 0, max: 2000}, 'WA tcc',
 // select only the ndvi band
 var ndvi = greenest.select('NDVI');
 
-// Export to your folder on Google Drive 
-// (note: need to hit 'Run' in the task tab in upper right panel) 
+// Export to your folder on Google Drive
+// (note: need to hit 'Run' in the task tab in upper right panel)
 Export.image.toDrive({
   image: ndvi,
   description: 'Washington_NDVI_2016',
@@ -195,8 +195,8 @@ Export.image.toDrive({
   maxPixels: 2000000000
 });
 
-// Export to your ASSET folder 
-// (note: need to hit 'Run' in the task tab in upper right panel) 
+// Export to your ASSET folder
+// (note: need to hit 'Run' in the task tab in upper right panel)
 Export.image.toAsset({
   image: ndvi,
   description: 'Washington_NDVI_2016_asset',
@@ -207,4 +207,3 @@ Export.image.toAsset({
   maxPixels: 2000000000
 });
 {% endhighlight %}
-
