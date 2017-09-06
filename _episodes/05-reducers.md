@@ -12,7 +12,10 @@ objectives:
 - Use climate data products available through GEE
 - Export tabular data
 keypoints:
-- " "
+- GEE hosts a wide variety of useful spatial datasets
+- Reducers aggregate or summarize data in space and time
+- There are several ways to use vector data in GEE
+- Results can be exported to Google Drive or Google Cloud
 ---
 
 ## Reducers: Overview
@@ -36,13 +39,13 @@ As discussed in [Accessing Satellite Imagery](https://geohackweek.github.io/Goog
 
 * "Load" the GRIDMET data as an `ImageCollection` 
 * Filter for the precipitation data band and dates desired (2016)
-* **Reduce** 365 "raster" images of daily precipitation into one raster image of annual precipitation totals (aka sum raster by pixel)
+* **Reduce** 365 "raster" images of daily precipitation into one raster image of annual precipitation totals (aka sum rasters by pixel)
 * Visualize the result
 
 #### Get and Filter the ImageCollection
-First, we need to identify the **ImageCollection ID** for the GRIDMET data product and the **band name** for the precipitation data (and check any relevant metadata). You can find this either in the [data catalog](https://code.earthengine.google.com/datasets/) or directly in the [GEE Code Editor](https://code.earthengine.google.com/) at the top above  the center panel:
+First, we need to identify the **ImageCollection ID** for the GRIDMET data product and the **band name** for the precipitation data (and check any relevant metadata). You can find this either in the [data catalog](https://code.earthengine.google.com/datasets/) or directly in the [GEE Code Editor](https://code.earthengine.google.com/) at the top above  the center panel.
 
-From the [GRIDMET description](https://code.earthengine.google.com/dataset/IDAHO_EPSCOR/GRIDMET), we know the ImageCollection ID = 'IDAHO_EPSCOR/GRIDMET' and the precipitation band name is 'pr'. We will specificially `select` this band only.
+From the [GRIDMET description](https://code.earthengine.google.com/dataset/IDAHO_EPSCOR/GRIDMET), we know the ImageCollection ID = 'IDAHO_EPSCOR/GRIDMET' and the precipitation band name is 'pr'. We will specifically `select` this band only.
 
 {% highlight javascript %}
 // load precip data (mm, daily total): 365 images per year 
@@ -56,13 +59,13 @@ print(cPrecip);
 By printing the resulting collection to the Console, we can see we've accessed 365 images, each with 1 band named 'pr'.
 
 #### Apply a Sum Reducer and Visualize Results
-The `imageCollection.reduce()` operator allows you to apply any function of class `ee.Reducer()` to all images in the collection. If your `ImageCollection` had multiple bands, the reducer is applied separately to all bands (unless the reducer has multiple inputs, in which case the collection band number and number of inputs must match). You can find available reducers and their descriptions in the searchable API reference under the **Docs* tab in the upper left panel of the code editor.
+The `imageCollection.reduce()` operator allows you to apply any function of class `ee.Reducer()` to all images in the collection. If your `ImageCollection` had multiple bands, the reducer is applied separately to all bands (unless the reducer uses multiple bands as inputs, in which case the number of bands in the image collection must match the number of inputs required by the reducer). You can find available reducers and their descriptions in the searchable API reference under the **Docs** tab in the upper left panel of the code editor.
 
 <br>
 <img src="../fig/05_reducerMenu.PNG" border = "10">
 <br><br>
 
-Some commonly used reducers have shortcut syntax, such as `imageCollection.mean()`, `imageCollection.min()`, and conveniently, `imageCollection.sum()`. Both are demonstrated in the following code chunk.
+Some commonly used reducers have shortcut syntax, such as `imageCollection.mean()`, `imageCollection.min()`, and conveniently, `imageCollection.sum()`. Both syntaxes are demonstrated in the following code chunk.
 
 {% highlight javascript %}
 // reduce the image collection to one image by summing the 365 daily rasters
@@ -88,14 +91,14 @@ The objective of Part 2 is to take the image of annual precipitation we just cre
 
 **An important note on the scale parameter**
 
-GEE uses lazy code evaluation that only executes parts of your script needed for results - in the case of the JavaScript API code editor environment, that means things needed to fulfill print statements, Map visualizations, or export tasks. *GEE will run your computations at the resolution of your current map view in the code editor unless you tell it otherwise.* Whenever possible, explicitly set the scale arguments to force GEE to work in a scale that makes sense for your imagery/analysis.
+GEE uses lazy code evaluation that only executes parts of your script needed for results - in the case of the JavaScript API code editor environment, that means things needed to fulfill print statements, map visualizations, or export tasks. *GEE will run your computations at the resolution of your current map view in the code editor unless you tell it otherwise.* Whenever possible, explicitly set the scale arguments to force GEE to work in a scale that makes sense for your imagery/analysis.
 
 #### Load the County Boundaries (Vector Data)
 There are three ways to use vector data in GEE:
 
-* [Upload a shapefile](https://developers.google.com/earth-engine/importing) to your personal *Asset* folder in the top left panel. You can set sharing permissions on these as needed.
-* Import an existing [Google Fusion Table](https://support.google.com/fusiontables#topic=1652595), or [create your own](https://fusiontables.google.com/data?dsrcid=implicit) fusion table from a KML in WGS84.  Each fusion table has a unique Id (File > About this table) that can be used to load it into GEE
-* Manually draw points, lines, and polygons using the code editor
+* [Upload a shapefile](https://developers.google.com/earth-engine/importing) to your personal *Asset* folder in the top left panel. You can set sharing permissions on these as needed. We use an asset vector file in the [Accessing Satellite Imagery module](https://geohackweek.github.io/GoogleEarthEngine/03-load-imagery/).
+* Import an existing [Google Fusion Table](https://support.google.com/fusiontables#topic=1652595), or [create your own](https://fusiontables.google.com/data?dsrcid=implicit) fusion table from a KML in WGS84.  Each fusion table has a unique Id (File > About this table) that can be used to load it into GEE. GEE only recently added the Asset option, so you may see folks still using fusion tables in the forums, etc. If you have the choice, I'd use an asset.
+* Manually draw points, lines, and polygons using the geometry tools in the code editor
 
 Here, we will use an [existing public fusion table of county boundaries](https://fusiontables.google.com/data?docid=1xdysxZ94uUFIit9eXmnw1fYc6VcQiXhceFd_CVKa#map:id=2) from the US Census Bureau.
 
@@ -142,7 +145,7 @@ Formatting includes:
 * Adding a Column Attribute for the year of the precip data to demonstrate attribute manipulation. This can only be done to Features, so we map a function to do this over the features within the Feature Collection
 
 {% highlight javascript %}
-// drop .geo column (not needed if goal is tabular data)
+// drop .geo column 
 var polyOut = countyPrecip.select(['.*'],null,false);
   
 // add a new column for year
@@ -164,7 +167,7 @@ Export.table.toDrive({
 
 Note on the folder name: If this folder exists within  your Google Drive, GEE will find it and export here regardless of the full file path for the folder. If the folder doesn't exist, GEE will create it upon export.
 
-**Final Step**
+**Final Step: Start the Export Task**
 
 In order to actually export your data, you have to explicitly hit the "Run" button under the "Tasks" tab in the upper right panel of the code editor. It should take 20-30 seconds to export, depending on GEE user loads.
 
