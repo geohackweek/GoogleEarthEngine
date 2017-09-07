@@ -18,6 +18,14 @@ keypoints:
 - Results can be exported to Google Drive or Google Cloud
 ---
 
+Get access to the shared code repository in the code editor:
+
+- Join our Google group by clicking this link (don't worry about posting permissions; we won't  be posting anything): (https://goo.gl/maZwVa)
+- Accept the shared repository by clicking this link: (https://code.earthengine.google.com/?accept_repo=geohackweek2017)
+
+Link to a static version of the full script used in this module:
+(https://code.earthengine.google.com/d3c55e2958b9ae1e0bb6fe3c5e9da066)
+
 ## Reducers: Overview
 
 In Google Earth Engine (GEE), [reducers](https://developers.google.com/earth-engine/reducers_intro) are used to aggregate data over time, space, and other data structures. They belong to the `ee.Reducer` class and include summary statistics, histograms, and linear regression, among others. Here's a diagram from Google demonstrating a reducer applied to an `ImageCollection`:
@@ -176,4 +184,4 @@ In order to actually export your data, you have to explicitly hit the "Run" butt
 <br><br>
 
 Link to a static version of the full script used in this module:
-https://code.earthengine.google.com/d3c55e2958b9ae1e0bb6fe3c5e9da066
+(https://code.earthengine.google.com/d3c55e2958b9ae1e0bb6fe3c5e9da066)
