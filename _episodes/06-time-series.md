@@ -5,9 +5,11 @@ exercises: 0
 questions:
 - How do I get time series data?
 - How can I plot data within Google Earth Engine?
-- "How do I create an interactive panel "
+- "How do I create an interactive panel plot?"
 objectives:
--
+- "Load high resolution crop imagery."
+- "Dynamically select lat/longs for creating time series plots."
+- "Create a time series of NDVI and EVI for a selected point."
 keypoints:
 - "GEE has increasing functionality for making interactive plots."
 - "Time series data can be extracted from Image Collections for points and regions."
@@ -15,11 +17,14 @@ keypoints:
 
 ---
 
-// Set Environmental for Training Data Placement
-// Nov 25 2016
-// Jill Deines
+## Overview
 
-// note:  modified to be more generic as a potential script in Geohackweek 2017
+This code allows users to dynamically generate time series plots for from points that are dynamically chosen on a map on the fly. The time series show the 16 day composites of Normalized Difference Vegetation Index and Enhanced Vegetation Index at 250 m resolution. These indices are derived from MODIS.
+
+
+## Define User Specifications
+
+{% highlight javascript %}
 
 // User specs ---------------------------------------------------------------------------
 
@@ -31,10 +36,12 @@ var year = 2010;
 
 // 3) specify imagery sources
 var imageFolder = 'users/jdeines/HPA/'
-
-
 // End user specs -------------------------------------------------------------
+{% endhighlight %}
 
+
+
+{% highlight javascript %}
 // Load stuff ------------------------------------------------------------------
 
 // CDL
@@ -55,8 +62,11 @@ var naip = ee.ImageCollection('USDA/NAIP/DOQQ')
 // My Landsat composites --------------------
 
 // annual max greenness images
-var annualGreenest = ee.Image(ee.String(imageFolder).cat(ee.Number(year).format()).cat('_14_Ind_001').getInfo())
-                    .select(['GI_max_14','EVI_max_14']).clip(setExtent);
+var annualGreenest = ee.Image(ee.String(imageFolder).cat(ee.Number(year).format()).cat('_14_Ind_001').getInfo()).select(['GI_max_14','EVI_max_14']).clip(setExtent);
+{% endhighlight %}
+
+
+{% highlight javascript %}
 
 // add satellite time series: MODIS EVI 250m 16 day -------------
 var collectionModEvi = ee.ImageCollection('MODIS/MOD13Q1')
@@ -69,7 +79,9 @@ var collectionModNDVI = ee.ImageCollection('MODIS/MOD13Q1')
     .filterDate(StartDate,EndDate)
     .filterBounds(setExtent)
     .select("NDVI");
+{% endhighlight %}
 
+{% highlight javascript %}
 
 // Visualize ----------------------------------------------------------------------------------
 Map.centerObject(setExtent, 8);
@@ -87,7 +99,9 @@ Map.addLayer(annualGreenest.clip(setExtent).select('GI_max_14'),
 // cdl and naip
 Map.addLayer(cdl, {}, 'cdl', false);
 Map.addLayer(naip, {}, 'naip', false);
+{% endhighlight %}
 
+{% highlight javascript %}
 
 // Create User Interface portion --------------------------------------------------
 // Create a panel to hold our widgets.
@@ -115,7 +129,9 @@ Map.onClick(function(coords) {
   lon.setValue('lon: ' + coords.lon.toFixed(2)),
   lat.setValue('lat: ' + coords.lat.toFixed(2));
   var point = ee.Geometry.Point(coords.lon, coords.lat);
+  {% endhighlight %}
 
+  {% highlight javascript %}
 
   // Create an MODIS EVI chart.
   var eviChart = ui.Chart.image.series(collectionModEvi, point, ee.Reducer.mean(), 250);
@@ -140,3 +156,4 @@ Map.style().set('cursor', 'crosshair');
 
 // Add the panel to the ui.root.
 ui.root.insert(0, panel);
+{% endhighlight %}
