@@ -189,7 +189,11 @@ Map.addLayer(greenest, {bands: ['B4', 'B3', 'B2'], min: 0, max: 2000}, 'WA tcc',
 <br><br>
 
 ## Exporting Composite Images
+Users can export the results of their image manipulations to their GEE Asset folder for downstream use within GEE or to their personal Google Drive or Google Cloud Storage accounts. Here, we export a single-band image of annual maximum NDVI for Washington state. Examples are provided for asset and Google Drive exports. More information can be found [here in the Developers Guide](https://developers.google.com/earth-engine/exporting).
 
+In the JavaScript API, all exports are sent to the 'Tasks' tab in the upper right panel. To prevent users from inadvertently overwhelming the system with gratuitous, accidental tasks, you need to explicitly run individual exports from the 'Tasks' tab. YOu can change filenames and other parameters here if necessary, or hard code these into your script.
+
+When exporting to Google Drive, GEE will find the named folder specified and does not need the full file path. If this folder does not yet exist, it will create it for you in your Drive. 
 
 {% highlight javascript %}
 // select only the ndvi band
@@ -212,7 +216,7 @@ Export.image.toDrive({
 Export.image.toAsset({
   image: ndvi,
   description: 'Washington_NDVI_2016_asset',
-  assetId: 'users/yourname/2016_WA_ndvi',
+  assetId: 'users/yourname/2016_WA_ndvi',    // can add subfolders if needed
   scale: 30,
   region: boundary.geometry().bounds(),
   pyramidingPolicy: {'.default':'mean'}, // use {'.default':'sample'} for discrete data
