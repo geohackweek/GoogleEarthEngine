@@ -24,25 +24,38 @@ This code allows users to dynamically generate time series plots for from points
 
 ## Define User Specifications
 
+This script is structured to make it easy for the user to select different images, dates and regions. For this exercise, we are going to leave the parameters as they are to set the extent as a study area in the Midwest. We are going to define the year that we want and also the imagery source folder.
+
+
 {% highlight javascript %}
 
 // User specs ---------------------------------------------------------------------------
 
 // 1) set extent
-var setExtent = ee.FeatureCollection('ft:19B25w0it5jYMBrsBpo4lIZcAYcHEcrOhFkrT5PX7');
+// load WBD dataset & select watershed of interest
+var WBD = ee.FeatureCollection("USGS/WBD/2017/HUC06");
+var setExtent = WBD.filterMetadata('name', 'equals', 'Republican');
 
 // 2) set year
 var year = 2010;
 
 // 3) specify imagery sources
 var imageFolder = 'users/jdeines/HPA/'
+
 // End user specs -------------------------------------------------------------
 {% endhighlight %}
+<br>
+## Load High Resolution Crop Imagery
 
+Here we are loading three different types of high resolution crop imagery.
+1. Cropland Data Layer (CDL) from the USDA National Agriculture Statistics Service at 30 meters resolution. This is generated annually.
 
+2. The National Agricultural Imagery Program (NAIP) aerial imagery from the USDA. This imagery has a 1 meter (!) ground sampling distance.
+
+3.  A derived Greenness Index derived from Landsat imagery (30 m) specific to the study area. 
 
 {% highlight javascript %}
-// Load stuff ------------------------------------------------------------------
+// Load imagery ------------------------------------------------------------------
 
 // CDL
 var cdlName = ee.String('USDA/NASS/CDL/').cat(ee.Number(year).format());
