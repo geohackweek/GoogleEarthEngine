@@ -1,19 +1,19 @@
 ---
 title: "Time Series"
-teaching: 15
-exercises: 0
+teaching: 5
+exercises: 10
 questions:
 - How do I create a time series for a given location?
 - How can I plot that time series within Google Earth Engine?
-- "How do I make an interactive panel plot?"
+- "How do I make that plot interactive?"
 objectives:
 - "Load high resolution crop imagery."
 - "Dynamically select lat/longs for creating time series plots."
 - "Create a time series of NDVI and EVI for a selected point."
 keypoints:
+- "Time series data can be extracted and plotted from Image Collections for points and regions."
 - "GEE has increasing functionality for making interactive plots."
-- "Time series data can be extracted from Image Collections for points and regions."
-- "Time series data can be extracted from Image Collections for points and regions."
+- "The User Interface can be modified through the addition of widget."
 
 ---
 
@@ -77,12 +77,13 @@ var naip = ee.ImageCollection('USDA/NAIP/DOQQ')
 // Derived Landsat Composites --------------------
 
 // annual max greenness images
-var annualGreenest = ee.Image(ee.String(imageFolder).cat(ee.Number(year).format()).cat('_14_Ind_001').getInfo())
-                        .select(['GI_max_14','EVI_max_14']).clip(setExtent);
-
+var annualGreenest = ee.Image(ee.String(imageFolder).cat(ee.Number(year).format()).cat('_14_Ind_001').getInfo()).select(['GI_max_','EVI_max_14']).clip(setExtent);
 
 {% endhighlight %}
 
+## Load MODIS derived products for NDVI and EVI
+
+NDVI and EVI are two different vegetation indices that can be calculated from red and near-infrared bands. Here we are using a derived MODIS 16 day composite product that has pre-computed bands for NDVI and EVI. You could also compute them yourself using the  `normalizedDifference` function. Again we will filter the collection to the dates, bands and region of interest.
 
 {% highlight javascript %}
 
@@ -99,7 +100,15 @@ var collectionModNDVI = ee.ImageCollection('MODIS/MOD13Q1')
     .select("NDVI");
 {% endhighlight %}
 
-{% highlight javascript %}
+
+## Visualize the High Resolution imagery
+
+Here we load the CDL, NAIP and Annual Greenest Pixel composites.
+ - *Time Saving Tip:* If you are using a public dataset, often you can find nice palettes by sifting through forum posts.
+ - *Tip:* Hexadecimal browser color picker plug-ins are helpful for figuring out which colors correspond to which codes.
+ - *Tip:*: Use the `false` argument if you want to load a layer to the map but NOT have it turned on each time you run the code.
+
+ {% highlight javascript %}
 
 // Visualize ----------------------------------------------------------------------------------
 Map.centerObject(setExtent, 8);
@@ -118,6 +127,15 @@ Map.addLayer(annualGreenest.clip(setExtent).select('GI_max_14'),
 Map.addLayer(cdl, {}, 'cdl', false);
 Map.addLayer(naip, {}, 'naip', false);
 {% endhighlight %}
+
+<br>
+<img src="../fig/06_annualGreennest.png" border = "10">
+<br><br>
+
+## Create a User Interface
+
+You can alter the client-side user interface (UI) through the ui package by adding widgets to the Code Editor interface. You can read about the ui package in the [UI Overview section](https://developers.google.com/earth-engine/ui) of the Developers Guide
+The general idea is that you make a widget, which could be simple (a button) or complex (a chart). Then you define the behavior of the widget and then add it to the display. Here we create a panel, define the contents of the panel using labels, and create a callback function so the user can click a point and it will record the lat/long as an object called `points.` You can read more about how to define the panel and layouts in the [Panels section](https://developers.google.com/earth-engine/ui_panels) of the Developers Guide.
 
 {% highlight javascript %}
 
@@ -149,6 +167,12 @@ Map.onClick(function(coords) {
   var point = ee.Geometry.Point(coords.lon, coords.lat);
   {% endhighlight %}
 
+
+## Add the time series plots to the panels
+
+Now that we have set up our user interface and built the call-back, we can define a time series chart. The chart uses the lat/long selected by the user and builds a time series for NDVI or EVI at that point. It takes the average NDVI or EVI at that point, extracts it, and then adds it to the time series. This series is then plotting as a chart.
+
+
   {% highlight javascript %}
 
   // Create an MODIS EVI chart.
@@ -175,3 +199,23 @@ Map.style().set('cursor', 'crosshair');
 // Add the panel to the ui.root.
 ui.root.insert(0, panel);
 {% endhighlight %}
+
+You should see something like this appear in the bottom left:
+
+<br>
+<img src="../fig/06_twoChart.png" border = "10">
+<br><br>
+
+## Exploring the NDVI and EVI plots for different crop types.
+
+Toggle the Greenness, CDL and NAIP imagery layers on and off. Use the inspector to click on pixels with different levels of Greenness or different crop types and explore the differences in the NDVI time series between different pixels.
+
+
+
+## Extracting Time Series Data for larger regions or more points
+
+If you are computing the indices on the fly, or you have many points or areas of interest, you may have the unpleasant experience of your code timing out. One way to avoid that is to just export the time series as a .csv to Google Drive or Cloud Storage. An example of how to do this can be found in [Episode 04: Reducers](https://geohackweek.github.io/GoogleEarthEngine/04-reducers/) of this tutorial.
+
+
+Link to a static version of the full script used in this module:
+[](https://code.earthengine.google.com/d9ff911b91438b2fac9187538ae89ba1)

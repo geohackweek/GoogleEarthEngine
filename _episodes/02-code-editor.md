@@ -1,7 +1,7 @@
 ---
 title: "Code Editor"
 teaching: 5
-exercises: 18
+exercises: 5
 questions:
 - "What are the key features of the online code editor?"
 - "Where can I go for help while learning GEE?"
@@ -28,7 +28,7 @@ The Earth Engine JavaScript API has a integrated development environment (IDE) d
 
 ### Writing Code
 
-The Code Editor has number of features to help make programming in this environment easier. To access the Code Editor, type the following url into your browser: [code.earthengine.google.com](code.earthengine.google.com)
+The Code Editor has number of features to help make programming in this environment easier. To access the Code Editor, type the following url into your browser: [code.earthengine.google.com](https://code.earthengine.google.com)
 
 A  webpage like the following (without annotations) should appear:
 
