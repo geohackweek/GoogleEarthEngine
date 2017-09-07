@@ -19,6 +19,11 @@ keypoints:
 - Images can be exported for future use within GEE or for outside software
 ---
 
+Get access to the shared code repository in the code editor:
+
+- Join our Google group by clicking this link (don't worry about posting permissions; we won't  be posting anything): https://goo.gl/maZwVa
+- Accept the shared repository by clicking this link: https://code.earthengine.google.com/?accept_repo=geohackweek2017
+
 ## Load a Satellite Image
 In Google Earth Engine (GEE), raster data are called `Images`. Each image has 1 or more named bands as well as metadata stored as properties. More information on Images can be found [here in the GEE Developer's Guide](https://developers.google.com/earth-engine/image_overview).
 
