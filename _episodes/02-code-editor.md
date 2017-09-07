@@ -1,9 +1,13 @@
 ---
 title: "Code Editor"
 teaching: 5
-exercises: 0
+exercises: 18
 questions:
 - "What are the key features of the online code editor?"
+- "Where can I go for help while learning GEE?"
+- "How do I search for and import datasets?"
+- "How do I create, share and save scripts?"
+
 objectives:
 - Get oriented to the tools available in the code editor
 keypoints:
@@ -17,7 +21,10 @@ keypoints:
 ## Code Editor: Overview
 
 The Earth Engine JavaScript API has a integrated development environment (IDE) designed to make computing in GEE easy for users. This IDE is called the Code Editor. In this tutorial, we will go over many of the functionalities identified in this figure, but for a more exhaustive description see the [Earth Engine Code Editor help page](https://developers.google.com/earth-engine/playground#api-reference-docs-tab) in the GEE User Guides.  
-___
+
+<br>
+<br>
+
 ## Exercise: Exploring the Code Editor
 
 ### Writing Code
@@ -56,7 +63,9 @@ The Editor will mark statements as incomplete ('i') if you write them without a 
 print("This appears in the Console tab")
 {% endhighlight %}
 
-___
+<br>
+<br>
+
 ### Searching, Importing, Saving, Sharing, and Exporting
 
 #### Search toolbar
@@ -80,6 +89,12 @@ You can share a static version of anything in your code editor by clicking "Get 
 
 To collaborate on shared scripts with other users, you can create a shared folder, invite your collaborators and place scripts in that folder.
 
+Let's join our shared Geohack Week GEE Script Repository. First, make sure you have joined the Google Group by visiting this link:
+[](https://goo.gl/maZwVa)
+
+Once you have joined the Google Group, join shared script repository:
+[](https://code.earthengine.google.com/?accept_repo=geohackweek2017)
+
 #### Importing Your Own Assets
 
 The **Assets** tab on the left is where you can import, share and manage your own assets. You can upload images or tables (vector data) here.
@@ -96,7 +111,9 @@ For detailed instructions on uploading, sharing and managing assets, see the [As
 Instead of printing to the console, for larger tasks you may want to just export the outputs to your Google Drive or Cloud Storage using the `Export` functions in your code. When run, these generate a new task in the `Task` tab in the upper right panel. You will need to then "Run" this task in order to actually start the export. Once you start an export task, you will be prompted to enter details about the resolution, size, format and destination if you did not include this in your code. You can hover your mouse over the task and click the "?" icon to see the status and also to get the task number. If your task isn't executing, you can share this number as a reference on the developers forum.
 
 For detailed instructions on exports, see the [Exporting Data page](https://developers.google.com/earth-engine/exporting) on the GEE website. We will also have small export examples in subsequent modules of this tutorial.
-___
+<br>
+<br>
+
 ### Visualizations
 
 One of the major benefits of the JavaScript versus Python API is the ability to quickly render on-the-fly geovisualizations of your imagery and outputs. The mapping window has several useful functionalities described below.
@@ -122,7 +139,10 @@ Once we have layers added later in the tutorial, a "Layers" toolbar will appear 
 Besides importing vector data through the assets tab, you can also use the geometry drawing tools located on the upper left side of the map viewer to manually create points, line or polygons.
 
 We will explore how to configure geometries in the [Classifying Imagery](https://geohackweek.github.io/GoogleEarthEngine/04-classify-imagery/) section of this tutorial.  
-___
+
+<br>
+<br>
+
 ### Getting Help
 
 There are many entry points for getting help tucked into the Code Editor. Familiarizing yourself with these tools can help soften the learning curve.
@@ -146,8 +166,11 @@ The **Help** button is a gateway to many resources, including links to:
 #### Examples in the **Shared Scripts**
 
 A final place you can get help is by scrolling down and looking at the examples housed in the **Shared Scripts** in the **Scripts** tab.  
-___
-## Enjoy!!!
+
+<br>
+<br>
+
+### Enjoy!!!
 
 <br>
 <img src="../fig/02_fancycodeeditor.jpg" border = "10">
@@ -155,5 +178,7 @@ ___
 
 from Gorelick et. al. (2017)
 
-___
+<br>
+<br>
+
 Link to the full code we used in this lesson: [https://code.earthengine.google.com/be0541e89d66904395656def37ed8932](https://code.earthengine.google.com/be0541e89d66904395656def37ed8932)

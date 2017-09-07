@@ -4,6 +4,7 @@ teaching: 5
 exercises: 0
 questions:
 - "What is Google Earth Engine?"
+- "What are the strengths and limitations of this platform?"
 objectives:
 - Understand the power of Google Earth Engine
 - Basic understanding of the system architecture and philosophy
