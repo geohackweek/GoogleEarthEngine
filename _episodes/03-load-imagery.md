@@ -223,3 +223,6 @@ Export.image.toAsset({
   maxPixels: 2000000000
 });
 {% endhighlight %}
+
+Link to a static version of the full script used in this module:
+https://code.earthengine.google.com/37ca6df552bd8c19488273ff9d4f444b
