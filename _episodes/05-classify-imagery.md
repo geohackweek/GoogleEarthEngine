@@ -4,6 +4,8 @@ teaching: 15
 exercises: 0
 questions:
 - "How do I perform supervised classification of satellite imagery?"
+- "How do I assess the accuracy of my classifier?"
+- "How "
 
 objectives:
 - "Practice finding cloud-free imagery and using hand-drawn geometry imports "
@@ -21,7 +23,7 @@ keypoints:
 
 The purpose is to get a classified map of land cover in an area of interest. In this exercise, we will examine Landsat imagery and manually identify a set of training points for three classes (water, forest, urban). We will then use those training points to train a classifier. The classifier will be used to classify the rest of the Landsat image into those three categories. We can then assess the accuracy of our classification using `classifier.confusionMatrix()`.
 
-*Adapted from the[Earth Engine 201 Intermediate workshop](https://developers.google.com/earth-engine/classification)*
+*Adapted from the [Earth Engine 201 Intermediate workshop](https://developers.google.com/earth-engine/classification)*
 
 ## Exercise: Creating a land cover classification from Landsat imagery
 
