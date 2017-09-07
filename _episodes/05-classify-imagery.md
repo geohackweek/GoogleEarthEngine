@@ -1,7 +1,7 @@
 ---
 title: "Classifying Satellite Imagery"
-teaching: 15
-exercises: 7
+teaching: 5
+exercises: 10
 questions:
 - "How do I perform supervised classification of satellite imagery?"
 - "How do I assess the accuracy of my classifier?"
@@ -78,7 +78,7 @@ The print statement will display the new collection in the **Console**.
 
 ## Sample Imagery at Training Points to Create Training datasets
 
-Now that you have created the points and labels, you need to sample the Landsat 8 imagery using `image.sampleRegions()`. This command will extract the reflectance in the designated bands for each of the points you have created. A conceptual diagram of this is shown in the image below. We will use reflectance from the optical, NIR, and SWIR bands (B2 - B7). 
+Now that you have created the points and labels, you need to sample the Landsat 8 imagery using `image.sampleRegions()`. This command will extract the reflectance in the designated bands for each of the points you have created. A conceptual diagram of this is shown in the image below. We will use reflectance from the optical, NIR, and SWIR bands (B2 - B7).
 
 <br>
 <img src="../fig/03_classificationsample.png" border = "10">
