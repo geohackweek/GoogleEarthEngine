@@ -1,11 +1,11 @@
 ---
 title: "Classifying Satellite Imagery"
 teaching: 15
-exercises: 0
+exercises: 7
 questions:
 - "How do I perform supervised classification of satellite imagery?"
 - "How do I assess the accuracy of my classifier?"
-- "How "
+- "How do I create my own geometries manually?"
 
 objectives:
 - "Practice finding cloud-free imagery and using hand-drawn geometry imports "

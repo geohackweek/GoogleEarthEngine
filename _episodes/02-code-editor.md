@@ -7,7 +7,6 @@ questions:
 - "Where can I go for help while learning GEE?"
 - "How do I search for and import datasets?"
 - "How do I create, share and save scripts?"
-
 objectives:
 - Get oriented to the tools available in the code editor
 keypoints:
