@@ -102,7 +102,6 @@ var collectionModNDVI = ee.ImageCollection('MODIS/MOD13Q1')
     .select("NDVI");
 {% endhighlight %}
 
-{% highlight javascript %}
 
 ## Visualize the High Resolution imagery
 
@@ -110,6 +109,8 @@ Here we load the CDL, NAIP and Annual Greenest Pixel composites.
  - *Time Saving Tip:* If you are using a public dataset, often you can find nice palettes by sifting through forum posts.
  - *Tip:* Hexadecimal browser color picker plug-ins are helpful for figuring out which colors correspond to which codes.
  - *Tip:*: Use the `false` argument if you want to load a layer to the map but NOT have it turned on each time you run the code.
+
+ {% highlight javascript %}
 
 // Visualize ----------------------------------------------------------------------------------
 Map.centerObject(setExtent, 8);
@@ -128,6 +129,13 @@ Map.addLayer(annualGreenest.clip(setExtent).select('GI_max_14'),
 Map.addLayer(cdl, {}, 'cdl', false);
 Map.addLayer(naip, {}, 'naip', false);
 {% endhighlight %}
+
+
+
+## Create a User Interface
+
+In GEE you can create panels and add widgets to them. Here we create a panel, define the contents of the panel using labels, and create a callback function so the user can click a point and it will record the lat/long as an object called `points.`
+
 
 {% highlight javascript %}
 
@@ -158,6 +166,12 @@ Map.onClick(function(coords) {
   lat.setValue('lat: ' + coords.lat.toFixed(2));
   var point = ee.Geometry.Point(coords.lon, coords.lat);
   {% endhighlight %}
+
+
+## Add the time series plots to the panels
+
+Now that we have set up our user interface and built the call-back, we can define a time series chart. The chart uses the lat/long selected by the user and builds a time series for NDVI or EVI at that point. It takes the average NDVI or EVI at that point, extracts it, and then adds it to the time series. This series is then plotting as a chart.
+
 
   {% highlight javascript %}
 
