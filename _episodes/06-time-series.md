@@ -45,14 +45,16 @@ var imageFolder = 'users/jdeines/HPA/'
 // End user specs -------------------------------------------------------------
 {% endhighlight %}
 <br>
+
 ## Load High Resolution Crop Imagery
 
-Here we are loading three different types of high resolution crop imagery.
-1. Cropland Data Layer (CDL) from the USDA National Agriculture Statistics Service at 30 meters resolution. This is generated annually.
+Here we are loading three different types of high resolution crop imagery. We are calling the years and folder names we specified at the beginning of the script. The first two datasets are already in Earth Engine. The third dataset is an Greenness index calculated from Landsat imagery. Instead of calculating the GI on the fly in this code, Jill pre-computed the index, exported the rasters and then is calling the pre-made raster. Practices like this can help speed up your code.
 
-2. The National Agricultural Imagery Program (NAIP) aerial imagery from the USDA. This imagery has a 1 meter (!) ground sampling distance.
+1. Cropland Data Layer (CDL) from the USDA National Agriculture Statistics Service at 30 meters resolution. This is generated annually. Each pixel is assigned a value that corresponds to a specific crop.
 
-3.  A derived Greenness Index derived from Landsat imagery (30 m) specific to the study area. 
+2. The National Agricultural Imagery Program (NAIP) aerial imagery from the USDA. This imagery has a 1 meter (!) ground sampling distance. This is a three band raster used to depict natural color imagery (RGB).
+
+3.  A derived Greenness Index derived from Landsat imagery (30 m) specific to the study area. This index is computed by taking a composite of the greenest pixel, defined as the pixel with the highest NDVI, for a given time period.
 
 {% highlight javascript %}
 // Load imagery ------------------------------------------------------------------
@@ -72,10 +74,13 @@ var naip = ee.ImageCollection('USDA/NAIP/DOQQ')
     .filterBounds(setExtent)
     .filterDate(StartDate, EndDate);
 
-// My Landsat composites --------------------
+// Derived Landsat Composites --------------------
 
 // annual max greenness images
-var annualGreenest = ee.Image(ee.String(imageFolder).cat(ee.Number(year).format()).cat('_14_Ind_001').getInfo()).select(['GI_max_14','EVI_max_14']).clip(setExtent);
+var annualGreenest = ee.Image(ee.String(imageFolder).cat(ee.Number(year).format()).cat('_14_Ind_001').getInfo())
+                        .select(['GI_max_14','EVI_max_14']).clip(setExtent);
+
+
 {% endhighlight %}
 
 
