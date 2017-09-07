@@ -77,12 +77,15 @@ var naip = ee.ImageCollection('USDA/NAIP/DOQQ')
 // Derived Landsat Composites --------------------
 
 // annual max greenness images
-var annualGreenest = ee.Image(ee.String(imageFolder).cat(ee.Number(year).format()).cat('_14_Ind_001').getInfo())
-                        .select(['GI_max_14','EVI_max_14']).clip(setExtent);
-
+var annualGreenest = ee.Image(ee.String(imageFolder).cat(ee.Number(year)
+  .format()).cat('_14_Ind_001').getInfo())
+  .select(['GI_max_14','EVI_max_14']).clip(setExtent);
 
 {% endhighlight %}
 
+## Load MODIS derived products for NDVI and EVI
+
+NDVI and EVI are two different vegetation indices that can be calculated from red and near-infrared bands. Here we are using a derived MODIS 16 day composite product that has pre-computed bands for NDVI and EVI. You could also compute them yourself using the  `normalizedDifference` function. Again we will filter the collection to the dates, bands and region of interest.
 
 {% highlight javascript %}
 
@@ -100,6 +103,13 @@ var collectionModNDVI = ee.ImageCollection('MODIS/MOD13Q1')
 {% endhighlight %}
 
 {% highlight javascript %}
+
+## Visualize the High Resolution imagery
+
+Here we load the CDL, NAIP and Annual Greenest Pixel composites.
+ - *Time Saving Tip:* If you are using a public dataset, often you can find nice palettes by sifting through forum posts.
+ - *Tip:* Hexadecimal browser color picker plug-ins are helpful for figuring out which colors correspond to which codes.
+ - *Tip:*: Use the `false` argument if you want to load a layer to the map but NOT have it turned on each time you run the code.
 
 // Visualize ----------------------------------------------------------------------------------
 Map.centerObject(setExtent, 8);
