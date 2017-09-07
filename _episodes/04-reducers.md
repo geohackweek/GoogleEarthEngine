@@ -174,3 +174,6 @@ In order to actually export your data, you have to explicitly hit the "Run" butt
 <br>
 <img src="../fig/05_runTask.png" border = "10">
 <br><br>
+
+Link to a static version of the full script used in this module:
+https://code.earthengine.google.com/d3c55e2958b9ae1e0bb6fe3c5e9da066
