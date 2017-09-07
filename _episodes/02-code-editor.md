@@ -28,7 +28,7 @@ The Earth Engine JavaScript API has a integrated development environment (IDE) d
 
 ### Writing Code
 
-The Code Editor has number of features to help make programming in this environment easier. To access the Code Editor, type the following url into your browser: [code.earthengine.google.com](code.earthengine.google.com)
+The Code Editor has number of features to help make programming in this environment easier. To access the Code Editor, type the following url into your browser: [code.earthengine.google.com](https://code.earthengine.google.com)
 
 A  webpage like the following (without annotations) should appear:
 
