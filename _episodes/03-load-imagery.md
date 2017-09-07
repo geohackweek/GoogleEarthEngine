@@ -64,7 +64,9 @@ Here, we'll make use of the `cfmask` cloud band provided with the SR products to
 // mask pixels with clouds and cloud shadows
 // surface reflectance products come with a 'cfmask' layer
 // 0 = clear, 1 = water, 2 = cloud shadows, 3 = snow, 4 = clouds
-var cfmask = image.select('cfmask');  // extract the 'cfmask' band   
+
+// extract the 'cfmask' band, and use this band to mask all image bands  
+var cfmask = image.select('cfmask');  
 // keep pixels not equal (neq) to 2 or 4
 var imageMasked = image.updateMask(cfmask.neq(2)).updateMask(cfmask.neq(4));  
 
@@ -87,10 +89,10 @@ We'll work on making a composite satellite image for the state of Washington. Th
 There are three ways to use vector data in GEE:
 
 * [Upload a shapefile](https://developers.google.com/earth-engine/importing) to your personal **Asset** folder in the top left panel. You can set sharing permissions on these as needed.
-* Import an existing [Google Fusion Table](https://support.google.com/fusiontables#topic=1652595), or [create your own](https://fusiontables.google.com/data?dsrcid=implicit) fusion table from a KML in WGS84.  Each fusion table has a unique Id (File > About this table) that can be used to load it into GEE. You also need to set sharing permissions similar to other items in your Google Drive if you want others to be able to access your fusion table. GEE only recently added the Asset option, so you may see folks still using fusion tables in the forums, etc. If you have the choice, I'd use an asset. We use a fusion table in the [Spatial and Temporal Reducers Module](https://geohackweek.github.io/GoogleEarthEngine/05-reducers/).
-* Manually draw points, lines, and polygons using the geometry tools in the code editor. We do this in the [Classify Imagery Module](https://geohackweek.github.io/GoogleEarthEngine/04-classify-imagery/).
+* Import an existing [Google Fusion Table](https://support.google.com/fusiontables#topic=1652595), or [create your own](https://fusiontables.google.com/data?dsrcid=implicit) fusion table from a KML in WGS84.  Each fusion table has a unique Id (File > About this table) that can be used to load it into GEE. You also need to set sharing permissions similar to other items in your Google Drive if you want others to be able to access your fusion table. GEE only recently added the Asset option, so you may see folks still using fusion tables in the forums, etc. If you have the choice, I'd use an asset. We use a fusion table in the [Spatial and Temporal Reducers Module](https://geohackweek.github.io/GoogleEarthEngine/04-reducers/).
+* Manually draw points, lines, and polygons using the geometry tools in the code editor. We do this in the [Classify Imagery Module](https://geohackweek.github.io/GoogleEarthEngine/05-classify-imagery/).
 
-Here, we will use a vector asset loaded to your instructor's personal asset folder and made publicly available through the sharing menu. The file location is 'users/jdeines/vector/examples/WA'. When you upload a vector file (called a table) to your asset folder using the "New" button under the **Assets tab** in the upper left panel of the code editor, it will be stored in 'users/yourUserName/filename' unless you create new folders within your Assets space. For more on importing vector files, see the [Developer's Guide section on Importing Table Data](https://developers.google.com/earth-engine/importing). **Tip**: when uploading a shapefile, you need to select all associated files (.dbf, .shx, .prf, etc) or upload a zipped file containing only one shapefile.
+Here, we will use a vector asset loaded to the instructor's personal asset folder and made publicly available through the sharing menu. The file location is 'users/jdeines/vector/examples/WA'. When you upload a vector file (called a table) to your asset folder using the "New" button under the **Assets tab** in the upper left panel of the code editor, it will be stored in 'users/yourUserName/filename' unless you create new folders within your Assets space. For more on importing vector files, see the [Developer's Guide section on Importing Table Data](https://developers.google.com/earth-engine/importing). **Tip**: when uploading a shapefile, you need to select all associated files (.dbf, .shx, .prf, etc) or upload a zipped file containing only one shapefile.
 
 In order to load a vector file from your Assets into your workspace, we need to use the "filepath" and cast it to a `ee.FeatureCollection` data type. Read more here under ["Managing Assets" in the Developer's Guide](https://developers.google.com/earth-engine/asset_manager#importing-assets-to-your-script).
 
@@ -109,6 +111,7 @@ Map.addLayer(boundary, {}, 'WA');
 Here, we are selecting all imagery in the [Landsat 8 surface reflection collection](https://code.earthengine.google.com/dataset/LANDSAT/LC8_SR) (image collection IDs are found in the "Search" toolbar at the top of the code editor or through searcing the [data archive](https://code.earthengine.google.com/datasets/)) for the year 2016 that overlies the Washington state vector polygon we loaded above as the variable "boundary".
 
 {% highlight javascript %}
+// load all Landsat 8 SR image within polygon boundary for 2016
 var cWA = ee.ImageCollection('LANDSAT/LC8_SR')
           .filterBounds(boundary)
           .filterDate('2016-01-01', '2016-12-31');
@@ -148,7 +151,12 @@ var cNDVI = cMasked.map(function(img){
 });
 {% endhighlight %}
 
-### Create an Image Composite from Collection
+### Image Mosaics: Create an Image Composite from Collection
+We now need to assemble the image collection to create one continuous image across Washington state. There are several mosaicking/compositing options available, from simple maximum value composites (`imageCollection.max()`) and straightforward mosaics with the most recent image on top (`imageCollection.mosaic()`). The [Compositing and Mosaicking page on the Developer's Guide](https://developers.google.com/earth-engine/ic_composite_mosaic) provides examples of these. 
+
+Here, we will use the `imageCollection.qualityMosaic()` function. By prioritizing the image to use based on one specific band, this method ensures that the values across all bands are taken from the same image. Each pixel gets assigned the values from the image with the highest value of the desired band.
+
+We will use this to make a "greenest pixel composite" for Washington state based on the NDVI band we just calculated. The final composite image will retain all bands in the input (unless we were to specify otherwise). Each pixel in the composite image could potentially come from imagery acquired on different dates, but all bands within each pixel are from the same image. In general, this provides a snapshot of the landscape at the peak of the growing season, regardless of the phenological timing within the year.
 
 {% highlight javascript %}
 // Make a "greenest pixel" composite for WA state
@@ -163,10 +171,13 @@ Map.addLayer(greenest.select('NDVI'),
             {min:0.1, max: 1, palette: ndviPalette}, 'ndvi');
 {% endhighlight %}
 
+Annual maximum NDVI across Washington:
+
 <br>
 <img src="../fig/03_waNDVI.png" border = "10">
 <br><br>
 
+We can also use this composite image to visualize a true color composite using the RGB bands as we did above:
 
 {% highlight javascript %}
 // Visualize true color composite
@@ -178,6 +189,7 @@ Map.addLayer(greenest, {bands: ['B4', 'B3', 'B2'], min: 0, max: 2000}, 'WA tcc',
 <br><br>
 
 ## Exporting Composite Images
+
 
 {% highlight javascript %}
 // select only the ndvi band
