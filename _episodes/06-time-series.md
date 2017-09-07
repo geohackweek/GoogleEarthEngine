@@ -3,9 +3,9 @@ title: "Time Series"
 teaching: 15
 exercises: 0
 questions:
-- How do I get time series data?
-- How can I plot data within Google Earth Engine?
-- "How do I create an interactive panel plot?"
+- How do I create a time series for a given location?
+- How can I plot that time series within Google Earth Engine?
+- "How do I make an interactive panel plot?"
 objectives:
 - "Load high resolution crop imagery."
 - "Dynamically select lat/longs for creating time series plots."
