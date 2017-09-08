@@ -9,6 +9,7 @@ questions:
 - "How do I create, share and save scripts?"
 objectives:
 - Get oriented to the tools available in the code editor
+- Load an image collection and filter it to a relevant image
 keypoints:
 - "The Code Editor is a one stop shop for accessing GEE data catalog and conducting geospatial analysis."
 - "You can use the code editor to develop, share and manage scripts."
@@ -87,9 +88,9 @@ You can share a static version of anything in your code editor by clicking **Get
 
 **Hot Tip: When posted on the help forum, ALWAYS include a link to your code so people can help troubleshoot. Be sure all personal assets you use are publicly shared so the script will run for others.**
 
-To collaborate on shared scripts with other users, you can create a shared folder, invite your collaborators and place scripts in that folder.
-
 #### Joining the shared repository
+
+To collaborate on shared scripts with other users, you can create a shared folder, invite your collaborators and place scripts in that folder. We have created a shared folder for geohackweek2017.
 
 Get access to the shared code repository in the code editor:
 
@@ -138,11 +139,7 @@ The geometry drawing tools located on the upper left side of the map viewer can 
 
 You have now created a new point object and cast it as a `FeatureCollection`. You can now use this  `FeatureCollection` as a way to geographically filter datasets for just your region.
 
-We will further explore how to configure geometries in the [Classifying Imagery](https://geohackweek.github.io/GoogleEarthEngine/04-classify-imagery/) section of this tutorial.  
-
-<br>
-<br>
-
+You can further explore how to configure geometries in the [Classifying Imagery](https://geohackweek.github.io/GoogleEarthEngine/04-classify-imagery/) section of this tutorial.  
 
 #### Filtering the image collection
 
@@ -166,32 +163,39 @@ var image = ee.Image(ee.ImageCollection('L8_TOA')
     .first());
 {% endhighlight %}
 
-We have now filtered the ENTIRE Landsat 8 archive down to the least cloudy image for our study area in 2016. However, we still need to visualize it. Here we will add the image to the map using the `Map.addLayer` function. Not sure what this function does? Search for it in the **Docs** tab to learn the arguments.
+We have now filtered the ENTIRE Landsat 8 archive down to the least cloudy image for our study area in 2016. However, we still need to visualize it, whiuch we will do using the `Map.addLayer` function. Not sure what this function does? Search for it in the **Docs** tab to learn the arguments.
 
 {% highlight javascript %}
 Map.addLayer(image,{},  "L8 Image");
 {% endhighlight %}
 
-That doesn't look so great. Let's actually define what bands to use and fill in some other visualization parameters.
+
+#### Layer Manager
+
+That doesn't look so great. Let's actually define what bands to use and fill in some other visualization parameters using the layer manager. We can use prior knowledge to make a nice image:
 
 {% highlight javascript %}
 Map.addLayer(image, {bands: ['B4', 'B3', 'B2'], max: 0.5, gamma: 2}, "L8 Image");
 {% endhighlight %}
 
-#### Layer Manager
-
-Once we have layers added later in the tutorial, a "Layers" toolbar will appear in the upper right hand corner of the map (like below). This toolbar will allow you to click layers on and off as well as adjust their transparency and interactively configure each layer's visualization parameters.  
-
-You can also toggle between the "Map" or "Satellite" buttons in the top right of the map panel to change the baselayer.
-
-#### Inspector Tab
-
-In the upper right, switch to the inspector console and click anywhere on the map. The Inspector console allows you to interactively query the map. If you have imagery loaded, it will give you information about that imagery at the point you clicked as well.
-
+More often then not, though, you may not know the optimal min, max and stretch. This is why they added the **Layer Manager** tool which can be found in the upper right hand corner of the map. This toolbar will allow you to click layers on and off as well as adjust their transparency and interactively configure each layer's visualization parameters. You can use this tool to figure out what parameters to pass to the `Map.addLayer`.
 
 <br>
 <img src="../fig/02_layermanager.png" border = "10">
 <br><br>
+
+You can also toggle between the **Map** or **Satellite** buttons in the top right of the map panel to change the baselayer.
+
+#### Inspector Tab
+
+Another way you can inspect and explore your image is through the inspector tool. The Inspector console allows you to interactively query the map. If you have imagery loaded, it will give you information about that imagery at the point you clicked as well.
+
+In the upper right, switch to the **Inspector** tab and click on the map where there is land. Now click where there is water.
+
+# STOP & PLAY
+
+On your own, play with the stretch parameters and use the Inspector to explore the map.
+If you already did that, you can play with dropping the point somewhere else and looking at that imagery.
 
 ## Importing & Exporting Your Own Assets
 
@@ -204,7 +208,7 @@ When posting on the forum, make sure you check the "Anyone Can Read" box on the 
 <img src="../fig/02_sharingassets.png" border = "10">
 <br><br>
 
-For detailed instructions on uploading, sharing and managing assets, see the [Assets Manager page](https://developers.google.com/earth-engine/asset_manager) on the GEE website .
+For an example script that uses imported data, see [Episode XX](). For detailed instructions from Google on uploading, sharing and managing assets, see the [Assets Manager page](https://developers.google.com/earth-engine/asset_manager) on the GEE website .
 
 #### Exporting & the Tasks Tab
 Instead of printing to the console, for larger tasks you may want to just export the outputs to your Google Drive or Cloud Storage using the `Export` functions in your code. When run, these generate a new task in the `Task` tab in the upper right panel. You will need to then "Run" this task in order to actually start the export. Once you start an export task, you will be prompted to enter details about the resolution, size, format and destination if you did not include this in your code. You can hover your mouse over the task and click the "?" icon to see the status and also to get the task number. If your task isn't executing, you can share this number as a reference on the developers forum.
@@ -241,12 +245,3 @@ A final place you can get help is by scrolling down and looking at the examples 
 <br>
 
 ### Enjoy!!!
-
-<br>
-<img src="../fig/02_fancycodeeditor.jpg" border = "10">
-<br><br>
-
-from Gorelick et. al. (2017)
-
-<br>
-<br>
