@@ -13,19 +13,31 @@ keypoints:
 - "The Code Editor is a user friendly access point for Earth Engine that uses the JavaScript API."
 - " JavaScript is a programming language that is also widely used in web development."
 ---
-## Getting Approved as a Trusted Tester
+## Getting an Earth Engine Account
 
-In order to use Google Earth Engine, you need to sign up for the platform and be approved as a trusted tester. Use the steps below to sign up.
+In order to use Google Earth Engine, you need to sign up for the platform. Use the steps below to sign up.
 
 ### Directions:
 
-Go the the [GEE sign up page](https://signup.earthengine.google.com/#!/) and select the email you want to use for your GEE account. A gmail is best if you have one.
+Go the the [GEE sign up page](https://signup.earthengine.google.com/#!/) and enter the email you want to use for your GEE account. A gmail is best if you have one. 
 
-On the next page, enter in the information requested about your email, your affiliation, etc. Where it asks what you want to accomplish, make sure you mentioned you are at Geohackweek at the University of Washington.
+On the next page, enter in the information requested about your email, your affiliation, etc. Where it asks what you want to accomplish, you can mention you are at Geohackweek at the University of Washington.
 
-Check your email, including your spam folder in the next few days to look for a link from the Google Developer's Team. The confirmation email will have directions on how to access the Code Editor.
+Check your email, including your spam folder, for a link from the Google Developer's Team. The confirmation email will have directions on how to access the Code Editor.
 
 Not sure if you have access? Use [this link](https://code.earthengine.google.com/) to check. If you didn't get access you will get an authorization error that says your account isn't registered when you click on the link and try to sign in. If you do have access, the link will open up the Javascript API. You can use this link in the future to get into the JavaScript API.
+
+## Get Access to Module Scripts
+
+Google Earth Engine allows you to have shared group folders/repositories for scripts. We've organized the code presented in this tutorial this way. Get access to the shared code repository in the code editor by:
+
+- Join our Google group by clicking this link (don't worry about posting permissions; we won't  be posting anything. This allows you access to the repository): [https://goo.gl/maZwVa](https://goo.gl/maZwVa)
+- Accept the shared repository by clicking this link: [https://code.earthengine.google.com/?accept_repo=geohackweek2017](https://code.earthengine.google.com/?accept_repo=geohackweek2017)
+
+Now, in the code editor, go to the **Scripts tab** in the top left panel, scroll down and expand the "Shared" section, and a directory called *geohackweek2017* should appear with the full scripts from each episode. When Jill and I update them, the updates will be reflected in these versions of the code. 
+
+### Getting help with access
+If you have any trouble getting access to Google Earth Engine or the shared repository, you can slack jdeines or catherinekuhn with questions, or catch Jill at Geohackweek on Monday and Tuesday. 
 
 ## Javascript Tips
 

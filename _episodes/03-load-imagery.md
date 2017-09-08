@@ -19,13 +19,29 @@ keypoints:
 - Images can be exported for future use within GEE or for outside software
 ---
 
-Get access to the shared code repository in the code editor:
+## Importing & Exporting Your Own Assets
 
-- Join our Google group by clicking this link (don't worry about posting permissions; we won't  be posting anything): (https://goo.gl/maZwVa)
-- Accept the shared repository by clicking this link: (https://code.earthengine.google.com/?accept_repo=geohackweek2017)
+#### Importing Images and Tables
+Besides using all of Google's amazing archives, users can also import their own data as either images (rasters) or tables (vectors). The **Assets** tab on the left is where you can import, share and manage these own assets. You can upload images or tables (vector data) here.
 
-Link to a static version of the full script used in this module:
-(https://code.earthengine.google.com/37ca6df552bd8c19488273ff9d4f444b)
+When posting on the forum, make sure you check the "Anyone Can Read" box on the sharing assets pop-out so folks on the forum can all run your code. If you have a private asset and you don't make it public, other people will not be able to run your code. If you don't want to share your private data, you can create a dummy example to share on the forums using hand drawn points or polygons.
+
+<br>
+<img src="../fig/02_sharingassets.png" border = "10">
+<br><br>
+
+For an example script that uses imported data, see [Episode XX](). For detailed instructions from Google on uploading, sharing and managing assets, see the [Assets Manager page](https://developers.google.com/earth-engine/asset_manager) on the GEE website .
+
+#### Exporting & the Tasks Tab
+Instead of printing to the console, for larger tasks you may want to just export the outputs to your Google Drive or Cloud Storage using the `Export` functions in your code. When run, these generate a new task in the `Task` tab in the upper right panel. You will need to then "Run" this task in order to actually start the export. Once you start an export task, you will be prompted to enter details about the resolution, size, format and destination if you did not include this in your code. You can hover your mouse over the task and click the "?" icon to see the status and also to get the task number. If your task isn't executing, you can share this number as a reference on the developers forum.
+
+For detailed instructions on exports, see the [Exporting Data page](https://developers.google.com/earth-engine/exporting) on the GEE website. We will also have small export examples in subsequent modules of this tutorial.
+<br>
+<br>
+
+
+*Note: If you do not have access to the shared code repository for this tutorial, a static version of the full script used in this module can be found here:
+[(https://code.earthengine.google.com/37ca6df552bd8c19488273ff9d4f444b)](https://code.earthengine.google.com/37ca6df552bd8c19488273ff9d4f444b)
 
 ## Load a Satellite Image
 In Google Earth Engine (GEE), raster data are called `Images`. Each image has 1 or more named bands as well as metadata stored as properties. More information on Images can be found [here in the GEE Developer's Guide](https://developers.google.com/earth-engine/image_overview).

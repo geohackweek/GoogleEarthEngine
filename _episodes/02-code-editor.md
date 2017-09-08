@@ -33,7 +33,7 @@ Link to the full code we used in this lesson: [https://code.earthengine.google.c
 
 #### How do I get to the Code Editor?
 
-The Code Editor has number of features to help make programming in this environment easier. To access the Code Editor, type the following url into your browser: [code.earthengine.google.com](code.earthengine.google.com)
+The Code Editor has number of features to help make programming in this environment easier. To access the Code Editor, type the following url into your browser: [https://code.earthengine.google.com](https://code.earthengine.google.com)
 
 A  webpage like the following (without annotations) should appear:
 
@@ -94,8 +94,8 @@ To collaborate on shared scripts with other users, you can create a shared folde
 
 Get access to the shared code repository in the code editor:
 
-- Join our Google group by clicking this link (don't worry about posting permissions; we won't  be posting anything): (https://goo.gl/maZwVa)
-- Accept the shared repository by clicking this link: (https://code.earthengine.google.com/?accept_repo=geohackweek2017)
+- Join our Google group by clicking this link (don't worry about posting permissions; we won't  be posting anything. This allows you access to the repository): [https://goo.gl/maZwVa](https://goo.gl/maZwVa)
+- Accept the shared repository by clicking this link: [https://code.earthengine.google.com/?accept_repo=geohackweek2017](https://code.earthengine.google.com/?accept_repo=geohackweek2017)
 
 Now, in the code editor, go to *Scripts > Shared* and a directory called *geohackweek2017* should appear with the full scripts from each episode. When Jill and I update them, the updates will be reflected in these versions of the code. Just like the other scripts, these are also version controlled through git. Read or write permissions for individuals or groups can be set in the Code Editor using the little grey share icon that appears to the right if you move your mouse over the directory name in the *Scripts* tab.  
 
@@ -104,13 +104,13 @@ Now, in the code editor, go to *Scripts > Shared* and a directory called *geohac
 
 ## Accessing Datasets from Google's Cloud
 
-#### Search toolbar: Finding datasets and loading them as `ImageCollections`
+### Search toolbar: Finding datasets and loading them as `ImageCollections`
 
-To query the [GEE data catalog](https://code.earthengine.google.com/datasets/), you can enter key words into the search toolbar.
+To query the [GEE data catalog](https://code.earthengine.google.com/datasets/), you can enter key words into the search toolbar at the top of the code editor.
 
-For practice, let's load some imagery into the code editor. We are going to search for and import the **Landsat Top of the Atmosphere Reflectance Level 1T** product. To do this, go to the *Search* toolbar and type in **Landsat 8 TOA**. Select the first dataset. You can check you go the correct one because the `ImageCollection ID` should say **LANDSAT/LC8_L1T_TOA**
+For practice, let's load some imagery into the code editor. We are going to search for and import the **Landsat Top of the Atmosphere Reflectance Level 1T** product. To do this, go to the *Search* toolbar and type in **Landsat 8 TOA**. Select the first dataset - USGS Landsat 8 TOA Reflectance (Orthorectified) - by clicking on the name. This will bring up the metadata for this data collection. You can confirm you got the correct one because the `ImageCollection ID` should say **LANDSAT/LC8_L1T_TOA**
 
-Now, click **Import** in this pop out. A new object will load into your Code Editor. Name this object "L8_TOA". This object is an `ImageCollection`, which means it is a stack of images.
+Now, click **Import** in this pop out. A new object will load into your Code Editor in the "Imports" pane at the top of the code editor. Rename this object "L8_TOA". This object is an `ImageCollection`, which means it is a stack of images.
 
 In order to look at the collection, try to print it just like you did the string.
 
@@ -120,7 +120,7 @@ print(L8_TOA);
 
 **What happens?**
 
-Earth Engine times out - this means your request is too big. To get around this, try the following:
+Earth Engine times out - this means your request is too big, which makes sense as there are thousands of images in the Landsat 8 collection. To get around this, try the following:
 
 {% highlight javascript %}
 print(L8_TOA).limit(5);
@@ -128,7 +128,7 @@ print(L8_TOA).limit(5);
 
 This will show you just the first five images so you can preview the collection.
 
-#### Selecting a study area using Geometry Tools
+### Selecting a study area using Geometry Tools
 
 The geometry drawing tools located on the upper left side of the map viewer can be used to manually create points, line or polygons. We are now going to define a study area using a point we select on the map. We will use the **Geometry Tools** to create that point.
 
@@ -139,9 +139,9 @@ The geometry drawing tools located on the upper left side of the map viewer can 
 
 You have now created a new point object and cast it as a `FeatureCollection`. You can now use this  `FeatureCollection` as a way to geographically filter datasets for just your region.
 
-You can further explore how to configure geometries in the [Classifying Imagery](https://geohackweek.github.io/GoogleEarthEngine/04-classify-imagery/) section of this tutorial.  
+You can further explore how to configure geometries in the [Classifying Imagery](https://geohackweek.github.io/GoogleEarthEngine/05-classify-imagery/) section of this tutorial.  
 
-#### Filtering the image collection
+### Filtering the image collection
 
 One of the major benefits of the JavaScript versus Python API is the ability to quickly render on-the-fly geovisualizations of your imagery and outputs. We are now going to visualize one image from the Landsat 8 collection we loaded. We are going to filter the collection down to one image by:
 
@@ -149,9 +149,11 @@ One of the major benefits of the JavaScript versus Python API is the ability to 
   - filtering it down to just one year of images (2016)
   - sorting the images by the overall cloud cover (least cloudy to most cloudy)
   - picking the top image (least cloudy)
+  
+Essentially, this allows us to sort through the full Landsat 8 collection and load the best image available for our region of interest for 2016.
 
 {% highlight javascript %}
-// Load Landsat 5 input imagery.
+// Load Landsat 8 input imagery.
 var image = ee.Image(ee.ImageCollection('L8_TOA')
     // Filter to get only images under the region of interest.
     .filterBounds(roi)
@@ -175,7 +177,7 @@ Map.addLayer(image,{},  "L8 Image");
 That doesn't look so great. Let's actually define what bands to use and fill in some other visualization parameters using the layer manager. We can use prior knowledge to make a nice image:
 
 {% highlight javascript %}
-Map.addLayer(image, {bands: ['B4', 'B3', 'B2'], max: 0.5, gamma: 2}, "L8 Image");
+Map.addLayer(image, {bands: ['B4', 'B3', 'B2'], max: 0.5, gamma: 2}, "L8 Image 2");
 {% endhighlight %}
 
 More often then not, though, you may not know the optimal min, max and stretch. This is why they added the **Layer Manager** tool which can be found in the upper right hand corner of the map. This toolbar will allow you to click layers on and off as well as adjust their transparency and interactively configure each layer's visualization parameters. You can use this tool to figure out what parameters to pass to the `Map.addLayer`.
