@@ -1,7 +1,7 @@
 ---
 title: "Wrap-Up"
 teaching: 5
-exercises: 0
+exercises: 5
 questions:
 - "What are the most important GEE resources?"
 - "Where do I find answers to my questions about GEE?"

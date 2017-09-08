@@ -1,7 +1,7 @@
 ---
 title: "Classifying Satellite Imagery"
-teaching: 5
-exercises: 10
+teaching: 0
+exercises: 0
 questions:
 - "How do I perform supervised classification of satellite imagery?"
 - "How do I assess the accuracy of my classifier?"

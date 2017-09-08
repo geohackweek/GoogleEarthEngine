@@ -43,41 +43,6 @@ For detailed instructions on exports, see the [Exporting Data page](https://deve
 *Note: If you do not have access to the shared code repository for this tutorial, a static version of the full script used in this module can be found here:
 [(https://code.earthengine.google.com/37ca6df552bd8c19488273ff9d4f444b)](https://code.earthengine.google.com/37ca6df552bd8c19488273ff9d4f444b)
 
-## Load a Satellite Image
-In Google Earth Engine (GEE), raster data are called `Images`. Each image has 1 or more named bands as well as metadata stored as properties. More information on Images can be found [here in the GEE Developer's Guide](https://developers.google.com/earth-engine/image_overview).
-
-Here, we will load a specific image from the Landsat 8 Surface Reflectance product ([described here in the data catalog](https://code.earthengine.google.com/dataset/LANDSAT/LC8_SR)). These satellite images have already been processed to surface reflectance values using standard algorithms by the USGS and come with a cloud mask band ('cfmask').
-
-Note that each individual image in GEE has an Image ID. We will load an image over Seattle from July 28, 2016. The image ID is LC80460272016209. Landsat image ID's follow this pattern: **image collection + path number + row number + year + julian day**, or in this case, LC8 + 046 + 027 + 2016 + 209. Images from other data products have similar logical naming patterns.
-
-We can look at the image we've loaded in two ways:
-
-* print the image, which displays image metadata in the console (upper right panel)
-* add the image to the map panel, specifying how we'd like to visualize it
-
-{% highlight javascript %}
-// load an image by name (collection Id + image id)
-var image = ee.Image('LANDSAT/LC8_SR/LC80460272016209')
-
-// view the image metadata in the Console
-print(image);
-{% endhighlight %}
-
-<br>
-<img src="../fig/03_printImage.png" border = "10">
-<br><br>
-
-{% highlight javascript %}
-// add the image to the map, setting the bands to use for RGB
-Map.centerObject(image, 8); // specify map location and zoom level, if desired
-Map.addLayer(image, {bands: ['B4', 'B3', 'B2'], min: 0, max: 2000}, 'L8 SR');
-{% endhighlight %}
-
-Note the arguments for Map.addLayer() are Map.addLayer(eeObject, dictionary of visualization parameters, layer name...). These are described in the `Map` section of the Docs panel.
-
-<br>
-<img src="../fig/03_tccSeattle.png" border = "10">
-<br><br>
 
 ### Manipulate Image Data: Mask clouds
 The `Docs` tab in the upper left panel provides a description of all the available functions for image manipulation under the `ee.Image` dropdown menu. There are a lot, including mathematical and boolean operators, convolutions and focal statistics, and spectral transformations and analyses of spatial texture. Browse the list, or read about general operations available in the [GEE Developer's Guide "Image Overview"" section](https://developers.google.com/earth-engine/image_overview).
