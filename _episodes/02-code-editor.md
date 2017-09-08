@@ -1,7 +1,7 @@
 ---
 title: "Code Editor"
 teaching: 5
-exercises: 10
+exercises: 15
 questions:
 - "What are the key features of the online code editor?"
 - "Where can I go for help while learning GEE?"

@@ -1,7 +1,7 @@
 ---
 title: "Accessing Satellite Imagery"
 teaching: 5
-exercises: 20
+exercises: 35
 questions:
 - How do I acquire satellite imagery?
 - How can I make image mosaics?
