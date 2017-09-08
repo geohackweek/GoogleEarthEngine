@@ -27,7 +27,7 @@ Check your email, including your spam folder, for a link from the Google Develop
 
 Not sure if you have access? Use [this link](https://code.earthengine.google.com/) to check. If you didn't get access you will get an authorization error that says your account isn't registered when you click on the link and try to sign in. If you do have access, the link will open up the Javascript API. You can use this link in the future to get into the JavaScript API.
 
-## Get Access to Module Scripts
+## Get Access to Our Shared Code Folder
 
 Google Earth Engine allows you to have shared group folders/repositories for scripts. We've organized the code presented in this tutorial this way. Get access to the shared code repository in the code editor by:
 
