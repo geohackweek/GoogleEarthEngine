@@ -17,19 +17,20 @@ keypoints:
 
 ---
 
-## Code Editor: Overview
+# Code Editor: Overview
 
 The Earth Engine JavaScript API has a integrated development environment (IDE) designed to make computing in GEE easy for users. This IDE is called the Code Editor. In this tutorial, we will go over many of the functionalities identified in this figure, but for a more exhaustive description see the [Earth Engine Code Editor help page](https://developers.google.com/earth-engine/playground#api-reference-docs-tab) in the GEE User Guides.  
 
 <br>
 <br>
 
-## Exercise: Exploring the Code Editor
+Link to the full code we used in this lesson: [https://code.earthengine.google.com/be0541e89d66904395656def37ed8932](https://code.earthengine.google.com/be0541e89d66904395656def37ed8932)
 
-### Getting Started
+# Exercise: Exploring the Code Editor
 
+## Getting Started
 
-### How do I get to the Code Editor?
+#### How do I get to the Code Editor?
 
 The Code Editor has number of features to help make programming in this environment easier. To access the Code Editor, type the following url into your browser: [code.earthengine.google.com](code.earthengine.google.com)
 
@@ -69,7 +70,7 @@ print("Hola Mundo!");
 <br>
 <br>
 
-### Saving & Sharing Scripts
+## Saving & Sharing Scripts
 
 #### Saving Scripts
 
@@ -100,7 +101,7 @@ Now, in the code editor, go to *Scripts > Shared* and a directory called *geohac
 <br>
 <br>
 
-## Importing Datasets from Google's Cloud
+## Accessing Datasets from Google's Cloud
 
 #### Search toolbar: Finding datasets and loading them as `ImageCollections`
 
@@ -126,9 +127,10 @@ print(L8_TOA).limit(5);
 
 This will show you just the first five images so you can preview the collection.
 
-#### Selecting a study area using hand-drawn geometries
+#### Selecting a study area using Geometry Tools
 
-We are now going to define a study area using a point we select on the map.
+The geometry drawing tools located on the upper left side of the map viewer can be used to manually create points, line or polygons. We are now going to define a study area using a point we select on the map. We will use the **Geometry Tools** to create that point.
+
 1. Type "Lee Vining" into the search toolbar and hit enter. This will zoom you to Eastern California.
 2. On the left side of the map, click the little Google Pin icon. Your cursor should then turn into crosshairs.
 3. Toggle around the map and drop the pin in the center of Mono Lake, which is right next to Lee Vining.
@@ -136,13 +138,20 @@ We are now going to define a study area using a point we select on the map.
 
 You have now created a new point object and cast it as a `FeatureCollection`. You can now use this  `FeatureCollection` as a way to geographically filter datasets for just your region.
 
+We will further explore how to configure geometries in the [Classifying Imagery](https://geohackweek.github.io/GoogleEarthEngine/04-classify-imagery/) section of this tutorial.  
+
+<br>
+<br>
+
+
 #### Filtering the image collection
 
-Now that we have a study region defined, we are going to take our massive image collection and:
-- filter it to our study area
-- filter it down to just one year of images (2016)
-- sort the images by the overall cloud cover (least cloudy to most cloudy)
-- pick the top image (least cloudy)
+One of the major benefits of the JavaScript versus Python API is the ability to quickly render on-the-fly geovisualizations of your imagery and outputs. We are now going to visualize one image from the Landsat 8 collection we loaded. We are going to filter the collection down to one image by:
+
+  - filtering it to our study area we defined with a point
+  - filtering it down to just one year of images (2016)
+  - sorting the images by the overall cloud cover (least cloudy to most cloudy)
+  - picking the top image (least cloudy)
 
 {% highlight javascript %}
 // Load Landsat 5 input imagery.
@@ -169,11 +178,24 @@ That doesn't look so great. Let's actually define what bands to use and fill in 
 Map.addLayer(image, {bands: ['B4', 'B3', 'B2'], max: 0.5, gamma: 2}, "L8 Image");
 {% endhighlight %}
 
-How did I know how to enter those specific parameters in for the visualization? Trial and error!
-Go to the Layer Manager and tinker with the settings to figure out the min, max, etc. 
+#### Layer Manager
 
-#### Importing Your Own Assets
+Once we have layers added later in the tutorial, a "Layers" toolbar will appear in the upper right hand corner of the map (like below). This toolbar will allow you to click layers on and off as well as adjust their transparency and interactively configure each layer's visualization parameters.  
 
+You can also toggle between the "Map" or "Satellite" buttons in the top right of the map panel to change the baselayer.
+
+#### Inspector Tab
+
+In the upper right, switch to the inspector console and click anywhere on the map. The Inspector console allows you to interactively query the map. If you have imagery loaded, it will give you information about that imagery at the point you clicked as well.
+
+
+<br>
+<img src="../fig/02_layermanager.png" border = "10">
+<br><br>
+
+## Importing & Exporting Your Own Assets
+
+#### Importing Images and Tables
 Besides using all of Google's amazing archives, users can also import their own data as either images (rasters) or tables (vectors). The **Assets** tab on the left is where you can import, share and manage these own assets. You can upload images or tables (vector data) here.
 
 When posting on the forum, make sure you check the "Anyone Can Read" box on the sharing assets pop-out so folks on the forum can all run your code. If you have a private asset and you don't make it public, other people will not be able to run your code. If you don't want to share your private data, you can create a dummy example to share on the forums using hand drawn points or polygons.
@@ -191,36 +213,7 @@ For detailed instructions on exports, see the [Exporting Data page](https://deve
 <br>
 <br>
 
-### Visualizations
-
-One of the major benefits of the JavaScript versus Python API is the ability to quickly render on-the-fly geovisualizations of your imagery and outputs. The mapping window has several useful functionalities described below.
-
-#### Map viewer
-
-Once we load imagery into the Code Editor and add it to the map later in this tutorial, results will appear in the Map window. You can also toggle between the "Map" or "Satellite" buttons in the top right of the map panel to change the baselayer.
-
-#### Inspector Tab
-
-In the upper right, switch to the inspector console and click anywhere on the map. The Inspector console allows you to interactively query the map. If you have imagery loaded, it will give you information about that imagery at the point you clicked as well.
-
-#### Layer Manager
-
-Once we have layers added later in the tutorial, a "Layers" toolbar will appear in the upper right hand corner of the map (like below). This toolbar will allow you to click layers on and off as well as adjust their transparency and interactively configure each layer's visualization parameters.  
-
-<br>
-<img src="../fig/02_layermanager.png" border = "10">
-<br><br>
-
-#### Geometry Tools
-
-Besides importing vector data through the assets tab, you can also use the geometry drawing tools located on the upper left side of the map viewer to manually create points, line or polygons.
-
-We will explore how to configure geometries in the [Classifying Imagery](https://geohackweek.github.io/GoogleEarthEngine/04-classify-imagery/) section of this tutorial.  
-
-<br>
-<br>
-
-### Getting Help
+## Getting Help
 
 There are many entry points for getting help tucked into the Code Editor. Familiarizing yourself with these tools can help soften the learning curve.
 
@@ -257,5 +250,3 @@ from Gorelick et. al. (2017)
 
 <br>
 <br>
-
-Link to the full code we used in this lesson: [https://code.earthengine.google.com/be0541e89d66904395656def37ed8932](https://code.earthengine.google.com/be0541e89d66904395656def37ed8932)
