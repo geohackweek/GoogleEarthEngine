@@ -22,29 +22,18 @@ keypoints:
 *Note: If you do not have access to the shared code repository for this tutorial, a static version of the full script used in this module can be found here:
 [(https://code.earthengine.google.com/37ca6df552bd8c19488273ff9d4f444b)](https://code.earthengine.google.com/37ca6df552bd8c19488273ff9d4f444b)
 
+# Overview: Satellite Imagery at Regional Scales
+Most satellite products are broken up into tiles for distribution. Global Landsat data is broken up in ~180 km^2 scenes, with unique path/row identifiers. 455 scenes cover the United States. Each scene is currently imaged every 16 days by Landsat 8, and every 16 days by Landsat 7 (approximately 45 times each year). The edges of each path overlap, providing increased temporal frequency in these areas. However, cloudy skies during satellite overpass and other acquisition anomalies make certain scenes or pixels unusable. 
 
-### Manipulate Image Data: Mask clouds
-The `Docs` tab in the upper left panel provides a description of all the available functions for image manipulation under the `ee.Image` dropdown menu. There are a lot, including mathematical and boolean operators, convolutions and focal statistics, and spectral transformations and analyses of spatial texture. Browse the list, or read about general operations available in the [GEE Developer's Guide "Image Overview"" section](https://developers.google.com/earth-engine/image_overview).
-
-Here, we'll make use of the `cfmask` cloud band provided with the SR products to mask pixels with clouds and cloud shadows. We will mask pixels in the image based on the value of cfmask.
-
-{% highlight javascript %}
-// mask pixels with clouds and cloud shadows
-// surface reflectance products come with a 'cfmask' layer
-// 0 = clear, 1 = water, 2 = cloud shadows, 3 = snow, 4 = clouds
-
-// extract the 'cfmask' band, and use this band to mask all image bands  
-var cfmask = image.select('cfmask');  
-// keep pixels not equal (neq) to 2 or 4
-var imageMasked = image.updateMask(cfmask.neq(2)).updateMask(cfmask.neq(4));  
-
-// visualize the masked image
-Map.addLayer(imageMasked, {bands: ['B4', 'B3', 'B2'], min: 0, max: 2000}, 'clouds masked');
-{% endhighlight %}
-
+Landsat scenes covering the United States:
 <br>
-<img src="../fig/03_tccSeattleMasked.png" border = "10">
+<img src="../fig/03_conusLandsat.png" border = "10">
 <br><br>
+
+For most regional scale applications, you will need to combine multiple satellite images to fully cover your spatial extent and fill in missing data caused by clouds, etc. Google Earth Engine (GEE) is particularly well suited to these tasks. 
+
+# Exercise: Acquire Landsat Data for Your Watershed
+Here, we will leverage GEE to create a composite satellite image during the peak growing season for a watershed of interest.
 
 ## Mosaicking Multiple Images: Image Collections
 A stack or time series of images are called `Image Collections`. Each data source available on GEE has it's own Image Collection and ID (for example, the [Landsat 5 SR collection](https://code.earthengine.google.com/dataset/LANDSAT/LT5_SR), the [GRIDMET meteorological data collection](https://code.earthengine.google.com/dataset/IDAHO_EPSCOR/GRIDMET)). You can also create image collections from individual images or merge existing collections. More information on Image Collections can be found [here in the GEE Developer's Guide](https://developers.google.com/earth-engine/ic_creating).
@@ -94,6 +83,29 @@ More information about mapping functions over image collections can be found [he
 The .map() concept applies to `featureCollections` as well - to apply a function to each feature in a collection, we map that function across the featureCollection with featureCollection.map(). See ["Mapping over a Feature Collection"](https://developers.google.com/earth-engine/feature_collection_mapping) in the Developer's Guide.
 
 #### Mask clouds over an image collection
+
+### Manipulate Image Data: Mask clouds
+The `Docs` tab in the upper left panel provides a description of all the available functions for image manipulation under the `ee.Image` dropdown menu. There are a lot, including mathematical and boolean operators, convolutions and focal statistics, and spectral transformations and analyses of spatial texture. Browse the list, or read about general operations available in the [GEE Developer's Guide "Image Overview"" section](https://developers.google.com/earth-engine/image_overview).
+
+Here, we'll make use of the `cfmask` cloud band provided with the SR products to mask pixels with clouds and cloud shadows. We will mask pixels in the image based on the value of cfmask.
+
+{% highlight javascript %}
+// mask pixels with clouds and cloud shadows
+// surface reflectance products come with a 'cfmask' layer
+// 0 = clear, 1 = water, 2 = cloud shadows, 3 = snow, 4 = clouds
+
+// extract the 'cfmask' band, and use this band to mask all image bands  
+var cfmask = image.select('cfmask');  
+// keep pixels not equal (neq) to 2 or 4
+var imageMasked = image.updateMask(cfmask.neq(2)).updateMask(cfmask.neq(4));  
+
+// visualize the masked image
+Map.addLayer(imageMasked, {bands: ['B4', 'B3', 'B2'], min: 0, max: 2000}, 'clouds masked');
+{% endhighlight %}
+
+<br>
+<img src="../fig/03_tccSeattleMasked.png" border = "10">
+<br><br>
 Here, we explicitly define a new function called "maskClouds" and apply it to each image in the imageCollection by using `imageCollection.map()`. Functions need to explicitly **return** the final output.
 
 {% highlight javascript %}
