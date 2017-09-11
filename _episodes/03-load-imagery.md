@@ -148,30 +148,20 @@ Map.addLayer(ee.Image(l8collection.first()), visParams, 'original')
 <img src="../fig/03_masked.png" border = "10">
 <br><br>
 
-
-
+#### Calculate NDVI and Add Band to Images
+Similarly, if we want to calculate the NDVI in each image and add it as a new band, we need to create a function and map it over the collection.
 
 {% highlight javascript %}
-// create function to mask clouds, cloud shadows, snow
-var maskClouds = function(img){
-  var cfmask = img.select('cfmask');    
-  return img.updateMask(cfmask.eq(0));   // keep clear (0) pixels
+// create function to add NDVI using NIR (B5) and the red band (B4)
+var getNDVI = function(img){
+  return img.addBands(img.normalizedDifference(['B5','B4']).rename('NDVI'));
 };
 
-// use "map" to apply the function to each image in the collection
-var cMasked = cWA.map(maskClouds);
-{% endhighlight %}
+// map over image collection
+var l8ndvi = l8masked.map(getNDVI);
 
-#### Calculate NDVI and Add Band to Images
-You can also map **anonymous functions** over image collections instead of explicitly defining new functions. In the example below, we apply an anonymous function in which each image in the collection is referred to by the 'img' variable name.
-
-{% highlight javascript %}
-// Calculate NDVI and add as a new band
-// use "map" to apply an anonymous function to each image
-var cNDVI = cMasked.map(function(img){
-  // add a NDVI band to each image
-  return img.addBands(img.normalizedDifference(['B5','B4']).rename('NDVI'));
-});
+// print one image to see the band is now there
+print(ee.Image(l8ndvi.first()));
 {% endhighlight %}
 
 ### Image Mosaics: Create an Image Composite from Collection
