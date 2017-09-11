@@ -20,49 +20,79 @@ keypoints:
 ---
 
 *Note: If you do not have access to the shared code repository for this tutorial, a static version of the full script used in this module can be found here:
-[(https://code.earthengine.google.com/37ca6df552bd8c19488273ff9d4f444b)](https://code.earthengine.google.com/37ca6df552bd8c19488273ff9d4f444b)
 
 # Overview: Satellite Imagery at Regional Scales
 Most satellite products are broken up into tiles for distribution. Global Landsat data is broken up in ~180 km^2 scenes, with unique path/row identifiers. 455 scenes cover the United States. Each scene is currently imaged every 16 days by Landsat 8, and every 16 days by Landsat 7 (approximately 45 times each year). The edges of each path overlap, providing increased temporal frequency in these areas. However, cloudy skies during satellite overpass and other acquisition anomalies make certain scenes or pixels unusable. 
 
-Landsat scenes covering the United States:
+
 <br>
 <img src="../fig/03_conusLandsat.png" border = "10">
+Landsat scenes covering the United States:
 <br><br>
 
 For most regional scale applications, you will need to combine multiple satellite images to fully cover your spatial extent and fill in missing data caused by clouds, etc. Google Earth Engine (GEE) is particularly well suited to these tasks. 
 
-# Exercise: Acquire Landsat Data for Your Watershed
-Here, we will leverage GEE to create a composite satellite image during the peak growing season for a watershed of interest.
+# Exercise: Acquire Landsat Data for a Watershed
+Here, we will leverage GEE to create a composite satellite image representing the peak growing season for a watershed of interest.
 
 ## Mosaicking Multiple Images: Image Collections
-A stack or time series of images are called `Image Collections`. Each data source available on GEE has it's own Image Collection and ID (for example, the [Landsat 5 SR collection](https://code.earthengine.google.com/dataset/LANDSAT/LT5_SR), the [GRIDMET meteorological data collection](https://code.earthengine.google.com/dataset/IDAHO_EPSCOR/GRIDMET)). You can also create image collections from individual images or merge existing collections. More information on Image Collections can be found [here in the GEE Developer's Guide](https://developers.google.com/earth-engine/ic_creating).
+A stack or time series of images are called `Image Collections`. Each data source available on GEE has it's own Image Collection and ID (for example, the [Landsat 5 SR collection](https://code.earthengine.google.com/dataset/LANDSAT/LT5_SR), or the [GRIDMET meteorological data collection](https://code.earthengine.google.com/dataset/IDAHO_EPSCOR/GRIDMET)). You can also create image collections from individual images or merge existing collections. More information on Image Collections can be found [here in the GEE Developer's Guide](https://developers.google.com/earth-engine/ic_creating).
 
-In order to generate images that cover large spatial areas and to fill in image gaps due to clouds, etc, we can load a full `ImageCollection` but filter the collection to return only the time periods or spatial locations that are of interest. There are shortcut filters for those commonly used (imageCollection.filterDate(), imageCollection.filterBounds()...), but any filter in the `ee.Filter()` section of the Docs tab can be used. Read more about [filters on the Developer's Guide](https://developers.google.com/earth-engine/ic_filtering).
+In order to generate images that cover large spatial areas and to fill in image gaps due to clouds, etc, we can load a full `ImageCollection` but filter the collection to return only the time periods or spatial locations that are of interest. There are shortcut filters for those commonly used (imageCollection.filterDate(), imageCollection.filterBounds()...), but most filter in the `ee.Filter()` section of the Docs tab can be used. Read more about [filters on the Developer's Guide](https://developers.google.com/earth-engine/ic_filtering).
 
 ### Load Vector Boundary
-We'll work on making a composite satellite image for the state of Washington. The easiest way to filter for an irregular location without having to identify the paths and rows of the satellite image tiles is to use a vector polygon.
+We'll work on making a composite satellite image for a watershed in the United States. The easiest way to filter for an irregular location without having to identify the paths and rows of the satellite image tiles is to use a vector polygon.
 
-There are three ways to use vector data in GEE:
+There are four ways to use vector data in GEE:
 
-* [Upload a shapefile](https://developers.google.com/earth-engine/importing) to your personal **Asset** folder in the top left panel. You can set sharing permissions on these as needed.
+* [Upload a shapefile](https://developers.google.com/earth-engine/importing) to your personal **Asset** folder in the top left panel. You can set sharing permissions on these as needed. 
+  * When you upload a vector file (called a table) to your asset folder using the "New" button under the **Assets tab** in the upper left panel of the code editor, it will be stored in 'users/yourUserName/filename' unless you create new folders within your Assets space. 
+  * Your load your asset using its GEE filepath: "users/yourUserName/subFolder/datasetName", where you can have as many or as few subfolders as you wish.
+  * For more on importing vector files, see the [Developer's Guide section on Importing Table Data](https://developers.google.com/earth-engine/importing). 
+  * **Tip**: when uploading a shapefile, you need to select all associated files (.dbf, .shx, .prf, etc) or upload a zipped file containing only one shapefile.
+* Use an existing vector dataset in GEE. (Browse the vector dataset catalog here)[https://developers.google.com/earth-engine/vector_datasets].
 * Import an existing [Google Fusion Table](https://support.google.com/fusiontables#topic=1652595), or [create your own](https://fusiontables.google.com/data?dsrcid=implicit) fusion table from a KML in WGS84.  Each fusion table has a unique Id (File > About this table) that can be used to load it into GEE. You also need to set sharing permissions similar to other items in your Google Drive if you want others to be able to access your fusion table. GEE only recently added the Asset option, so you may see folks still using fusion tables in the forums, etc. If you have the choice, I'd use an asset. We use a fusion table in the [Spatial and Temporal Reducers Module](https://geohackweek.github.io/GoogleEarthEngine/04-reducers/).
 * Manually draw points, lines, and polygons using the geometry tools in the code editor. We do this in the [Classify Imagery Module](https://geohackweek.github.io/GoogleEarthEngine/05-classify-imagery/).
 
-Here, we will use a vector asset loaded to the instructor's personal asset folder and made publicly available through the sharing menu. The file location is 'users/jdeines/vector/examples/WA'. When you upload a vector file (called a table) to your asset folder using the "New" button under the **Assets tab** in the upper left panel of the code editor, it will be stored in 'users/yourUserName/filename' unless you create new folders within your Assets space. For more on importing vector files, see the [Developer's Guide section on Importing Table Data](https://developers.google.com/earth-engine/importing). **Tip**: when uploading a shapefile, you need to select all associated files (.dbf, .shx, .prf, etc) or upload a zipped file containing only one shapefile.
+Here, we will use an existing vector asset, the [USGS Watershed Boundaries - HUC12](https://code.earthengine.google.com/dataset/USGS/WBD/2017/HUC12)
 
 In order to load a vector file from your Assets into your workspace, we need to use the "filepath" and cast it to a `ee.FeatureCollection` data type. Read more here under ["Managing Assets" in the Developer's Guide](https://developers.google.com/earth-engine/asset_manager#importing-assets-to-your-script).
 
 {% highlight javascript %}
-// load a polygon boundary (a shapefile previously uploaded to a user 'Assets' folder)
-var boundary = ee.FeatureCollection('users/jdeines/vector/examples/WA');
-print(boundary);
-Map.addLayer(boundary, {}, 'WA');
+// load a polygon boundary (here, a public vector dataset already in GEE)
+var WBD = ee.FeatureCollection("USGS/WBD/2017/HUC06");
+Map.addLayer(WBD, {}, 'watersheds')
 {% endhighlight %}
 
 <br>
-<img src="../fig/03_waBound.png" border = "10">
+<img src="../fig/03_wbd.png" border = "10">
 <br><br>
+
+#### The Inspector Tool
+GEE includes an "Inspector" tool that allows you to query all map layers at a point. We will use this to help us select one watershed from the full US map. To use the inspector tool, click on the "Inspector" tab in the upper right panel to activate it. Then click anywhere within the Map Viewer. The coordinates of your click will be displayed, along with the value for map layers at that point. 
+
+We can use this to find the "name" attribute of our watershed of interest (pick any you want!).
+
+<br>
+<img src="../fig/03_inspector.png" border = "10">
+<br><br>
+
+Once you've determined the "name" property for your watershed, use the featureCollection.filterMetadata() function to extract this watershed from the full dataset.
+
+{% highlight javascript %}
+// use the inspector tool to find the name of a watershed that interests you
+var boundary = WBD.filterMetadata('name', 'equals', 'Republican');
+
+print(boundary);
+Map.centerObject(boundary,7);
+Map.addLayer(boundary, {}, 'WA');
+{% endhighlight %}
+
+Watershed of interest: The Republican River Basin
+<br>
+<img src="../fig/03_republican.png" border = "10">
+<br><br>
+
 
 ### Load an image collection based on filter criteria
 Here, we are selecting all imagery in the [Landsat 8 surface reflection collection](https://code.earthengine.google.com/dataset/LANDSAT/LC8_SR) (image collection IDs are found in the "Search" toolbar at the top of the code editor or through searcing the [data archive](https://code.earthengine.google.com/datasets/)) for the year 2016 that overlies the Washington state vector polygon we loaded above as the variable "boundary".
