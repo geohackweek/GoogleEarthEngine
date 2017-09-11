@@ -81,11 +81,11 @@ Once you've determined the "name" property for your watershed, use the featureCo
 
 {% highlight javascript %}
 // use the inspector tool to find the name of a watershed that interests you
-var boundary = WBD.filterMetadata('name', 'equals', 'Republican');
+var watershed = WBD.filterMetadata('name', 'equals', 'Republican');
 
-print(boundary);
-Map.centerObject(boundary,7);
-Map.addLayer(boundary, {}, 'WA');
+print(watershed);
+Map.centerObject(watershed,7);
+Map.addLayer(watershed, {}, 'watershed');
 {% endhighlight %}
 
 Watershed of interest: The Republican River Basin
@@ -95,48 +95,61 @@ Watershed of interest: The Republican River Basin
 
 
 ### Load an image collection based on filter criteria
-Here, we are selecting all imagery in the [Landsat 8 surface reflection collection](https://code.earthengine.google.com/dataset/LANDSAT/LC8_SR) (image collection IDs are found in the "Search" toolbar at the top of the code editor or through searcing the [data archive](https://code.earthengine.google.com/datasets/)) for the year 2016 that overlies the Washington state vector polygon we loaded above as the variable "boundary".
+Here, we are selecting all imagery in the [Landsat 8 surface reflection collection](https://code.earthengine.google.com/dataset/LANDSAT/LC8_SR) (image collection IDs are found in the "Search" toolbar at the top of the code editor or through searcing the [data archive](https://code.earthengine.google.com/datasets/)) for the year 2016 that overlies the watershed vector polygon we loaded above as the variable "watershed".
 
 {% highlight javascript %}
 // load all Landsat 8 SR image within polygon boundary for 2016
-var cWA = ee.ImageCollection('LANDSAT/LC8_SR')
-          .filterBounds(boundary)
+var l8collection = ee.ImageCollection('LANDSAT/LC8_SR')
+          .filterBounds(watershed)
           .filterDate('2016-01-01', '2016-12-31');
-print(cWA);
+print(l8collection);
 {% endhighlight %}
 
+Printing our filtered collection to console tells us how many images are in our filter (262) as well as the band names and properties for the images in our collection:
+<br>
+<img src="../fig/03_collection.png" border = "10">
+<br><br>
+
 ### Mapping functions: mask clouds, calculate new band
-As you can see by browsing the `Docs` tab in the upper left panel of the code editor, there are GEE functions specific to both the `Image` and `ImageCollection` data types. Often, we want to use a function specific to images on all images in an image collection. To do so, we need to essentially "loop" through each image in the image collection. In GEE, "loops" are accomplished with the .map() function. **Avoid actual loops at all costs.** Using imageCollection.map() sends the operation to Google's servers for distributed runs. Loops implemented in typical JavaScript fashion bring the operation into the browser, and won't work.
+As you can see by browsing the `Docs` tab in the upper left panel of the code editor, there are GEE functions specific to both the `Image` and `ImageCollection` data types. There are a lot, including mathematical and boolean operators, convolutions and focal statistics, and spectral transformations and analyses of spatial texture. Browse the list, or read about general operations available in the [GEE Developer's Guide "Image Overview"" section](https://developers.google.com/earth-engine/image_overview).
+
+Often, we want to use a function specific to images on all images in an image collection. To do so, we need to essentially "loop" through each image in the image collection. In GEE, "loops" are accomplished with the .map() function. **Avoid actual loops at all costs.** Using imageCollection.map() sends the operation to Google's servers for distributed runs. Loops implemented in typical JavaScript fashion bring the operation into the browser, and won't work well, if at all.
 
 More information about mapping functions over image collections can be found [here in the Developer's Guide](https://developers.google.com/earth-engine/ic_mapping).
 
 The .map() concept applies to `featureCollections` as well - to apply a function to each feature in a collection, we map that function across the featureCollection with featureCollection.map(). See ["Mapping over a Feature Collection"](https://developers.google.com/earth-engine/feature_collection_mapping) in the Developer's Guide.
 
 #### Mask clouds over an image collection
+Here, we'll make use of the `cfmask` cloud band provided with the SR products to mask pixels with clouds, cloud shadows, and snow. We will mask pixels in the image based on the value of cfmask. 
 
-### Manipulate Image Data: Mask clouds
-The `Docs` tab in the upper left panel provides a description of all the available functions for image manipulation under the `ee.Image` dropdown menu. There are a lot, including mathematical and boolean operators, convolutions and focal statistics, and spectral transformations and analyses of spatial texture. Browse the list, or read about general operations available in the [GEE Developer's Guide "Image Overview"" section](https://developers.google.com/earth-engine/image_overview).
-
-Here, we'll make use of the `cfmask` cloud band provided with the SR products to mask pixels with clouds and cloud shadows. We will mask pixels in the image based on the value of cfmask.
+We explicitly define a new function called "maskClouds" and apply it to each image in the imageCollection by using `imageCollection.map()`. Functions need to explicitly **return** the final output.
 
 {% highlight javascript %}
 // mask pixels with clouds and cloud shadows
 // surface reflectance products come with a 'cfmask' layer
 // 0 = clear, 1 = water, 2 = cloud shadows, 3 = snow, 4 = clouds
 
-// extract the 'cfmask' band, and use this band to mask all image bands  
-var cfmask = image.select('cfmask');  
-// keep pixels not equal (neq) to 2 or 4
-var imageMasked = image.updateMask(cfmask.neq(2)).updateMask(cfmask.neq(4));  
+// create function to mask clouds, cloud shadows, snow
+var maskClouds = function(img){
+  var cfmask = img.select('cfmask');    
+  return img.updateMask(cfmask.lt(2));   // keep clear (0) pixels
+};
 
-// visualize the masked image
-Map.addLayer(imageMasked, {bands: ['B4', 'B3', 'B2'], min: 0, max: 2000}, 'clouds masked');
+// use "map" to apply the function to each image in the collection
+var l8masked = l8collection.map(maskClouds);
+
+// visualize the first image in the collection, pre- and post- mask
+var visParams = {bands: ['B4','B3','B2'], min: 150, max: 2000}
+Map.addLayer(ee.Image(l8masked.first()), visParams, 'clouds masked')
+Map.addLayer(ee.Image(l8collection.first()), visParams, 'original')
 {% endhighlight %}
 
 <br>
-<img src="../fig/03_tccSeattleMasked.png" border = "10">
+<img src="../fig/03_masked.png" border = "10">
 <br><br>
-Here, we explicitly define a new function called "maskClouds" and apply it to each image in the imageCollection by using `imageCollection.map()`. Functions need to explicitly **return** the final output.
+
+
+
 
 {% highlight javascript %}
 // create function to mask clouds, cloud shadows, snow
