@@ -3,9 +3,9 @@ title: "Accessing Satellite Imagery"
 teaching: 5
 exercises: 30
 questions:
-- How do I acquire satellite imagery?
+- How do I acquire satellite imagery at regional scales?
 - How can I make image mosaics?
-- How can I use my own vector data?
+- How can I use vector data?
 - How do I export images?
 objectives:
 - Learn how to access images based on filter criteria
@@ -13,7 +13,7 @@ objectives:
 - Understand how to map functions across image collections
 - Learn how to export images for later use
 keypoints:
-- Satellite data can be loaded by specific image names or by loading a full image collection and filtering based on criteria such as time period and location
+- Regional satellite data can be accessed by loading a full image collection and filtering based on criteria such as time period and location
 - Images can be manipulated similar to raster math, and new bands can be calculated by mapping functions over image collections
 - Image composites can be generated quite quickly
 - Images can be exported for future use within GEE or for outside software
@@ -22,12 +22,11 @@ keypoints:
 *Note: If you do not have access to the shared code repository for this tutorial, a static version of the full script used in this module can be found here:
 
 # Overview: Satellite Imagery at Regional Scales
-Most satellite products are broken up into tiles for distribution. Global Landsat data is broken up in ~180 km^2 scenes, with unique path/row identifiers. 455 scenes cover the United States. Each scene is currently imaged every 16 days by Landsat 8, and every 16 days by Landsat 7 (approximately 45 times each year). The edges of each path overlap, providing increased temporal frequency in these areas. However, cloudy skies during satellite overpass and other acquisition anomalies make certain scenes or pixels unusable. 
+Most satellite products are broken up into tiles for distribution. Global Landsat data is broken up in ~180 km^2 scenes, with unique path/row identifiers. 455 scenes cover the United States. Each scene is currently imaged every 16 days by Landsat 8, and every 16 days by Landsat 7 (approximately 45 times each year). The edges of each path overlap, providing increased temporal frequency in these areas. However, cloudy skies during satellite overpass and other acquisition anomalies make certain scenes or pixels unusable.
 
-
+Landsat scenes covering the United States:
 <br>
 <img src="../fig/03_conusLandsat.png" border = "10">
-Landsat scenes covering the United States:
 <br><br>
 
 For most regional scale applications, you will need to combine multiple satellite images to fully cover your spatial extent and fill in missing data caused by clouds, etc. Google Earth Engine (GEE) is particularly well suited to these tasks. 
