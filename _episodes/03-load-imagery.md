@@ -149,12 +149,18 @@ Map.addLayer(ee.Image(l8collection.first()), visParams, 'original')
 <br><br>
 
 #### Calculate NDVI and Add Band to Images
-Similarly, if we want to calculate the NDVI in each image and add it as a new band, we need to create a function and map it over the collection.
+Similarly, if we want to calculate the NDVI in each image and add it as a new band, we need to create a function and map it over the collection. Here, we use the `normalizedDifference()` function. The [Mathematical Operations page in the GEE Developer's Guide](https://developers.google.com/earth-engine/image_math) provides more information about simple and complex raster calculations. 
 
 {% highlight javascript %}
 // create function to add NDVI using NIR (B5) and the red band (B4)
 var getNDVI = function(img){
   return img.addBands(img.normalizedDifference(['B5','B4']).rename('NDVI'));
+};
+
+// extra example: an equivalent function using straight band math
+var getNDVI2 = function(img){
+  return img.addBands(img.select('B5').subtract(img.select('B4'))
+            .divide(img.select('B5').add(img.select('B3'))));
 };
 
 // map over image collection
@@ -165,29 +171,29 @@ print(ee.Image(l8ndvi.first()));
 {% endhighlight %}
 
 ### Image Mosaics: Create an Image Composite from Collection
-We now need to assemble the image collection to create one continuous image across Washington state. There are several mosaicking/compositing options available, from simple maximum value composites (`imageCollection.max()`) and straightforward mosaics with the most recent image on top (`imageCollection.mosaic()`). The [Compositing and Mosaicking page on the Developer's Guide](https://developers.google.com/earth-engine/ic_composite_mosaic) provides examples of these.
+We now need to assemble the image collection to create one continuous image across the watershed. There are several mosaicking/compositing options available, from simple maximum value composites (`imageCollection.max()`) and straightforward mosaics with the most recent image on top (`imageCollection.mosaic()`). The [Compositing and Mosaicking page on the Developer's Guide](https://developers.google.com/earth-engine/ic_composite_mosaic) provides examples of these.
 
 Here, we will use the `imageCollection.qualityMosaic()` function. By prioritizing the image to use based on one specific band, this method ensures that the values across all bands are taken from the same image. Each pixel gets assigned the values from the image with the highest value of the desired band.
 
-We will use this to make a "greenest pixel composite" for Washington state based on the NDVI band we just calculated. The final composite image will retain all bands in the input (unless we were to specify otherwise). Each pixel in the composite image could potentially come from imagery acquired on different dates, but all bands within each pixel are from the same image. In general, this provides a snapshot of the landscape at the peak of the growing season, regardless of the phenological timing within the year.
+We will use this to make a "greenest pixel composite" for our watershed based on the NDVI band we just calculated. The final composite image will retain all bands in the input (unless we were to specify otherwise). Each pixel in the composite image could potentially come from imagery acquired on different dates, but all bands within each pixel are from the same image. In general, this provides the best available snapshot of the landscape at the peak of the growing season, regardless of the phenological timing within the year.
 
 {% highlight javascript %}
-// Make a "greenest pixel" composite for WA state
-var greenest = cNDVI.qualityMosaic('NDVI').clip(boundary);
-print(greenest);
+// Make a "greenest pixel" composite for region of interest
+var composite = l8ndvi.qualityMosaic('NDVI').clip(watershed);
+print(composite);
 
 // Visualize NDVI
 var ndviPalette = ['FFFFFF', 'CE7E45', 'DF923D', 'F1B555', 'FCD163', '99B718',
                '74A901', '66A000', '529400', '3E8601', '207401', '056201',
                '004C00', '023B01', '012E01', '011D01', '011301'];
 Map.addLayer(greenest.select('NDVI'),
-            {min:0.1, max: 1, palette: ndviPalette}, 'ndvi');
+            {min:0, max: 1, palette: ndviPalette}, 'ndvi');
 {% endhighlight %}
 
-Annual maximum NDVI across Washington:
+Annual maximum NDVI across the watershed:
 
 <br>
-<img src="../fig/03_waNDVI.png" border = "10">
+<img src="../fig/03_ndvi.png" border = "10">
 <br><br>
 
 We can also use this composite image to visualize a true color composite using the RGB bands as we did above:
