@@ -20,12 +20,12 @@ keypoints:
 ## Closing Thoughts
 
 In this tutorial, you learned
-- A basic overview of Google Earth Engine (GEE): [Introduction to Google Earth Engine](https://geohackweek.github.io/GoogleEarthEngine/01-introduction/)
-- How to navigate the code editor: [Code Editor](https://geohackweek.github.io/GoogleEarthEngine/02-code-editor/)
-- How to work with regional scale satellite imagery [Accessing Satellite Imagery](https://geohackweek.github.io/GoogleEarthEngine/03-load-imagery/)
-- How to aggregate images through both time and space: [Temporal and Spatial Reducers](https://geohackweek.github.io/GoogleEarthEngine/04-reducers/)
-- How to classify imagery for different land uses: [Classifying Satellite Imagery](https://geohackweek.github.io/GoogleEarthEngine/05-classify-imagery/)
-- How to interactively plot a time series: [Time Series](https://geohackweek.github.io/GoogleEarthEngine/06-time-series/)
+- [1. Introduction to Google Earth Engine](https://geohackweek.github.io/GoogleEarthEngine/01-introduction/): A basic overview of Google Earth Engine (GEE)
+- [2. Code Editor](https://geohackweek.github.io/GoogleEarthEngine/02-code-editor/): How to navigate the code editor
+- [3. Accessing Satellite Imagery](https://geohackweek.github.io/GoogleEarthEngine/03-load-imagery/): How to work with regional scale satellite imagery
+- [4. Temporal and Spatial Reducers](https://geohackweek.github.io/GoogleEarthEngine/04-reducers/): How to aggregate images through both time and space
+- [5. Classifying Satellite Imagery](https://geohackweek.github.io/GoogleEarthEngine/05-classify-imagery/): How to classify imagery for different land uses
+- [6. Time Series](https://geohackweek.github.io/GoogleEarthEngine/06-time-series/): How to interactively plot a time series
 
 GEE was designed with a disciplinary scientist in mind (that's you!). Don't hesitate to dig into the documentation, start discussions on the forum, suggest datasets and give feedback along the way.
 <br>
