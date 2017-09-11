@@ -186,25 +186,24 @@ print(composite);
 var ndviPalette = ['FFFFFF', 'CE7E45', 'DF923D', 'F1B555', 'FCD163', '99B718',
                '74A901', '66A000', '529400', '3E8601', '207401', '056201',
                '004C00', '023B01', '012E01', '011D01', '011301'];
-Map.addLayer(greenest.select('NDVI'),
+Map.addLayer(composite.select('NDVI'),
             {min:0, max: 1, palette: ndviPalette}, 'ndvi');
 {% endhighlight %}
 
-Annual maximum NDVI across the watershed:
+Annual maximum NDVI across this watershed highlight irrigated agricultural areas:
 
 <br>
 <img src="../fig/03_ndvi.png" border = "10">
 <br><br>
 
-We can also use this composite image to visualize a true color composite using the RGB bands as we did above:
+We can also use this composite image to visualize a true color composite using the RGB bands:
 
 {% highlight javascript %}
 // Visualize true color composite
-Map.addLayer(greenest, {bands: ['B4', 'B3', 'B2'], min: 0, max: 2000}, 'WA tcc', false);
-{% endhighlight %}
+Map.addLayer(composite, {bands: ['B4', 'B3', 'B2'], min: 0, max: 2000}, 'tcc', false);{% endhighlight %}
 
 <br>
-<img src="../fig/03_waTCC.png" border = "10">
+<img src="../fig/03_tcc.png" border = "10">
 <br><br>
 
 ## Exporting Composite Images
