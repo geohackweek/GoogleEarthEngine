@@ -19,7 +19,7 @@ keypoints:
 - Images can be exported for future use within GEE or for outside software
 ---
 
-*Note: If you do not have access to the shared code repository for this tutorial, a static version of the full script used in this module can be found here:
+*Note: If you do not have access to the shared code repository for this tutorial, a static version of the full script used in this module can be found here: [https://code.earthengine.google.com/4f917c4b12ebcfd3302dfe2bd5efda10](https://code.earthengine.google.com/4f917c4b12ebcfd3302dfe2bd5efda10)
 
 # Overview: Satellite Imagery at Regional Scales
 Most satellite products are broken up into tiles for distribution. Global Landsat data is broken up in ~180 km^2^ scenes, with unique path/row identifiers. 455 scenes cover the United States. Each scene is currently imaged every 16 days by Landsat 8, and every 16 days by Landsat 7 (approximately 45 times each year). The edges of each path overlap, providing increased temporal frequency in these areas. However, cloudy skies during satellite overpass and other acquisition anomalies make certain scenes or pixels unusable.
@@ -219,7 +219,6 @@ var modis = ee.ImageCollection('MODIS/MOD13Q1')
 
 // Chart annual time series of mean NDVI in watershed
 // Option 1: Straight to a chart object
-// Can export chart data using pop out arrow on chart 
 var chart = ui.Chart.image.seriesByRegion({
     imageCollection: modis, 
     regions: watershed, 
@@ -228,10 +227,43 @@ var chart = ui.Chart.image.seriesByRegion({
 print(chart)
 {% endhighlight %}
 
+Note you can export the chart's underlying data using the arrow pop-out icon..
 <br>
 <img src="../fig/03_chart.png" border = "10">
 <br><br>
 
+### Scripting the table export
+Here's another way to export the mean NDVI for our watershed by MODIS date. This way has the benefit of being scripted and thus fully reproducible. 
+
+{% highlight javascript %}
+// Option 2: sample to a feature collection and export
+// get the mean value for the region from each image
+ var ts = modis.map(function(image){
+   var date = image.get('system:time_start');
+   var mean = image.reduceRegion({
+     reducer: ee.Reducer.mean(),
+     geometry: watershed,
+     scale: 250
+   });
+   // and return a feature with 'null' geometry with properties (dictionary)  
+   return ee.Feature(null, {'mean': mean.get('NDVI'),
+                            'date': date})
+});
+
+// Export a .csv table of date, mean NDVI for watershed
+Export.table.toDrive({
+  collection: ts,
+  description: 'MODIS_NDVI_watershedMean',
+  folder: 'GEE_geohackweek',
+  fileFormat: 'CSV'
+});
+{% endhighlight %}
+
+To execute export tasks, you need to then go to the 'Tasks' tab in the upper right panel and hit 'Run'.
+
+<br>
+<img src="../fig/03_runTask.png" border = "10">
+<br><br>
 
 ## Exporting Composite Images
 Users can export the results of their image manipulations to their GEE Asset folder for downstream use within GEE or to their personal Google Drive or Google Cloud Storage accounts. Here, we export a single-band image of annual maximum NDVI for Washington state. Examples are provided for asset and Google Drive exports. More information can be found [here in the Developers Guide](https://developers.google.com/earth-engine/exporting).
