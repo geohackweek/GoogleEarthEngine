@@ -22,7 +22,7 @@ keypoints:
 *Note: If you do not have access to the shared code repository for this tutorial, a static version of the full script used in this module can be found here:
 
 # Overview: Satellite Imagery at Regional Scales
-Most satellite products are broken up into tiles for distribution. Global Landsat data is broken up in ~180 km^2 scenes, with unique path/row identifiers. 455 scenes cover the United States. Each scene is currently imaged every 16 days by Landsat 8, and every 16 days by Landsat 7 (approximately 45 times each year). The edges of each path overlap, providing increased temporal frequency in these areas. However, cloudy skies during satellite overpass and other acquisition anomalies make certain scenes or pixels unusable.
+Most satellite products are broken up into tiles for distribution. Global Landsat data is broken up in ~180 km^2^ scenes, with unique path/row identifiers. 455 scenes cover the United States. Each scene is currently imaged every 16 days by Landsat 8, and every 16 days by Landsat 7 (approximately 45 times each year). The edges of each path overlap, providing increased temporal frequency in these areas. However, cloudy skies during satellite overpass and other acquisition anomalies make certain scenes or pixels unusable.
 
 Landsat scenes covering the United States:
 <br>
