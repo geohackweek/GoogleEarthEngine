@@ -135,7 +135,7 @@ The geometry drawing tools located on the upper left side of the map viewer can 
 1. Type "Lee Vining" into the search toolbar and hit enter. This will zoom you to Eastern California.
 2. On the left side of the map, click the little Google Pin icon. Your cursor should then turn into crosshairs.
 3. Toggle around the map and drop the pin in the center of Mono Lake, which is right next to Lee Vining.
-4. Now, go to the Geometry Imports window that has now appeared. In that window, name the point "roi" and change the dropdown from **Geometry** to **roi**.
+4. Now, go to the Geometry Imports window that has now appeared. In that window, name the point "roi" and change the dropdown from **Geometry** to **FeatureCollection**.
 
 You have now created a new point object and cast it as a `FeatureCollection`. You can now use this  `FeatureCollection` as a way to geographically filter datasets for just your region.
 
@@ -149,7 +149,7 @@ One of the major benefits of the JavaScript versus Python API is the ability to 
   - filtering it down to just one year of images (2016)
   - sorting the images by the overall cloud cover (least cloudy to most cloudy)
   - picking the top image (least cloudy)
-  
+
 Essentially, this allows us to sort through the full Landsat 8 collection and load the best image available for our region of interest for 2016.
 
 {% highlight javascript %}
@@ -165,7 +165,7 @@ var image = ee.Image(ee.ImageCollection('L8_TOA')
     .first());
 {% endhighlight %}
 
-We have now filtered the ENTIRE Landsat 8 archive down to the least cloudy image for our study area in 2016. However, we still need to visualize it, whiuch we will do using the `Map.addLayer` function. Not sure what this function does? Search for it in the **Docs** tab to learn the arguments.
+We have now filtered the ENTIRE Landsat 8 archive down to the least cloudy image for our study area in 2016. However, we still need to visualize it, which we will do using the `Map.addLayer` function. Not sure what this function does? Search for it in the **Docs** tab to learn the arguments.
 
 {% highlight javascript %}
 Map.addLayer(image,{},  "L8 Image");

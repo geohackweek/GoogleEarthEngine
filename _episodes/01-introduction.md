@@ -36,7 +36,7 @@ Google Earth Engine enables users to compute on petabytes of data on the fly wit
 
 Smaller scale use cases might include:
 - calculating a time series of precipitation over a study area
-- locating and exporting a digital elevation model from a global dataset
+- extracting and exporting a digital elevation model from a global dataset
 - calculating a regional snow index from satellite imagery
 - creating a machine learning model for flood prediction using a combination of raw satellite imagery and satellite data products (i.e. elevation, aspect, precipitation)
 ***
