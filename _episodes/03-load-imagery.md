@@ -24,7 +24,8 @@ keypoints:
 # Overview: Satellite Imagery at Regional Scales
 Most satellite products are broken up into tiles for distribution. Global Landsat data is broken up in ~180 km^2^ scenes, with unique path/row identifiers. 455 scenes cover the United States. Each scene is currently imaged every 16 days by Landsat 8, and every 16 days by Landsat 7 (approximately 45 times each year). The edges of each path overlap, providing increased temporal frequency in these areas. However, cloudy skies during satellite overpass and other acquisition anomalies make certain scenes or pixels unusable.
 
-Landsat scenes covering the United States:
+<br>
+**455 Landsat scenes cover the United States:**
 <br>
 <img src="../fig/03_conusLandsat.png" border = "10">
 <br><br>
@@ -199,11 +200,38 @@ We can also use this composite image to visualize a true color composite using t
 
 {% highlight javascript %}
 // Visualize true color composite
-Map.addLayer(composite, {bands: ['B4', 'B3', 'B2'], min: 0, max: 2000}, 'tcc', false);{% endhighlight %}
+Map.addLayer(composite, {bands: ['B4', 'B3', 'B2'], min: 0, max: 2000}, 'tcc', false);
+{% endhighlight %}
 
 <br>
 <img src="../fig/03_tcc.png" border = "10">
 <br><br>
+
+## Bonus: Playing with Charts
+To briefly illustrate GEE's ability to display data charts, we load a MODIS NDVI data product to chart the annual time series of mean NDVI for our watershed. Charting is also covered in the [Spatial and Temporal Reducers Module](https://geohackweek.github.io/GoogleEarthEngine/04-reducers/).
+
+{% highlight javascript %}
+// add satellite time series: MODIS NDVI 250m 16 day product
+var modis = ee.ImageCollection('MODIS/MOD13Q1')
+          .filterBounds(watershed)
+          .filterDate('2016-01-01', '2016-12-31')
+          .select("NDVI");
+
+// Chart annual time series of mean NDVI in watershed
+// Option 1: Straight to a chart object
+// Can export chart data using pop out arrow on chart 
+var chart = ui.Chart.image.seriesByRegion({
+    imageCollection: modis, 
+    regions: watershed, 
+    reducer: ee.Reducer.mean(),
+})
+print(chart)
+{% endhighlight %}
+
+<br>
+<img src="../fig/03_chart.png" border = "10">
+<br><br>
+
 
 ## Exporting Composite Images
 Users can export the results of their image manipulations to their GEE Asset folder for downstream use within GEE or to their personal Google Drive or Google Cloud Storage accounts. Here, we export a single-band image of annual maximum NDVI for Washington state. Examples are provided for asset and Google Drive exports. More information can be found [here in the Developers Guide](https://developers.google.com/earth-engine/exporting).
