@@ -31,21 +31,23 @@ As Gorelick et al. (2017) write in the new *[Remote Sensing of the Environment](
 
 Google Earth Engine enables users to compute on petabytes of data on the fly without having the navigate the complexities of cloud-based parallelization. Enhancing inclusive access has spurred the growth of environmental projects conducted at scales previously unimaginable. Example uses cases that have leveraged the full power of GEE include:
 
-- [Global Forest Watch](http://www.globalforestwatch.org/). Global Forest Watch is a forest monitoring and conservation tool based on the the Hansen dataset. The Hansen dataset was created in Earth Engine and leverages the entire Landsat archive to map forest loss and gain at a global scale. [Hansen Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_forest_01)
+- [Global Forest Watch](http://www.globalforestwatch.org/) Global Forest Watch is a forest monitoring and conservation tool based on the the Hansen dataset. The Hansen dataset was created in Earth Engine and leverages the entire Landsat archive to map forest loss and gain at a global scale. [Hansen Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_forest_01)
 
 - [Global Surface Water Occurrence Map](https://global-surface-water.appspot.com/) maps the temporal and spatial distribution of water on a global scale over the past three decades. [Global Surface Water Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_global_surface_water_01)
 
-Other use cases might include:
-- calculating a time series of precipitation over a study area
-- extracting and exporting a digital elevation model from a global dataset
-- calculating a regional snow index from satellite imagery
-- creating a machine learning model for flood prediction using a combination of raw satellite imagery and satellite data products (i.e. elevation, aspect, precipitation)
 ***
 
 ![alt text](https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/76fuygfd.gif)
 
 Forest loss in Sumatra's Riau province, Indonesia, 2000-2012. Credit: Hansen, Potapov, Moore, Hancher et al., 2013
 ***
+
+Other use cases might include:
+
+- extracting and exporting a digital elevation model from a global dataset
+- calculating a regional snow index from satellite imagery
+- calculating a [time series]https://developers.google.com/earth-engine/charts_image_series_by_region of precipitation over a study area
+- creating a machine learning model for flood prediction using a combination of raw satellite imagery and satellite data products (i.e. elevation, aspect, precipitation) [Cloud to Street](http://www.cloudtostreet.info/contact-us.html)
 
 
 ## How does it work?
@@ -55,7 +57,7 @@ Google Earth Engine brings together three key data science concepts:
  - Free massive cloud processing with algorithm primitives
  - Co-locating computing with data
 
-You can access Google Earth Engine through a few different channels, including a non-programming GUI, the JavaScript API and the Python API. For this class we are using the JavaScript API because it is the most developed, although [training materials on accessing GEE using Python](https://developers.google.com/earth-engine/python_install) are now available on the GEE website.
+You can access Google Earth Engine through a few different channels, including a non-programming GUI, the JavaScript API and the Python API. For this class we are using the JavaScript API, but [training materials on accessing GEE using Python](https://developers.google.com/earth-engine/python_install) are now available on the GEE website.
 
 <br>
 <img src="../fig/01_GEEinterfaces.png" border = "10">
@@ -74,7 +76,7 @@ The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, incl
 
 ### Can I suggest datasets?
 
-Users can also recommend datasets from the Javascript API Code Editor window.
+Users can also recommend datasets from the Javascript API Code Editor window by going the *Help* button on the top right and selecting *Suggest a dataset*.
 
 <br>
 <img src="../fig/01_datasetsuggest.png" border = "10">
@@ -85,10 +87,10 @@ Users can also recommend datasets from the Javascript API Code Editor window.
 
 - operate on petabytes of imagery using Google's cloud
 - export your analysis
-- import and export your own raster and vector data
+- import and export your own raster and vector data (assets)
+- share your own raster and vector data
 - embed outputs in apps
 - store, share and version control your code
-- share your uploaded personal assets with other users
 
 ### What is GEE NOT designed for?
 
