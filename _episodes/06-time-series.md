@@ -24,61 +24,45 @@ This code allows users to dynamically generate time series plots for from points
 
 ## Define User Specifications
 
-This script is structured to make it easy for the user to select different images, dates and regions. For this exercise, we are going to leave the parameters as they are to set the extent as a study area in the Midwest. We are going to define the year that we want and also the imagery source folder.
-
+This script is structured to make it easy for the user to select different images, dates and regions. For this exercise, we are going to leave the parameters as they are to set the extent as a study area in the Midwest, the Republican River Basin
 
 {% highlight javascript %}
-
-// User specs ---------------------------------------------------------------------------
-
-// 1) set extent
-// load WBD dataset & select watershed of interest
+// load WBD dataset & select the Republican watershed
 var WBD = ee.FeatureCollection("USGS/WBD/2017/HUC06");
+Map.addLayer(WBD, {}, 'watersheds');
 var setExtent = WBD.filterMetadata('name', 'equals', 'Republican');
 
-// 2) set year
-var year = 2010;
-
-// 3) specify imagery sources
-var imageFolder = 'users/jdeines/HPA/'
-
-// End user specs -------------------------------------------------------------
 {% endhighlight %}
 <br>
 
 ## Load High Resolution Crop Imagery
 
-Here we are loading three different types of high resolution crop imagery. We are calling the years and folder names we specified at the beginning of the script. The first two datasets are already in Earth Engine. The third dataset is an Greenness index calculated from Landsat imagery. Instead of calculating the GI on the fly in this code, Jill pre-computed the index, exported the rasters and then is calling the pre-made raster. Practices like this can help speed up your code.
+Here we are loading three different types of high resolution crop imagery. The first two datasets are already in Earth Engine. The third dataset is an Greenness index calculated from Landsat imagery. Instead of calculating the GI on the fly in this code, Jill pre-computed the index, exported the raster and is calling the pre-made raster. Practices like this can help speed up your code.
 
-1. Cropland Data Layer (CDL) from the USDA National Agriculture Statistics Service at 30 meters resolution. This is generated annually. Each pixel is assigned a value that corresponds to a specific crop.
+1. Cropland Data Layer (CDL) from the USDA National Agriculture Statistics Service at 30 meters resolution. This is generated annually from 2008-present. Each pixel is assigned a value that corresponds to a specific crop.
 
-2. The National Agricultural Imagery Program (NAIP) aerial imagery from the USDA. This imagery has a 1 meter (!) ground sampling distance. This is a three band raster used to depict natural color imagery (RGB).
+2. The National Agricultural Imagery Program (NAIP) aerial imagery from the USDA. This imagery has a 1 meter (!) ground sampling distance. This is a three band raster used to depict natural color imagery (RGB). States are imaged every 2-3 years on a rotating cycle.
 
 3.  A derived Greenness Index derived from Landsat imagery (30 m) specific to the study area. This index is computed by taking a composite of the greenest pixel, defined as the pixel with the highest NDVI, for a given time period.
 
 {% highlight javascript %}
-// Load imagery ------------------------------------------------------------------
+// CDL: USDA Cropland Data Layers
+var cdl = ee.Image('USDA/NASS/CDL/2010').select('cropland').clip(setExtent);
 
-// CDL
-var cdlName = ee.String('USDA/NASS/CDL/').cat(ee.Number(year).format());
-if (year == 2005 || year == 2007){
-  var cdlName = cdlName.cat('a');
-}
-var cdl = ee.Image(cdlName.getInfo()).clip(setExtent);
-
-// NAIP aerial photos
-var StartDate = year + '-01-01';
-var EndDate = year + '-12-31';
+// NAIP aerial photos 
+var StartDate = '2010-01-01';
+var EndDate = '2010-12-31';
 
 var naip = ee.ImageCollection('USDA/NAIP/DOQQ')
     .filterBounds(setExtent)
     .filterDate(StartDate, EndDate);
-
+    
 // Derived Landsat Composites --------------------
 
-// annual max greenness images
-var annualGreenest = ee.Image(ee.String(imageFolder).cat(ee.Number(year).format()).cat('_14_Ind_001').getInfo()).select(['GI_max_','EVI_max_14']).clip(setExtent);
-
+// annual max greenness image for background (previously exported asset)
+var annualGreenest = ee.Image('users/jdeines/HPA/2010_14_Ind_001')
+                    .select(['GI_max_14','EVI_max_14'])
+                    .clip(setExtent);
 {% endhighlight %}
 
 ## Load MODIS derived products for NDVI and EVI
@@ -103,8 +87,8 @@ var collectionModNDVI = ee.ImageCollection('MODIS/MOD13Q1')
 
 ## Visualize the High Resolution imagery
 
-Here we load the CDL, NAIP and Annual Greenest Pixel composites.
- - *Time Saving Tip:* If you are using a public dataset, often you can find nice palettes by sifting through forum posts.
+Here we map the CDL, NAIP and Annual Greenest Pixel composites.
+ - *Time Saving Tip:* If you are using a public dataset, often you can find nice palettes by sifting through forum posts. Some like the CDL come with a palette embedded.
  - *Tip:* Hexadecimal browser color picker plug-ins are helpful for figuring out which colors correspond to which codes.
  - *Tip:*: Use the `false` argument if you want to load a layer to the map but NOT have it turned on each time you run the code.
 
@@ -218,4 +202,4 @@ If you are computing the indices on the fly, or you have many points or areas of
 
 
 Link to a static version of the full script used in this module:
-[](https://code.earthengine.google.com/d9ff911b91438b2fac9187538ae89ba1)
+[https://code.earthengine.google.com/9454f7e376ea86fac80ba893fb0d622f](https://code.earthengine.google.com/9454f7e376ea86fac80ba893fb0d622f)
