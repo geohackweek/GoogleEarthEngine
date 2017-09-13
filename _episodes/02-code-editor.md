@@ -218,8 +218,11 @@ In the upper right, switch to the **Inspector** tab and click on the map where t
 
 ## STOP & PLAY
 
-On your own, play with the stretch parameters and use the Inspector to explore the map.
-If you already did that, you can play with dropping the point somewhere else and looking at that imagery.
+On your own, play with the stretch parameters and use the Inspector to explore the map, clicking between land, bare earth, forest and water.
+
+If you already did that, you can play with dropping the point somewhere else and looking at a different image of your favorite place.
+
+You could also change the dates to look at a winter time image and see how the reflectance changes when there is snow on the ground.
 
 
 ## 4. Getting Help
