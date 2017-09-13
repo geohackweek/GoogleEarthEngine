@@ -27,7 +27,7 @@ Link to the full code we used in this lesson: [https://code.earthengine.google.c
 
 # Exercise: Exploring the Code Editor
 
-## Getting Started
+## 1. Getting Started
 
 #### How do I get to the Code Editor page?
 
@@ -71,7 +71,7 @@ print("Hola Mundo!");
 <br>
 
 
-## Saving & Sharing Scripts
+## 2. Saving & Sharing Scripts
 
 #### Saving Scripts
 
@@ -105,9 +105,9 @@ Now, in the code editor, go to *Scripts > Shared* and the directory called *geoh
 
 <br>
 
-## Accessing Datasets from Google's Cloud
+## 3. Accessing Datasets from Google's Cloud
 
-### Search toolbar: Finding datasets and loading them as `ImageCollections`
+#### Search toolbar: Finding datasets and loading them as `ImageCollections`
 
 To query the [GEE data catalog](https://code.earthengine.google.com/datasets/), you can enter key words into the search toolbar at the top of the code editor.
 
@@ -136,7 +136,7 @@ print(L8_TOA.limit(5))
 
 This will show you just the first five images so you can preview the collection. You can see the collection ID, the bands, the features, which are the images in the collection and the properties, which is the metadata.
 
-### Selecting a study area using Geometry Tools
+#### Selecting a study area using Geometry Tools
 
 The geometry drawing tools located on the upper left side of the map viewer can be used to manually create points, line or polygons. We are now going to define a study area using a point we select on the map. We will use the **Geometry Tools** to create that point.
 
@@ -154,7 +154,7 @@ You have now created a new point object and cast it as a `FeatureCollection`. Yo
 
 Having fun? You can further explore how to configure geometries in the [Classifying Imagery](https://geohackweek.github.io/GoogleEarthEngine/05-classify-imagery/) section of this tutorial.  
 
-### Filtering the Image Collection
+#### Filtering the Image Collection
 
 One of the major benefits of the JavaScript versus Python API is the ability to quickly render on-the-fly geovisualizations of your imagery and outputs. We are now going to visualize one image from the Landsat 8 collection we loaded. We are going to filter the collection down to one image by:
 
@@ -216,13 +216,13 @@ Another way you can inspect and explore your image is through the inspector tool
 
 In the upper right, switch to the **Inspector** tab and click on the map where there is land. Now click where there is water. Toggle the between the graph and the list of values.
 
-# STOP & PLAY
+## STOP & PLAY
 
 On your own, play with the stretch parameters and use the Inspector to explore the map.
 If you already did that, you can play with dropping the point somewhere else and looking at that imagery.
 
 
-## Getting Help
+## 4. Getting Help
 
 There are many entry points for getting help tucked into the Code Editor. Familiarizing yourself with these tools can help soften the learning curve.
 
@@ -250,7 +250,7 @@ A final place you can get help is by scrolling down and looking at the examples 
 
 <br>
 
-## Importing & Exporting Your Own Assets
+## 5. Importing & Exporting Your Own Assets
 
 #### Importing Images and Tables
 Besides using all of Google's amazing archives, users can also import their own data as either images (rasters) or tables (vectors). The **Assets** tab on the left is where you can import, share and manage these own assets. You can upload images or tables (vector data) here.
