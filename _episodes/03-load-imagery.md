@@ -33,8 +33,6 @@ For most regional scale applications, you will need to combine multiple satellit
 # Exercise: Acquire Landsat Data for a Watershed
 Here, we will leverage GEE to create a composite satellite image representing the peak growing season for a watershed of interest.
 
-[Click on this link to open the GEE code we will work from for this module](https://code.earthengine.google.com/66d60f8272b60c125f2788a1cd78f4cb)
-
 *Note: Full module code for later reference can be found in the shared code repository. Instructions to join this folder can be found on the [GEE Access page](https://geohackweek.github.io/GoogleEarthEngine/00-access-javascript/). A static version of the code can be accessed here: [https://code.earthengine.google.com/73de021583a0844c846b057a7a9f07d2](https://code.earthengine.google.com/5e20599c727a6fd94e82bd86667bed83)
 
 ## Mosaicking Multiple Images: Image Collections
