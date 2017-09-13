@@ -50,11 +50,12 @@ There are several educational and training resources available to continue learn
 
 - [GEE tutorials](https://developers.google.com/earth-engine/tutorials)
 - [GEE EDU page](https://developers.google.com/earth-engine/edu)
-  - Educational resouces: provides remote sensing curricula developed with GEE
-  - Training resoures: Provides resources for those teaching others to use GEE. This includes a general introductory Powerpoint and the Beginner and Intermediate Workshop materials run by GEE
+  - Educational resources: provides remote sensing curricula developed with GEE
+  - Training resources: Provides resources for those teaching others to use GEE. This includes a general introductory Powerpoint and the Beginner and Intermediate Workshop materials run by GEE
 
 ## Going Further
+- [Debugging Guide](https://developers.google.com/earth-engine/debugging) Posted by popular demand. An EXCELLENT resource. **Debug a programmer's code, and you appease her forum posts for the script. Teach a programmer to debug, and you appease her forum posts for a lifetime.**
  - [The "Under the Hood" forum thread](https://groups.google.com/forum/#!searchin/google-earth-engine-developers/benefits$20of$20python%7Csort:relevance/google-earth-engine-developers/LWHTFSH9FRk/NGxiEQ5KEQAJ)
-   - If continue to use GEE, you will inevitably begin to have questions about how GEE works under the hood in (possibly vain) attempts to help optimize your workflow. Sometimes operations time out or don't run. In general, GEE's inner workings are quite opaque. Typical fixes and approaches that data scientists use don't really apply in GEE's framework. This thread provides some useful information about what users can and cannot control. Highly recommended reading for regular GEE users.
+   - If you continue to use GEE, you will inevitably begin to have questions about how GEE works under the hood in (possibly vain) attempts to help optimize your workflow. Sometimes operations time out or don't run. In general, GEE's inner workings are quite opaque. Typical fixes and approaches that data scientists use don't really apply in GEE's framework. This thread provides some useful information about what users can and cannot control. Highly recommended reading for regular GEE users.
 - [Gorelick et al. 2017](http://www.sciencedirect.com/science/article/pii/S0034425717302900)
   - The Earth Engine Team recently published an overview of the GEE platform. It also provides nice tables of currently available datasets and available functions.
