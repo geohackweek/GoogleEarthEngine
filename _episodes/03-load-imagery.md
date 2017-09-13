@@ -72,13 +72,8 @@ Map.addLayer(WBD, {}, 'watersheds')
 <img src="../fig/03_wbd.png" border = "10">
 <br><br>
 
-<<<<<<< HEAD
 #### The Inspector Tool: Click to get a watershed name
 GEE includes an "Inspector" tool that allows you to query all map layers at a point. We will use this to help us select one watershed from the full US map. To use the inspector tool, click on the "Inspector" tab in the upper right panel to activate it. Then click anywhere within the Map Viewer. The coordinates of your click will be displayed, along with the value for map layers at that point. 
-=======
-#### The Inspector Tool
-GEE includes an "Inspector" tool that allows you to query all map layers at a point. We will use this to help us select one watershed from the full US map. To use the inspector tool, click on the "Inspector" tab in the upper right panel to activate it. Then click anywhere within the Map Viewer. The coordinates of your click will be displayed, along with the value for map layers at that point.
->>>>>>> f1adcb52cb84a7f85063c6d0a2153215dc32cfd8
 
 We can use this to find the "name" attribute of our watershed of interest (pick any you want!).
 
