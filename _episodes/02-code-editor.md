@@ -269,6 +269,8 @@ For an example script that uses imported data, see [Episode XX](). For detailed 
 #### Exporting & the Tasks Tab
 Instead of printing to the console, for larger tasks you may want to just export the outputs to your Google Drive or Cloud Storage using the `Export` functions in your code. When run, these generate a new task in the `Task` tab in the upper right panel. You will need to then "Run" this task in order to actually start the export. Once you start an export task, you will be prompted to enter details about the resolution, size, format and destination if you did not include this in your code. You can hover your mouse over the task and click the "?" icon to see the status and also to get the task number. If your task isn't executing, you can share this number as a reference on the developers forum.
 
+We will do an example table export in [Episode 3: Load Imagery](https://geohackweek.github.io/GoogleEarthEngine/03-load-imagery/) of this tutorial. 
+
 For detailed instructions on exports, see the [Exporting Data page](https://developers.google.com/earth-engine/exporting) on the GEE website. We will also have small export examples in subsequent modules of this tutorial.
 <br>
 <br>
