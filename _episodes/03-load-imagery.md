@@ -30,7 +30,7 @@ Most satellite products are broken up into tiles for distribution. Global Landsa
 <img src="../fig/03_conusLandsat.png" border = "10">
 <br><br>
 
-For most regional scale applications, you will need to combine multiple satellite images to fully cover your spatial extent and fill in missing data caused by clouds, etc. Google Earth Engine (GEE) is particularly well suited to these tasks. 
+For most regional scale applications, you will need to combine multiple satellite images to fully cover your spatial extent and fill in missing data caused by clouds, etc. Google Earth Engine (GEE) is particularly well suited to these tasks.
 
 # Exercise: Acquire Landsat Data for a Watershed
 Here, we will leverage GEE to create a composite satellite image representing the peak growing season for a watershed of interest.
@@ -45,10 +45,10 @@ We'll work on making a composite satellite image for a watershed in the United S
 
 There are four ways to use vector data in GEE:
 
-* [Upload a shapefile](https://developers.google.com/earth-engine/importing) to your personal **Asset** folder in the top left panel. You can set sharing permissions on these as needed. 
-  * When you upload a vector file (called a table) to your asset folder using the "New" button under the **Assets tab** in the upper left panel of the code editor, it will be stored in 'users/yourUserName/filename' unless you create new folders within your Assets space. 
+* [Upload a shapefile](https://developers.google.com/earth-engine/importing) to your personal **Asset** folder in the top left panel. You can set sharing permissions on these as needed.
+  * When you upload a vector file (called a table) to your asset folder using the "New" button under the **Assets tab** in the upper left panel of the code editor, it will be stored in 'users/yourUserName/filename' unless you create new folders within your Assets space.
   * Your load your asset using its GEE filepath: "users/yourUserName/subFolder/datasetName", where you can have as many or as few subfolders as you wish.
-  * For more on importing vector files, see the [Developer's Guide section on Importing Table Data](https://developers.google.com/earth-engine/importing). 
+  * For more on importing vector files, see the [Developer's Guide section on Importing Table Data](https://developers.google.com/earth-engine/importing).
   * **Tip**: when uploading a shapefile, you need to select all associated files (.dbf, .shx, .prf, etc) or upload a zipped file containing only one shapefile.
 * Use an existing vector dataset in GEE. (Browse the vector dataset catalog here)[https://developers.google.com/earth-engine/vector_datasets].
 * Import an existing [Google Fusion Table](https://support.google.com/fusiontables#topic=1652595), or [create your own](https://fusiontables.google.com/data?dsrcid=implicit) fusion table from a KML in WGS84.  Each fusion table has a unique Id (File > About this table) that can be used to load it into GEE. You also need to set sharing permissions similar to other items in your Google Drive if you want others to be able to access your fusion table. GEE only recently added the Asset option, so you may see folks still using fusion tables in the forums, etc. If you have the choice, I'd use an asset. We use a fusion table in the [Spatial and Temporal Reducers Module](https://geohackweek.github.io/GoogleEarthEngine/04-reducers/).
@@ -69,7 +69,7 @@ Map.addLayer(WBD, {}, 'watersheds')
 <br><br>
 
 #### The Inspector Tool
-GEE includes an "Inspector" tool that allows you to query all map layers at a point. We will use this to help us select one watershed from the full US map. To use the inspector tool, click on the "Inspector" tab in the upper right panel to activate it. Then click anywhere within the Map Viewer. The coordinates of your click will be displayed, along with the value for map layers at that point. 
+GEE includes an "Inspector" tool that allows you to query all map layers at a point. We will use this to help us select one watershed from the full US map. To use the inspector tool, click on the "Inspector" tab in the upper right panel to activate it. Then click anywhere within the Map Viewer. The coordinates of your click will be displayed, along with the value for map layers at that point.
 
 We can use this to find the "name" attribute of our watershed of interest (pick any you want!).
 
@@ -120,7 +120,7 @@ More information about mapping functions over image collections can be found [he
 The .map() concept applies to `featureCollections` as well - to apply a function to each feature in a collection, we map that function across the featureCollection with featureCollection.map(). See ["Mapping over a Feature Collection"](https://developers.google.com/earth-engine/feature_collection_mapping) in the Developer's Guide.
 
 #### Mask clouds over an image collection
-Here, we'll make use of the `cfmask` cloud band provided with the SR products to mask pixels with clouds, cloud shadows, and snow. We will mask pixels in the image based on the value of cfmask. 
+Here, we'll make use of the `cfmask` cloud band provided with the SR products to mask pixels with clouds, cloud shadows, and snow. We will mask pixels in the image based on the value of cfmask.
 
 We explicitly define a new function called "maskClouds" and apply it to each image in the imageCollection by using `imageCollection.map()`. Functions need to explicitly **return** the final output.
 
@@ -149,7 +149,7 @@ Map.addLayer(ee.Image(l8collection.first()), visParams, 'original')
 <br><br>
 
 #### Calculate NDVI and Add Band to Images
-Similarly, if we want to calculate the NDVI in each image and add it as a new band, we need to create a function and map it over the collection. Here, we use the `normalizedDifference()` function. The [Mathematical Operations page in the GEE Developer's Guide](https://developers.google.com/earth-engine/image_math) provides more information about simple and complex raster calculations. 
+Similarly, if we want to calculate the NDVI in each image and add it as a new band, we need to create a function and map it over the collection. Here, we use the `normalizedDifference()` function. The [Mathematical Operations page in the GEE Developer's Guide](https://developers.google.com/earth-engine/image_math) provides more information about simple and complex raster calculations.
 
 {% highlight javascript %}
 // create function to add NDVI using NIR (B5) and the red band (B4)
@@ -220,8 +220,8 @@ var modis = ee.ImageCollection('MODIS/MOD13Q1')
 // Chart annual time series of mean NDVI in watershed
 // Option 1: Straight to a chart object
 var chart = ui.Chart.image.seriesByRegion({
-    imageCollection: modis, 
-    regions: watershed, 
+    imageCollection: modis,
+    regions: watershed,
     reducer: ee.Reducer.mean(),
 })
 print(chart)
@@ -233,7 +233,7 @@ Note you can export the chart's underlying data using the arrow pop-out icon..
 <br><br>
 
 ### Scripting the table export
-Here's another way to export the mean NDVI for our watershed by MODIS date. This way has the benefit of being scripted and thus fully reproducible. 
+Here's another way to export the mean NDVI for our watershed by MODIS date. This way has the benefit of being scripted and thus fully reproducible.
 
 {% highlight javascript %}
 // Option 2: sample to a feature collection and export
