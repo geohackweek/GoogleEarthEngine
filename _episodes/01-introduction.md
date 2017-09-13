@@ -31,10 +31,11 @@ As Gorelick et al. (2017) write in the new *[Remote Sensing of the Environment](
 
 Google Earth Engine enables users to compute on petabytes of data on the fly without having the navigate the complexities of cloud-based parallelization. Enhancing inclusive access has spurred the growth of environmental projects conducted at scales previously unimaginable. Example uses cases that have leveraged the full power of GEE include:
 
-- [Global Forest Watch](http://www.globalforestwatch.org/). Global Forest Watch is a forest monitoring and conservation tool that was made possible by Google Earth Engine. The image below shows rapid forest loss in Indonesia derived from Landsat imagery.
-- [Global Surface Water Occurrence Map](https://global-surface-water.appspot.com/) maps the temporal and spatial distribution of water on a global scale for
+- [Global Forest Watch](http://www.globalforestwatch.org/). Global Forest Watch is a forest monitoring and conservation tool based on the the Hansen dataset. The Hansen dataset was created in Earth Engine and leverages the entire Landsat archive to map forest loss and gain at a global scale. [Hansen Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_forest_01)
 
-Smaller scale use cases might include:
+- [Global Surface Water Occurrence Map](https://global-surface-water.appspot.com/) maps the temporal and spatial distribution of water on a global scale over the past three decades. [Global Surface Water Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_global_surface_water_01)
+
+Other use cases might include:
 - calculating a time series of precipitation over a study area
 - extracting and exporting a digital elevation model from a global dataset
 - calculating a regional snow index from satellite imagery
