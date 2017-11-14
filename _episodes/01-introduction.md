@@ -56,7 +56,7 @@ Other use cases might include:
 Google Earth Engine brings together three key data science concepts:
  - Cloud archive of standard remote sensing + supporting data in one place (the cloud)
  - Free massive cloud processing with algorithm primitives
- - Co-locating computing with data
+ - APIs to take your processing functions TO the data
 
 You can access Google Earth Engine through a few different channels, including a non-programming GUI, the JavaScript API and the Python API. For this class we are using the JavaScript API, but [training materials on accessing GEE using Python](https://developers.google.com/earth-engine/python_install) are now available on the GEE website.
 
