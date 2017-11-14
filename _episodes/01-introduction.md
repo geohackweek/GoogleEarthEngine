@@ -48,7 +48,7 @@ Other use cases might include:
 - calculating a regional snow index from satellite imagery
 - identifying [burn scars](https://gist.github.com/robinkraft/077c14d35a50a8b31581) or accessing near real time fire data  [FIRMS](https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms)
 - calculating a [time series](https://developers.google.com/earth-engine/charts_image_series_by_region) of precipitation over a study area
-- creating a Global Flood Database [Cloud to Street](http://www.cloudtostreet.info/contact-us.html)
+- creating a Global Flood Database like the startup [Cloud to Street](http://www.cloudtostreet.info/contact-us.html)
 
 
 ## How does it work?
