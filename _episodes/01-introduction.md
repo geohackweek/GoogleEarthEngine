@@ -46,8 +46,9 @@ Other use cases might include:
 
 - extracting and exporting a digital elevation model from a global dataset
 - calculating a regional snow index from satellite imagery
-- calculating a [time series]https://developers.google.com/earth-engine/charts_image_series_by_region of precipitation over a study area
-- creating a machine learning model for flood prediction using a combination of raw satellite imagery and satellite data products (i.e. elevation, aspect, precipitation) [Cloud to Street](http://www.cloudtostreet.info/contact-us.html)
+- identifying [burn scars](https://gist.github.com/robinkraft/077c14d35a50a8b31581) or accessing near real time fire data  [FIRMS](https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms)
+- calculating a [time series](https://developers.google.com/earth-engine/charts_image_series_by_region) of precipitation over a study area
+- creating a Global Flood Database [Cloud to Street](http://www.cloudtostreet.info/contact-us.html)
 
 
 ## How does it work?
