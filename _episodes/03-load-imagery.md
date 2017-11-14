@@ -19,8 +19,6 @@ keypoints:
 - Images can be exported for future use within GEE or for outside software
 ---
 
-*Note: If you do not have access to the shared code repository for this tutorial, a static version of the full script used in this module can be found here: [https://code.earthengine.google.com/4f917c4b12ebcfd3302dfe2bd5efda10](https://code.earthengine.google.com/4f917c4b12ebcfd3302dfe2bd5efda10)
-
 # Overview: Satellite Imagery at Regional Scales
 Most satellite products are broken up into tiles for distribution. Global Landsat data is broken up in ~180 km^2^ scenes, with unique path/row identifiers. 455 scenes cover the United States. Each scene is currently imaged every 16 days by Landsat 8, and every 16 days by Landsat 7 (approximately 45 times each year). The edges of each path overlap, providing increased temporal frequency in these areas. However, cloudy skies during satellite overpass and other acquisition anomalies make certain scenes or pixels unusable.
 
@@ -34,6 +32,8 @@ For most regional scale applications, you will need to combine multiple satellit
 
 # Exercise: Acquire Landsat Data for a Watershed
 Here, we will leverage GEE to create a composite satellite image representing the peak growing season for a watershed of interest.
+
+*Note: Full module code for later reference can be found in the shared code repository. Instructions to join this folder can be found on the [GEE Access page](https://geohackweek.github.io/GoogleEarthEngine/00-access-javascript/). A static version of the code can be accessed here: [https://code.earthengine.google.com/73de021583a0844c846b057a7a9f07d2](https://code.earthengine.google.com/5e20599c727a6fd94e82bd86667bed83)
 
 ## Mosaicking Multiple Images: Image Collections
 A stack or time series of images are called `Image Collections`. Each data source available on GEE has it's own Image Collection and ID (for example, the [Landsat 5 SR collection](https://code.earthengine.google.com/dataset/LANDSAT/LT5_SR), or the [GRIDMET meteorological data collection](https://code.earthengine.google.com/dataset/IDAHO_EPSCOR/GRIDMET)). You can also create image collections from individual images or merge existing collections. More information on Image Collections can be found [here in the GEE Developer's Guide](https://developers.google.com/earth-engine/ic_creating).
@@ -59,8 +59,10 @@ Here, we will use an existing vector asset, the [USGS Watershed Boundaries - HUC
 In order to load a vector file from your Assets into your workspace, we need to use the "filepath" and cast it to a `ee.FeatureCollection` data type. Read more here under ["Managing Assets" in the Developer's Guide](https://developers.google.com/earth-engine/asset_manager#importing-assets-to-your-script).
 
 {% highlight javascript %}
-// load a polygon boundary (here, a public vector dataset already in GEE)
+// load a polygon watershed boundary (here, a public vector dataset already in GEE)
+// note: see tutorial linked above for guidance on importing vector datasets
 var WBD = ee.FeatureCollection("USGS/WBD/2017/HUC06");
+print(WBD.limit(5));
 Map.addLayer(WBD, {}, 'watersheds')
 {% endhighlight %}
 
@@ -68,8 +70,8 @@ Map.addLayer(WBD, {}, 'watersheds')
 <img src="../fig/03_wbd.png" border = "10">
 <br><br>
 
-#### The Inspector Tool
-GEE includes an "Inspector" tool that allows you to query all map layers at a point. We will use this to help us select one watershed from the full US map. To use the inspector tool, click on the "Inspector" tab in the upper right panel to activate it. Then click anywhere within the Map Viewer. The coordinates of your click will be displayed, along with the value for map layers at that point.
+#### The Inspector Tool: Click to get a watershed name
+GEE includes an "Inspector" tool that allows you to query all map layers at a point. We will use this to help us select one watershed from the full US map. To use the inspector tool, click on the "Inspector" tab in the upper right panel to activate it. Then click anywhere within the Map Viewer. The coordinates of your click will be displayed, along with the value for map layers at that point. 
 
 We can use this to find the "name" attribute of our watershed of interest (pick any you want!).
 
@@ -82,8 +84,9 @@ Once you've determined the "name" property for your watershed, use the featureCo
 {% highlight javascript %}
 // use the inspector tool to find the name of a watershed that interests you
 var watershed = WBD.filterMetadata('name', 'equals', 'Republican');
-
 print(watershed);
+
+// set the map view and zoom level, and add watershed to map
 Map.centerObject(watershed,7);
 Map.addLayer(watershed, {}, 'watershed');
 {% endhighlight %}
@@ -125,14 +128,17 @@ Here, we'll make use of the `cfmask` cloud band provided with the SR products to
 We explicitly define a new function called "maskClouds" and apply it to each image in the imageCollection by using `imageCollection.map()`. Functions need to explicitly **return** the final output.
 
 {% highlight javascript %}
-// mask pixels with clouds and cloud shadows
-// surface reflectance products come with a 'cfmask' layer
+// mask pixels with clouds and cloud shadows -------------------------------------
+// surface reflectance products come with a 'cfmask' band
 // 0 = clear, 1 = water, 2 = cloud shadows, 3 = snow, 4 = clouds
 
 // create function to mask clouds, cloud shadows, snow
 var maskClouds = function(img){
-  var cfmask = img.select('cfmask');    
-  return img.updateMask(cfmask.lt(2));   // keep clear (0) pixels
+  // make a new single band image from the cfmask band
+  var cfmask = img.select('cfmask'); 
+  // keep clear (0) and water (1) pixels based on cfmask
+  var imgMasked = img.updateMask(cfmask.lt(2));   
+  return imgMasked
 };
 
 // use "map" to apply the function to each image in the collection
@@ -140,8 +146,8 @@ var l8masked = l8collection.map(maskClouds);
 
 // visualize the first image in the collection, pre- and post- mask
 var visParams = {bands: ['B4','B3','B2'], min: 150, max: 2000}
-Map.addLayer(ee.Image(l8masked.first()), visParams, 'clouds masked')
-Map.addLayer(ee.Image(l8collection.first()), visParams, 'original')
+Map.addLayer(ee.Image(l8masked.first()), visParams, 'clouds masked', false)
+Map.addLayer(ee.Image(l8collection.first()), visParams, 'original', false)
 {% endhighlight %}
 
 <br>
@@ -178,7 +184,8 @@ Here, we will use the `imageCollection.qualityMosaic()` function. By prioritizin
 We will use this to make a "greenest pixel composite" for our watershed based on the NDVI band we just calculated. The final composite image will retain all bands in the input (unless we were to specify otherwise). Each pixel in the composite image could potentially come from imagery acquired on different dates, but all bands within each pixel are from the same image. In general, this provides the best available snapshot of the landscape at the peak of the growing season, regardless of the phenological timing within the year.
 
 {% highlight javascript %}
-// Make a "greenest pixel" composite for region of interest
+// for each pixel, select the "best" set of bands from available images
+// based on the maximum NDVI/greenness
 var composite = l8ndvi.qualityMosaic('NDVI').clip(watershed);
 print(composite);
 
