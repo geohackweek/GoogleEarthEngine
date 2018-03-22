@@ -46,8 +46,9 @@ Other use cases might include:
 
 - extracting and exporting a digital elevation model from a global dataset
 - calculating a regional snow index from satellite imagery
-- calculating a [time series]https://developers.google.com/earth-engine/charts_image_series_by_region of precipitation over a study area
-- creating a machine learning model for flood prediction using a combination of raw satellite imagery and satellite data products (i.e. elevation, aspect, precipitation) [Cloud to Street](http://www.cloudtostreet.info/contact-us.html)
+- identifying [burn scars](https://gist.github.com/robinkraft/077c14d35a50a8b31581) or accessing near real time fire data  [FIRMS](https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms)
+- calculating a [time series](https://developers.google.com/earth-engine/charts_image_series_by_region) of precipitation over a study area
+- creating a Global Flood Database like the startup [Cloud to Street](http://www.cloudtostreet.info/contact-us.html)
 
 
 ## How does it work?
@@ -55,7 +56,7 @@ Other use cases might include:
 Google Earth Engine brings together three key data science concepts:
  - Cloud archive of standard remote sensing + supporting data in one place (the cloud)
  - Free massive cloud processing with algorithm primitives
- - Co-locating computing with data
+ - APIs to take your processing functions TO the data
 
 You can access Google Earth Engine through a few different channels, including a non-programming GUI, the JavaScript API and the Python API. For this class we are using the JavaScript API, but [training materials on accessing GEE using Python](https://developers.google.com/earth-engine/python_install) are now available on the GEE website.
 
