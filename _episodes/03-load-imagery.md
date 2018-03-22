@@ -139,7 +139,7 @@ var maskClouds = function(image){
   var shadowBit = Math.pow(2, 3); // 8
   var snowBit = Math.pow(2, 4); //16
   var fillBit = Math.pow(2,0); // 1
-  // extra pixel quality band
+  // extract pixel quality band
   var qa = image.select('pixel_qa');    
   // create and apply mask
   var mask = qa.bitwiseAnd(cloudBit).eq(0).and(  // no clouds
