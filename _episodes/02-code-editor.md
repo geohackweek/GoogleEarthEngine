@@ -111,13 +111,13 @@ Now, in the code editor, go to *Scripts > Shared* and the directory called *geoh
 
 To query the [GEE data catalog](https://code.earthengine.google.com/datasets/), you can enter key words into the search toolbar at the top of the code editor.
 
-For practice, let's load some imagery into the code editor. We are going to search for and import the **Landsat Top of the Atmosphere Reflectance Level 1T** product. To do this, go to the *Search* toolbar and type in **Landsat 8 TOA**. Select the first dataset - USGS Landsat 8 TOA Reflectance (Orthorectified) - by clicking on the name. This will bring up the metadata for this data collection. You can confirm you got the correct one because the `ImageCollection ID` should say **LANDSAT/LC8_L1T_TOA**
+For practice, let's load some imagery into the code editor. We are going to search for and import the **Landsat Top of the Atmosphere (TOA) Reflectance Collection 1 Tier 1** product. To do this, go to the *Search* toolbar and type in **Landsat 8 tier 1 TOA**. Select the dataset - USGS Landsat 8 Collection 1 Tier 1 TOA Reflectance - by clicking on the name. This will bring up the metadata for this data collection. You can confirm you got the correct one because the `ImageCollection ID` should say **LANDSAT/LC08/C01/T1_TOA**
 
 Now, click **Import** in this pop out.
 A new variable (`ImageCollection`) will load into your Code Editor in the "Imports" pane at the top of the code editor. Rename this object "L8_TOA". This object is an `ImageCollection`, which means it is a stack of images. Notice we have to declare this object using *var*. If you click the little blue square icon above the collection, a pop-out will appear showing the code you just created.
 
 {% highlight javascript %}
-var L8_TOA = ee.ImageCollection("LANDSAT/LC8_L1T_TOA");
+var L8_TOA = ee.ImageCollection("LANDSAT/LC08/C01/T1_TOA");
 {% endhighlight %}
 
 In order to look at the collection, try to print it just like you did the string.
