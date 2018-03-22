@@ -102,7 +102,7 @@ Here, we are selecting all imagery in the [Landsat 8 surface reflection collecti
 
 {% highlight javascript %}
 // load all Landsat 8 SR image within polygon boundary for 2016
-var l8collection = ee.ImageCollection('LANDSAT/LC8_SR')
+var l8collection = ee.ImageCollection('LANDSAT/LC08/C01/T1_SR')
           .filterBounds(watershed)
           .filterDate('2016-01-01', '2016-12-31');
 print(l8collection);
@@ -123,23 +123,32 @@ More information about mapping functions over image collections can be found [he
 The .map() concept applies to `featureCollections` as well - to apply a function to each feature in a collection, we map that function across the featureCollection with featureCollection.map(). See ["Mapping over a Feature Collection"](https://developers.google.com/earth-engine/feature_collection_mapping) in the Developer's Guide.
 
 #### Mask clouds over an image collection
-Here, we'll make use of the `cfmask` cloud band provided with the SR products to mask pixels with clouds, cloud shadows, and snow. We will mask pixels in the image based on the value of cfmask.
+Here, we'll make use of the `pixel_qa` cloud band provided with the SR products to mask pixels with clouds, cloud shadows, and snow. We will mask pixels in the image based on the value of pixel_qa.
 
 We explicitly define a new function called "maskClouds" and apply it to each image in the imageCollection by using `imageCollection.map()`. Functions need to explicitly **return** the final output.
 
 {% highlight javascript %}
 // mask pixels with clouds and cloud shadows -------------------------------------
-// surface reflectance products come with a 'cfmask' band
-// 0 = clear, 1 = water, 2 = cloud shadows, 3 = snow, 4 = clouds
+// surface reflectance products come with a 'pixel_qa' band
+// pixel_qa flag bits are given https://code.earthengine.google.com/dataset/LANDSAT/LC08/C01/T1_SR
 
-// create function to mask clouds, cloud shadows, snow
-var maskClouds = function(img){
-  // make a new single band image from the cfmask band
-  var cfmask = img.select('cfmask'); 
-  // keep clear (0) and water (1) pixels based on cfmask
-  var imgMasked = img.updateMask(cfmask.lt(2));   
-  return imgMasked
-};
+// create function to mask clouds, cloud shadows, snow, and fill
+var maskClouds = function(image){
+  // bit positions: find by raising 2 to the bit flag code 
+  var cloudBit = Math.pow(2, 5); //32
+  var shadowBit = Math.pow(2, 3); // 8
+  var snowBit = Math.pow(2, 4); //16
+  var fillBit = Math.pow(2,0); // 1
+  // extra pixel quality band
+  var qa = image.select('pixel_qa');    
+  // create and apply mask
+  var mask = qa.bitwiseAnd(cloudBit).eq(0).and(  // no clouds
+              qa.bitwiseAnd(shadowBit).eq(0)).and( // no cloud shadows
+              qa.bitwiseAnd(snowBit).eq(0)).and(   // no snow
+              qa.bitwiseAnd(fillBit).eq(0))   ; // no fill
+  return image.updateMask(mask);   
+};  
+
 
 // use "map" to apply the function to each image in the collection
 var l8masked = l8collection.map(maskClouds);
