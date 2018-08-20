@@ -10,7 +10,7 @@ objectives:
 - Have a JavaScript resource
 keypoints:
 - "Anyone can sign up for Google Earth Engine, just apply to be a trusted tester."
-- "The Code Editor is a user friendly access point for Earth Engine that uses the JavaScript API."
+- "The Code Editor is a user friendly access point for Earth Engine that uses the JavaScript IDE."
 - " JavaScript is a programming language that is also widely used in web development."
 ---
 # Getting set up for this Google Earth Engine tutorial
@@ -28,7 +28,7 @@ Review the terms, verify your non-robot identify and click 'Submit'.
 
 Check your email, including your spam folder, for a link from the Google Developer's Team. The confirmation email will have directions on how to access the Code Editor.
 
-Not sure if you have access? Use [this link](https://code.earthengine.google.com/) to check. If you didn't get access you will get an authorization error that says your account isn't registered. If you do have access, the link will open up the Javascript API. This link is your permanent portal to GEE access.
+Not sure if you have access? Use [this link](https://code.earthengine.google.com/) to check. If you didn't get access you will get an authorization error that says your account isn't registered. If you do have access, the link will open up the Javascript IDE. This link is your permanent portal to GEE access.
 
 ## 2. Joining our shared GEE code repository
 
@@ -44,11 +44,14 @@ If you have any trouble getting access to Google Earth Engine or the shared repo
 
 ## 3. Javascript Tips
 
-JavaScript, not to be confused with Java, is a dynamic, general-purpose programming language often used in web development alongside HTML and CSS. Google Earth Engine (GEE) can also be accessed through a JavaScript API, which is what we are using at GeoHack.
+JavaScript, not to be confused with Java, is a programming language widely used in web development alongside HTML and CSS.
 
-### JavaScript API Basics
+You can teach yourself JavaScript using any number of online tutorials, such as those offered by [w3schools](https://www.w3schools.com/js/).
 
-It's not necessary to formally learn JavaScript before learning how to work with the GEE JavaScript API. Here are a few basics useful for GEE, reproduced from the [Earth Engine 101 Beginner's Curriculum](https://docs.google.com/document/d/1ZxRKMie8dfTvBmUNOO0TFMkd7ELGWf3WjX0JvESZdOE/edit).
+At geohackweek, we access Google Earth Engine by entering JavaScript commands into an online integrated development environment (IDE) called the Code Editor. It is not necessary to formally learn JavaScript to work with Google Earth Engine. Below we provide examples and resources for getting started.  
+
+### Basic JavaScript for GEE
+ Here are a few basics useful for GEE, reproduced from the [Earth Engine 101 Beginner's Curriculum](https://docs.google.com/document/d/1ZxRKMie8dfTvBmUNOO0TFMkd7ELGWf3WjX0JvESZdOE/edit).
 
 {% highlight javascript %}
 // Line comments start with two forward slashes. Like this line.
@@ -59,13 +62,13 @@ and end with a star and a forward slash. */
 
 Variables are used to store objects and are defined using the keyword **var**.
 {% highlight javascript %}
-var the_answer = 42;
+var theAnswer = 42;
 
 // string objects start and end with a single quote
-var my_variable = 'I am a string';
+var myVariable = 'I am a string';
 
 // string objects can also use double quotes, but don't mix and match
-var my_other_variable = "I am also a string";
+var myOtherVariable = "I am also a string";
 {% endhighlight %}
 
 Statements should end in a semi-colon, or the editor complains.
@@ -81,28 +84,28 @@ print('This string will print in the Console tab.');
 
 /* Square brackets are used for items in a list.
 The zero index refers to the first item in a list*/
-var my_list = ['eggplant','apple','wheat'];
-print(my_list[0]); // would print 'eggplant'
+var myList = ['eggplant','apple','wheat'];
+print(myList[0]); // would print 'eggplant'
 {% endhighlight %}
 
 Using dictionaries
 {% highlight javascript %}
 // Curly brackets (or braces) can be used to define dictionaries (key:value pairs).
-var my_dict = {'food':'bread', 'color':'red', 'number':42};
+var myDict = {'food':'bread', 'color':'red', 'number':42};
 
 // Square brackets can be used to access dictionary items by key.
-print(my_dict['color']);
+print(myDict['color']);
 
 //Or you can use the dot notation to get the same result.
-print(my_dict.color);
+print(myDict.color);
 {% endhighlight %}
 
 Functions can be defined as a way to reuse code and make it easier to read.
 {% highlight javascript %}
-var my_hello_function = function(string) {
+var myHelloFunction = function(string) {
   return 'Hello ' + string + '!';
 };
-print(my_hello_function('world'));
+print(myHelloFunction('world'));
 {% endhighlight %}
 
 

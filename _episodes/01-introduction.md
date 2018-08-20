@@ -26,37 +26,22 @@ As Gorelick et al. (2017) write in the new *[Remote Sensing of the Environment](
 > including deforestation, drought, disaster, disease, food security,
 > water management, climate monitoring and environmental protection.
 
+## Why use Google Earth Engine?
 
-## Why GEE? Planetary Scale Change: The Hansen Dataset
+> Planetary Scale Change
 
-Google Earth Engine enables users to compute on petabytes of data on the fly without having the navigate the complexities of cloud-based parallelization. Enhancing inclusive access has spurred the growth of environmental projects conducted at scales previously unimaginable. Example uses cases that have leveraged the full power of GEE include:
-
-- [Global Forest Watch](http://www.globalforestwatch.org/) Global Forest Watch is a forest monitoring and conservation tool based on the the Hansen dataset. The Hansen dataset was created in Earth Engine and leverages the entire Landsat archive to map forest loss and gain at a global scale. [Hansen Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_forest_01)
-
-- [Global Surface Water Occurrence Map](https://global-surface-water.appspot.com/) maps the temporal and spatial distribution of water on a global scale over the past three decades. [Global Surface Water Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_global_surface_water_01)
-
-***
-
-![alt text](https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/76fuygfd.gif)
-
-Forest loss in Sumatra's Riau province, Indonesia, 2000-2012. Credit: Hansen, Potapov, Moore, Hancher et al., 2013
-***
-
-Other use cases might include:
-
-- extracting and exporting a digital elevation model from a global dataset
-- calculating a regional snow index from satellite imagery
-- identifying [burn scars](https://gist.github.com/robinkraft/077c14d35a50a8b31581) or accessing near real time fire data  [FIRMS](https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms)
-- calculating a [time series](https://developers.google.com/earth-engine/charts_image_series_by_region) of precipitation over a study area
-- creating a Global Flood Database like the startup [Cloud to Street](http://www.cloudtostreet.info/contact-us.html)
-
-
-## How does it work?
+Google Earth Engine enables users to compute on petabytes of data on the fly without having the navigate the complexities of cloud-based parallelization. Enhancing inclusive access has spurred the growth of environmental projects conducted at scales previously unimaginable.
 
 Google Earth Engine brings together three key data science concepts:
  - Cloud archive of standard remote sensing + supporting data in one place (the cloud)
  - Free massive cloud processing with algorithm primitives
  - APIs to take your processing functions TO the data
+
+### Reason # 1: Planetary-scale science
+
+
+
+### Reason # 2: Free cloud processing
 
 You can access Google Earth Engine through a few different channels, including a non-programming GUI, the JavaScript API and the Python API. For this class we are using the JavaScript API, but [training materials on accessing GEE using Python](https://developers.google.com/earth-engine/python_install) are now available on the GEE website.
 
@@ -64,7 +49,7 @@ You can access Google Earth Engine through a few different channels, including a
 <img src="../fig/01_GEEinterfaces.png" border = "10">
 <br><br>
 
-### What datasets are available?
+### Reason # 3: Massive online data repository
 
 The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, including the entire Landsat mission (!!). Other remote sensing missions represented include Sentinel 1, Sentinel 2, MODIS and others. In addition to earth observing images, GEE also hosts produced datasets for precipitation, population density, topography, land cover and climate. Over 6000 scenes are added daily from active satellite missions.
 - [Table 1](http://www.sciencedirect.com/science/article/pii/S0034425717302900) in Gorelick et al. (2017) describes the frequently used datasets,
@@ -75,7 +60,7 @@ The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, incl
 <img src="../fig/01_datasets.png" border = "10">
 <br><br>
 
-### Can I suggest datasets?
+### Reason # 4: Upload your own data
 
 Users can also recommend datasets from the Javascript API Code Editor window by going the *Help* button on the top right and selecting *Suggest a dataset*.
 
@@ -83,15 +68,54 @@ Users can also recommend datasets from the Javascript API Code Editor window by 
 <img src="../fig/01_datasetsuggest.png" border = "10">
 <br><br>
 
+### Reason # 5: Let them take care of version control and parallelization
+
+GEE will back up on your code in a git repository without you having to think about it. GEE can also store your data and when you ask it to do a computation it will take care of all the parallelization on the back end for you. Those operations are called "server-side".
+
+## How does it work?
+
+
+
+## Glam Use Cases
+
+> Celebrity Use Case 1: The Hansen Data
+
+ Example uses cases that have leveraged the full power of GEE include:
+
+- [Global Forest Watch](http://www.globalforestwatch.org/) Global Forest Watch is a forest monitoring and conservation tool based on the the Hansen dataset. The Hansen dataset was created in Earth Engine and leverages the entire Landsat archive to map forest loss and gain at a global scale. [Hansen Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_forest_01)
+
+***
+
+![alt text](https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/76fuygfd.gif)
+
+Forest loss in Sumatra's Riau province, Indonesia, 2000-2012. Credit: Hansen, Potapov, Moore, Hancher et al., 2013
+***
+
+- [Global Surface Water Occurrence Map](https://global-surface-water.appspot.com/) maps the temporal and spatial distribution of water on a global scale over the past three decades. [Global Surface Water Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_global_surface_water_01)
+
+- [Urban Travel Times](https://global-surface-water.appspot.com/) maps the temporal and spatial distribution of water on a global scale over the past three decades. [Global Surface Water Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_global_surface_water_01)
+
+On the scale of one particular research problem, other use cases might include:
+
+- extracting and exporting a digital elevation model from a global dataset
+- calculating a regional snow index from satellite imagery
+- identifying [burn scars](https://gist.github.com/robinkraft/077c14d35a50a8b31581) or accessing near real time fire data  [FIRMS](https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms)
+- calculating a [time series](https://developers.google.com/earth-engine/charts_image_series_by_region) of precipitation over a study area
+- creating a Global Flood Database like the startup [Cloud to Street](http://www.cloudtostreet.info/contact-us.html)
+
+
+
+## Wrap Up
 
 ### What are common uses of GEE?
 
 - operate on petabytes of imagery using Google's cloud
-- export your analysis
-- import and export your own raster and vector data (assets)
-- share your own raster and vector data
 - embed outputs in apps
 - store, share and version control your code
+- import and export your own raster and vector data (assets)
+- share your own raster and vector data
+- export your analysis
+
 
 ### What is GEE NOT designed for?
 
