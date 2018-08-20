@@ -34,22 +34,39 @@ Google Earth Engine enables users to compute on petabytes of data on the fly wit
 
 Google Earth Engine brings together three key data science concepts:
  - Cloud archive of standard remote sensing + supporting data in one place (the cloud)
- - Free massive cloud processing with algorithm primitives
  - APIs to take your processing functions TO the data
 
 ### Reason # 1: Planetary-scale science
 
+Since GEE came online, several ground-breaking studies have emerged that
+demonstrate the power of bringing large-scale computing to bear on environmental and social problems. The first major use case, known as Global Forest Watch, fundamentally changed our understanding of forest loss on a global scale.
 
 
-### Reason # 2: Free cloud processing
+> Celebrity Use Case 1: The Hansen Data
 
-You can access Google Earth Engine through a few different channels, including a non-programming GUI, the JavaScript API and the Python API. For this class we are using the JavaScript API, but [training materials on accessing GEE using Python](https://developers.google.com/earth-engine/python_install) are now available on the GEE website.
+ Example uses cases that have leveraged the full power of GEE include:
 
-<br>
-<img src="../fig/01_GEEinterfaces.png" border = "10">
-<br><br>
+- [Global Forest Watch](http://www.globalforestwatch.org/) Global Forest Watch is a forest monitoring and conservation tool based on the the Hansen dataset. The Hansen dataset was created in Earth Engine and leverages the entire Landsat archive to map forest loss and gain at a global scale. [Hansen Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_forest_01)
 
-### Reason # 3: Massive online data repository
+***
+
+<img src="https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/76fuygfd.gif" width="40" height="40" />
+
+
+Forest loss in Sumatra's Riau province, Indonesia, 2000-2012. Credit: Hansen, Potapov, Moore, Hancher et al., 2013
+***
+
+- [Global Surface Water Occurrence Map](https://global-surface-water.appspot.com/) maps the temporal and spatial distribution of water on a global scale over the past three decades. [Global Surface Water Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_global_surface_water_01)
+
+- [Urban Travel Times](https://global-surface-water.appspot.com/) maps the temporal and spatial distribution of water on a global scale over the past three decades. [Global Surface Water Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_global_surface_water_01)
+
+### Reason # 2: Free cloud processing with built-in functions
+
+Google Earth Engine is designed for cloud-based, parallelized geodata analysis. GEE takes care of all the parallelization on the back end for you. Those operations are called "server-side".
+
+Using GEE, you can call a wide set of functions that have been developed specifically for computing in Earth Engine and apply them over many images simultaneously using Google computational infrastructure. No more downloading and analyzing individuals tiles at a time or stressing about your local storage.
+
+### Reason # 3: Massive online public data archive
 
 The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, including the entire Landsat mission (!!). Other remote sensing missions represented include Sentinel 1, Sentinel 2, MODIS and others. In addition to earth observing images, GEE also hosts produced datasets for precipitation, population density, topography, land cover and climate. Over 6000 scenes are added daily from active satellite missions.
 - [Table 1](http://www.sciencedirect.com/science/article/pii/S0034425717302900) in Gorelick et al. (2017) describes the frequently used datasets,
@@ -62,38 +79,33 @@ The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, incl
 
 ### Reason # 4: Upload your own data
 
-Users can also recommend datasets from the Javascript API Code Editor window by going the *Help* button on the top right and selecting *Suggest a dataset*.
+You can upload your own vector and raster data to the platform. You can also recommend datasets from the Javascript API Code Editor window by going the *Help* button on the top right and selecting *Suggest a dataset*.
 
 <br>
 <img src="../fig/01_datasetsuggest.png" border = "10">
 <br><br>
 
-### Reason # 5: Let them take care of version control and parallelization
+### Reason # 5: Let them take care of version control
 
-GEE will back up on your code in a git repository without you having to think about it. GEE can also store your data and when you ask it to do a computation it will take care of all the parallelization on the back end for you. Those operations are called "server-side".
+GEE will back up on your code in a git repository without you having to think about it. You can share those repositories with other users and view older versions of scripts easily from the Code Editor.
+
+
+### Reason # 6: Flexible access through APIS
+
+The GEE development team has worked hard to make GEE easy to access for a variety of different user types. Google Earth Engine can be accessed through a few different channels, including a non-programming GUI, the JavaScript API and the Python API.
+
+For this class we are using the JavaScript API, but [training materials on accessing GEE using Python](https://developers.google.com/earth-engine/python_install) are now available on the GEE website.
+
+<br>
+<img src="../fig/01_GEEinterfaces.png" border = "10">
+<br><br>
 
 ## How does it work?
 
 
 
-## Glam Use Cases
 
-> Celebrity Use Case 1: The Hansen Data
 
- Example uses cases that have leveraged the full power of GEE include:
-
-- [Global Forest Watch](http://www.globalforestwatch.org/) Global Forest Watch is a forest monitoring and conservation tool based on the the Hansen dataset. The Hansen dataset was created in Earth Engine and leverages the entire Landsat archive to map forest loss and gain at a global scale. [Hansen Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_forest_01)
-
-***
-
-![alt text](https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/76fuygfd.gif)
-
-Forest loss in Sumatra's Riau province, Indonesia, 2000-2012. Credit: Hansen, Potapov, Moore, Hancher et al., 2013
-***
-
-- [Global Surface Water Occurrence Map](https://global-surface-water.appspot.com/) maps the temporal and spatial distribution of water on a global scale over the past three decades. [Global Surface Water Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_global_surface_water_01)
-
-- [Urban Travel Times](https://global-surface-water.appspot.com/) maps the temporal and spatial distribution of water on a global scale over the past three decades. [Global Surface Water Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_global_surface_water_01)
 
 On the scale of one particular research problem, other use cases might include:
 
