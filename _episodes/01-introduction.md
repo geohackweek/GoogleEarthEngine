@@ -57,7 +57,7 @@ The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, incl
 - or you can browse the datasets directly through the [Google Earth Engine API](https://explorer.earthengine.google.com/#index).
 
 <br>
-<img src="../fig/01_datasets.png" border = "10">
+<img src="../fig/01_datasets.png" border = "10" width="50%" height="50%">
 <br><br>
 
 ### Reason # 4: Upload your own data
