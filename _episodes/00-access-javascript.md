@@ -19,7 +19,7 @@ In order to use Google Earth Engine, you need to sign up for the platform. Use t
 
 ### Directions:
 
-Go the the [GEE sign up page](https://signup.earthengine.google.com/#!/) and enter the email you want to use for your GEE account. A gmail is best if you have one. 
+Go the the [GEE sign up page](https://signup.earthengine.google.com/#!/) and enter the email you want to use for your GEE account. A gmail is best if you have one.
 
 On the next page, enter in the information requested about your email, your affiliation, etc. Where it asks what you want to accomplish, you can mention you are at Geohackweek at the University of Washington.
 
@@ -32,12 +32,12 @@ Not sure if you have access? Use [this link](https://code.earthengine.google.com
 Google Earth Engine allows you to have shared group folders/repositories for scripts. We've organized the code presented in this tutorial this way. Get access to the shared code repository in the code editor by:
 
 - Join our Google group by clicking this link (don't worry about posting permissions; we won't  be posting anything. This allows you access to the repository): [https://goo.gl/maZwVa](https://goo.gl/maZwVa)
-- Accept the shared repository by clicking this link: [https://code.earthengine.google.com/?accept_repo=geohackweek2017](https://code.earthengine.google.com/?accept_repo=geohackweek2017)
+- Accept the shared repository by clicking this link: [https://code.earthengine.google.com/?accept_repo=geohackweek2018](https://code.earthengine.google.com/?accept_repo=geohackweek2018)
 
-Now, in the code editor, go to the **Scripts tab** in the top left panel, scroll down and expand the "Shared" section, and a directory called *geohackweek2017* should appear with the full scripts from each episode. When Jill and I update them, the updates will be reflected in these versions of the code. 
+Now, in the code editor, go to the **Scripts tab** in the top left panel, scroll down and expand the "Shared" section, and a directory called *geohackweek2018* should appear with the full scripts from each episode. When Jill and I update them, the updates will be reflected in these versions of the code.
 
 ### Getting help with access
-If you have any trouble getting access to Google Earth Engine or the shared repository, you can slack jdeines or catherinekuhn with questions, or catch Jill at Geohackweek on Monday and Tuesday. 
+If you have any trouble getting access to Google Earth Engine or the shared repository, you can slack jdeines or catherinekuhn with questions, or catch Jill at Geohackweek on Monday and Tuesday.
 
 ## Javascript Tips
 
