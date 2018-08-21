@@ -23,7 +23,7 @@ keypoints:
 
 GEE has an integrated development environment (IDE) called the Code Editor. The Code Editor has number of features to help make programming in this environment easier that we will explore in this tutorial. For an exhaustive description see the [Earth Engine Code Editor help page](https://developers.google.com/earth-engine/playground#api-reference-docs-tab) in the GEE User Guides.  
 
-Link to the full code we used in this lesson: [https://code.earthengine.google.com/92a75bf6ae01547c6191c1467acd391e](https://code.earthengine.google.com/92a75bf6ae01547c6191c1467acd391e)
+Link to the full code we used in this lesson: [https://code.earthengine.google.com/25f3f293b8b5dc1fbeedffb3f2fe9049](https://code.earthengine.google.com/25f3f293b8b5dc1fbeedffb3f2fe9049)
 
 # Exercise: Exploring the Code Editor
 

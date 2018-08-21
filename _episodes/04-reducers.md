@@ -19,15 +19,17 @@ keypoints:
 ---
 
 Link to a static version of the full script used in this module:
-[https://code.earthengine.google.com/d3c55e2958b9ae1e0bb6fe3c5e9da066](https://code.earthengine.google.com/d3c55e2958b9ae1e0bb6fe3c5e9da066)
+[https://code.earthengine.google.com/269a0d4a6b9854e6f81ac87187a72559](https://code.earthengine.google.com/269a0d4a6b9854e6f81ac87187a72559)
 
 # Reducers: Overview
 
 In Google Earth Engine (GEE), [reducers](https://developers.google.com/earth-engine/reducers_intro) are used to aggregate data over time, space, and other data structures. They belong to the `ee.Reducer` class and include summary statistics, histograms, and linear regression, among others. Here's a visual from Google demonstrating a reducer applied to an `ImageCollection`:
 
-<img src="../fig/GEE_Reduce_ImageCollection.png" border = "10">
+<img src="../fig/04_reducers" border = "10">
 
 Reductions can also occur in space, over bands within an image, or over the attributes of a `FeatureCollection`. See the [Reducer Overview](https://developers.google.com/earth-engine/reducers_intro) in the Google Developer's Guide for more information.
+
+In Episode 3: Accessing Satellite Imagery, we used a vector boundary and date range to filter an image collection, mapped an algorithm (NDVI) over that collection, and then reduced that collection to one image in which each pixel value was its maximum NDVI. Here we follow the same workflow, but instead reduce using `imageCollection.sum()` to calculate total annual precipitation for each pixel in the US (temporal reducers). We then take it a step further and use the spatial reducer 'reduceRegions' to calculate total annual precip for each US county.
 
 # Exercise: Obtain climate data from GEE
 Here, we will demonstrate a temporal reducer and a spatial reducer by obtaining data on annual precipitation by US county.

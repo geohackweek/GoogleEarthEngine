@@ -111,11 +111,9 @@ GEE will back up on your code in a git repository without you having to think ab
 
 The GEE development team has worked hard to make GEE easy to access. Google Earth Engine can be accessed through a few different channels, including a non-programming GUI, the JavaScript API and the Python API.
 
-The Explorer is great for getting non-specialists on board to view datasets but has limited capabilities for analysis.
-
-The JavaScript API is a fully built web platform that you make requests through to the main GEE API. The developers have spent years refining this platform to make it easier for users to store, share and version code results, execute tasks and most importantly visualize results on the fly in charts and maps rendered directly in the browser window. They also handle the user authentication just by logging you in through your gmail.
-
-The Python API requires users to handle authentication and visualization of results on their end with the benefit of allowing users to more fully customize requests beyond the library of functions natively available in GEE.
+  - The [Google Earth Engine Explorer](https://explorer.earthengine.google.com/#workspace) is great for getting non-specialists on board to view datasets but has limited capabilities for analysis.
+  - The JavaScript API is a fully built web platform that you make requests through to the main GEE API. The developers have spent years refining this platform to make it easier for users to store, share and version code results, execute tasks and most importantly visualize results on the fly in charts and maps rendered directly in the browser window. They also handle the user authentication just by logging you in through your gmail.
+  - The Python API requires users to handle authentication and visualization of results on their end with the benefit of allowing users to more fully customize requests beyond the library of functions natively available in GEE. There is no website you log into to conduct your analysis - code is built from the ground up using workflows that are developed on an individual basis.
 
 For this class we are using the JavaScript API, but [training materials on accessing GEE using Python](https://developers.google.com/earth-engine/python_install) are now available on the GEE website.
 
@@ -133,7 +131,6 @@ Using one of the APIs, users can filter huge collections of images to dates and 
 <br>
 <img src="../fig/01_What is Google Earth Engine_.png" border = "10">
 <br><br>
-
 
 
 ## Wrap Up
