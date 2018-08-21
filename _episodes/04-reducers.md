@@ -182,7 +182,7 @@ In order to actually export your data, you have to explicitly hit the "Run" butt
 A new, helpful feature has been added where you can hold your mouse over right side of the completed task and click on the question mark to open a window with details on the task as in the diagram below.
 
 <br>
-<img src="../fig/04_runTask.png" border = "10">
+<img src="../fig/04_runTask.png" border = "10" width="50%" height="50%">
 <br><br>
 
 Link to a static version of the full script used in this module:
