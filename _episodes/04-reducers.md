@@ -177,6 +177,8 @@ Note on the folder name: If this folder exists within  your Google Drive, GEE wi
 
 In order to actually export your data, you have to explicitly hit the "Run" button under the "Tasks" tab in the upper right panel of the code editor. It should take 20-30 seconds to export, depending on GEE user loads.
 
+A new, helpful feature has been added where you can hold your mouse over right side of the completed task and click on the question mark to open a window with details on the task as in the diagram below.
+
 <br>
 <img src="../fig/05_runTask.png" border = "10">
 <br><br>

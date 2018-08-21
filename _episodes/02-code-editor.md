@@ -113,13 +113,13 @@ For practice, let's load some imagery into the code editor. We are going to sear
   - Rename this object "L8_TOA". This object is an `ImageCollection`, which means it is a stack of images. Notice we have to declare this object using *var*. If you click the little blue square icon above the collection, a pop-out will appear showing the code you just created.
 
 {% highlight javascript %}
-var L8_TOA = ee.ImageCollection("LANDSAT/LC08/C01/T1_TOA");
+var landsat8Collection = ee.ImageCollection("LANDSAT/LC08/C01/T1_TOA")
 {% endhighlight %}
 
 In order to look at the collection, try to print it just like you did the string.
 
 {% highlight javascript %}
-print(L8_TOA);
+print(landsat8Collection);
 {% endhighlight %}
 
 **What happens?**
@@ -127,7 +127,7 @@ print(L8_TOA);
 Earth Engine times out - this means your request is too big, which makes sense as there are thousands of images in the Landsat 8 collection. To get around this, try the following:
 
 {% highlight javascript %}
-print(L8_TOA.limit(5))
+print(landsat8Collection.limit(5))
 {% endhighlight %}
 
 This will show you just the first five images so you can preview the collection. You can see the collection ID, the bands, the features, which are the images in the collection and the properties, which is the metadata.
@@ -139,15 +139,15 @@ This will show you just the first five images so you can preview the collection.
 
 The geometry drawing tools located on the upper left side of the map viewer can be used to manually create points, line or polygons. We are now going to define a study area using a point we select on the map. We will use the **Geometry Tools** to create that point.
 
-1. Type "Lee Vining" into the search toolbar and hit enter. This will zoom you to Eastern California.
+1. Type "Lake Powell, AZ" into the search toolbar and hit enter. This will zoom you to Lake Powell in Arizona, USA.
 2. On the left side of the map, click the little Google Pin icon. Your cursor should then turn into crosshairs.
-3. Toggle around the map and drop the pin in the center of Mono Lake, which is right next to Lee Vining.
+3. Toggle around the map and drop the pin in the center of the lake, which is right next to Lee Vining.
 4. Now, go to the Geometry Imports window that has now appeared. In that window, name the point "roi" and change the dropdown from **Geometry** to **FeatureCollection**.
 
 You have now created a new point object and cast it as a `FeatureCollection`. You can now use this  `FeatureCollection` as a way to geographically filter datasets for just your region.
 
 <br>
-<img src="../fig/02_monoLake.png" border = "10">
+<img src="../fig/02_lakePowell.png" border = "10">
 <br><br>
 
 
@@ -167,24 +167,25 @@ We are going to filter the collection down to one image by:
 Essentially, this allows us to sort through the full Landsat 8 collection and load the best image available for our region of interest for 2018.
 
 {% highlight javascript %}
-// Load Landsat 8 imagery
-var image = ee.Image(ee.ImageCollection(L8_TOA)
+// Load Landsat 8 input imagery
+var image = ee.Image((landsat8Collection)
     // Filter to get only images under the region of interest.
-    .filterBounds(roi)
+    .filterBounds(lakePowell)
     // Filter to get only one year of images.
-    .filterDate('2016-01-01', '2016-12-31')
+    .filterDate('2018-01-01', '2018-12-31')
     // Select just the optical bands
     .select(['B[1-7]'])
     // Sort by scene cloudiness, ascending.
     .sort('CLOUD_COVER')
     // Get the first (least cloudy) scene.
     .first());
+
 {% endhighlight %}
 
 Use a print statement to check out what we just made:
 
 {% highlight javascript %}
-print(image, 'Lake Mono L8 image')
+print(image, 'Lake Powell L8 image')
 {% endhighlight %}
 
 We have now filtered the ENTIRE Landsat 8 archive down to the least cloudy image for our study area in 2018. However, we still need to visualize it, which we will do using the `Map.addLayer` function.

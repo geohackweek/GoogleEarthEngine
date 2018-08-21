@@ -37,7 +37,7 @@ Since GEE came online, several ground-breaking studies have emerged that
 demonstrate the power of bringing large-scale computing to bear on environmental and social problems. The following three examples show the datasets, high-impact publications and web-based data explorers that have been generated from research conducted in GEE.
 
 ***
-> Celebrity Use Case 1: Global Forest Watch
+> **Celebrity Use Case 1: Global Forest Watch**
 
 Released in 2013, [Global Forest Watch](http://www.globalforestwatch.org/) fundamentally changed our understanding of planetary-scale forest loss. This forest monitoring and conservation tool interactively shows forest gain and loss at a global scale. The underlying Hansen deforestation dataset was created in Google Earth Engine and leverages over 3 million Landsat images to map global forest dynamics.
 
@@ -52,7 +52,7 @@ Learn more here:
 
 
 ***
-> Celebrity Use Case 2: Global Surface Water Occurrence
+> **Celebrity Use Case 2: Global Surface Water Occurrence**
 
 In 2016 the European Commission's Joint Research Centre released a dataset, the Global Surface Water Occurrence dataset, that showed the change intensity of surface water occurrence around the world. In other words, they mapped the loss and gain of water at a global scale since 1984.
 
@@ -65,11 +65,11 @@ In 2016 the European Commission's Joint Research Centre released a dataset, the 
   - A [Data Users Guide](https://storage.googleapis.com/global-surface-water/downloads_ancillary/DataUsersGuidev2.pdf) describing the dataset in detail.
 
 ***
-> Celebrity Use Case 3: Global Travel Times
+> **Celebrity Use Case 3: Global Travel Times**
 
-The Oxford Malaria Atlas Project, the European Commission’s Joint Research Centre, and the University of Twente teamed up to create a map of travel times from any point in the world to the nearest urban center. This work can pinpont areas with little access to services in order to inform policy decisions about serv
+The Oxford Malaria Atlas Project, the European Commission’s Joint Research Centre, and the University of Twente teamed up to create a map of travel times from any point in the world to the nearest urban center. This work can pinpont areas with little access to services in order to inform public health efforts and policy decisions.
 
-- [A global map of travel time to cities to assess inequalities in accessibility in 2015](https://www.nature.com/articles/nature25181) - The original paper published in *Nature* that maps travel time to the nearest densely population area from any spot on the globe.
+- [A global map of travel time to cities to assess inequalities in accessibility in 2015](https://www.nature.com/articles/nature25181) - The original paper published in *Nature* describing the distribution of travel times to the nearest densely population area from any spot on the globe.
 
 - The [website](https://map.ox.ac.uk/research-project/accessibility_to_cities/) published in conjunction with the paper
 
@@ -79,7 +79,7 @@ The Oxford Malaria Atlas Project, the European Commission’s Joint Research Cen
 
 #### Reason # 2: Free cloud processing with built-in functions
 
-Google Earth Engine is designed for cloud-based, parallelized geodata analysis. GEE takes care of all the parallelization on the back end for you. Those operations are called "server-side".
+Google Earth Engine is designed for cloud-based, parallelized geospatial data analysis. GEE takes care of all the infrastructure and parellelization decisions on the back end for you. Those operations are called "server-side".
 
 Using GEE, you can call a wide set of functions that have been developed specifically for computing in Earth Engine and apply them over many images simultaneously using Google computational infrastructure. No more downloading and analyzing individuals tiles at a time or stressing about your local storage.
 
@@ -87,9 +87,9 @@ Using GEE, you can call a wide set of functions that have been developed specifi
 #### Reason # 3: Massive online public data archive
 
 The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, including the entire Landsat mission (!!). Other remote sensing missions represented include Sentinel 1, Sentinel 2, MODIS and others. In addition to earth observing images, GEE also hosts produced datasets for precipitation, population density, topography, land cover and climate. Over 6000 scenes are added daily from active satellite missions.
-- [Table 1](http://www.sciencedirect.com/science/article/pii/S0034425717302900) in Gorelick et al. (2017) describes the frequently used datasets,
-- the [Google Earth Engine](https://earthengine.google.com/datasets/) website has a general dataset descriptions,
-- or you can browse the datasets directly through the [Google Earth Engine API](https://explorer.earthengine.google.com/#index).
+- [Table 1](http://www.sciencedirect.com/science/article/pii/S0034425717302900) in Gorelick et al. (2017) describes the frequently used datasets.
+- The [Google Earth Engine](https://earthengine.google.com/datasets/) website has general dataset descriptions.
+- You can browse the datasets directly through the [Google Earth Engine API](https://explorer.earthengine.google.com/#index).
 
 <br>
 <img src="../fig/01_datasets.png" border = "10" width="50%" height="50%">
@@ -111,14 +111,15 @@ GEE will back up on your code in a git repository without you having to think ab
 
 The GEE development team has worked hard to make GEE easy to access. Google Earth Engine can be accessed through a few different channels, including a non-programming GUI, the JavaScript API and the Python API.
 
+The Explorer is great for getting non-specialists on board to view datasets but has limited capabilities for analysis.
+
+The JavaScript API is a fully built web platform that you make requests through to the main GEE API. The developers have spent years refining this platform to make it easier for users to store, share and version code results, execute tasks and most importantly visualize results on the fly in charts and maps rendered directly in the browser window. They also handle the user authentication just by logging you in through your gmail.
+
+The Python API requires users to handle authentication and visualization of results on their end with the benefit of allowing users to more fully customize requests beyond the library of functions natively available in GEE.
+
 For this class we are using the JavaScript API, but [training materials on accessing GEE using Python](https://developers.google.com/earth-engine/python_install) are now available on the GEE website.
 
-
-<br>
-<img src="../fig/01_GEEinterfaces.png" border = "10" width="75%" height="75%" >
-<br><br>
-
-Many figures on this page are from the GEE training materials. If you still are not sure what GEE is useful for, you can see more by viewing the [What is Google Earth Engine?](https://docs.google.com/presentation/d/1hT9q6kWigM1MM3p7IEcvNQlpPvkedW-lgCCrIqbNeis/edit#slide=id.gf251d1053_0_1005) slide deck available from GEE team.
+If you still are not sure what GEE is useful for, you can see more by viewing the [What is Google Earth Engine?](https://docs.google.com/presentation/d/1hT9q6kWigM1MM3p7IEcvNQlpPvkedW-lgCCrIqbNeis/edit#slide=id.gf251d1053_0_1005) slide deck available from GEE team.
 
 
 ***
