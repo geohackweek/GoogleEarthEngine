@@ -28,12 +28,10 @@ As Gorelick et al. (2017) write in the new *[Remote Sensing of the Environment](
 
 ## Why use Google Earth Engine?
 
-> Planetary Scale Change
-
 Google Earth Engine enables users to compute on petabytes of data on the fly without having the navigate the complexities of cloud-based parallelization. Enhancing inclusive access has spurred the growth of earth observation at scales previously unimaginable.
 
 
-### Reason # 1: Planetary-scale science
+#### Reason # 1: Planetary-scale science
 
 Since GEE came online, several ground-breaking studies have emerged that
 demonstrate the power of bringing large-scale computing to bear on environmental and social problems. The following three examples show the datasets, high-impact publications and web-based data explorers that have been generated from research conducted in GEE.
@@ -49,13 +47,8 @@ Learn more here:
 
 - [Hansen Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_forest_01) Learn GEE by stepping through these beginner-oriented tutorials that engage participants with the dataset.
 
-***
-
-<img src="https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/76fuygfd.gif" width="250" height="200" />
-
-
-Forest loss in Sumatra's Riau province, Indonesia, 2000-2012. Credit: Hansen, Potapov, Moore, Hancher et al., 2013
-***
+<img src="https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/76fuygfd.gif" width="100%" height="100%" />
+<sub>*Forest loss in Sumatra's Riau province, Indonesia, 2000-2012. Credit: Hansen, Potapov, Moore, Hancher et al., 2013*</sub>
 
 > Celebrity Use Case 2: Global Surface Water Occurrence
 
@@ -79,15 +72,14 @@ The Oxford Malaria Atlas Project, the European Commission’s Joint Research Cen
 
 - Some example [GEE scripts](https://code.earthengine.google.com/d52c656d3098b2723b275cc0d113d05e) for visualizing the data
 
-
-
-### Reason # 2: Free cloud processing with built-in functions
+#### Reason # 2: Free cloud processing with built-in functions
 
 Google Earth Engine is designed for cloud-based, parallelized geodata analysis. GEE takes care of all the parallelization on the back end for you. Those operations are called "server-side".
 
 Using GEE, you can call a wide set of functions that have been developed specifically for computing in Earth Engine and apply them over many images simultaneously using Google computational infrastructure. No more downloading and analyzing individuals tiles at a time or stressing about your local storage.
 
-### Reason # 3: Massive online public data archive
+
+#### Reason # 3: Massive online public data archive
 
 The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, including the entire Landsat mission (!!). Other remote sensing missions represented include Sentinel 1, Sentinel 2, MODIS and others. In addition to earth observing images, GEE also hosts produced datasets for precipitation, population density, topography, land cover and climate. Over 6000 scenes are added daily from active satellite missions.
 - [Table 1](http://www.sciencedirect.com/science/article/pii/S0034425717302900) in Gorelick et al. (2017) describes the frequently used datasets,
@@ -98,7 +90,7 @@ The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, incl
 <img src="../fig/01_datasets.png" border = "10" width="50%" height="50%">
 <br><br>
 
-### Reason # 4: Upload your own data
+#### Reason # 4: Upload your own data
 
 You can upload your own raster **and** vector data to the platform. You can also recommend datasets from the Javascript API Code Editor window by going the *Help* button on the top right and selecting *Suggest a dataset*.
 
@@ -106,15 +98,16 @@ You can upload your own raster **and** vector data to the platform. You can also
 <img src="../fig/01_datasetsuggest.png" border = "10">
 <br><br>
 
-### Reason # 5: Let them take care of version control
+#### Reason # 5: Let them take care of version control
 
 GEE will back up on your code in a git repository without you having to think about it. You can share those repositories with other users and view older versions of scripts easily from the Code Editor.
 
-### Reason # 6: Flexible access through APIS
+#### Reason # 6: Flexible access through APIS
 
 The GEE development team has worked hard to make GEE easy to access. Google Earth Engine can be accessed through a few different channels, including a non-programming GUI, the JavaScript API and the Python API.
 
 For this class we are using the JavaScript API, but [training materials on accessing GEE using Python](https://developers.google.com/earth-engine/python_install) are now available on the GEE website.
+
 
 <br>
 <img src="../fig/01_GEEinterfaces.png" border = "10">
@@ -124,19 +117,13 @@ For this class we are using the JavaScript API, but [training materials on acces
 Still not sure what GEE is for? You can check out the [What is Google Earth Engine?](https://docs.google.com/presentation/d/1hT9q6kWigM1MM3p7IEcvNQlpPvkedW-lgCCrIqbNeis/edit#slide=id.gf251d1053_0_1005) slide deck available from GEE team.
 
 
-On the scale of one particular research problem, other use cases might include:
-
-- extracting and exporting a digital elevation model from a global dataset
-- calculating a regional snow index from satellite imagery
-- identifying [burn scars](https://gist.github.com/robinkraft/077c14d35a50a8b31581) or accessing near real time fire data  [FIRMS](https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms)
-- calculating a [time series](https://developers.google.com/earth-engine/charts_image_series_by_region) of precipitation over a study area
-- creating a Global Flood Database like the startup [Cloud to Street](http://www.cloudtostreet.info/contact-us.html)
-
-## Reason # 6: Flexible access through APIS
+***
 
 ## How does it work?
 
 Using the Code Editor, you write commands that are sent as an object to Google for processing in parallel in their cloud (server-side). Users can visualize results from Google in their browser (client-side), including objects like maps, charts or statistical results.
+
+Using one of the APIs, users can filter huge collections of images to dates and areas of their interest, map algorithms over collections of images, apply algorithms to individual images or image collections, and compute aggregate statistics through time and space without having to download a single thing to their computer.
 
 <br>
 <img src="../fig/What is Google Earth Engine_.png" border = "10">
