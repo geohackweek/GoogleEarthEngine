@@ -100,7 +100,7 @@ The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, incl
 You can upload your own raster **and** vector data to the platform. You can also recommend datasets from the Javascript API Code Editor window by going the *Help* button on the top right and selecting *Suggest a dataset*.
 
 <br>
-<img src="../fig/01_datasetsuggest.png" border = "10">
+<img src="../fig/01_datasetsuggest.png" border = "10" width="100%" height="100%">
 <br><br>
 
 #### Reason # 5: Let them take care of version control
@@ -115,7 +115,7 @@ For this class we are using the JavaScript API, but [training materials on acces
 
 
 <br>
-<img src="../fig/01_GEEinterfaces.png" border = "10">
+<img src="../fig/01_GEEinterfaces.png" border = "10" width="100%" height="100%" >
 <br><br>
 
 
