@@ -36,41 +36,46 @@ Google Earth Engine enables users to compute on petabytes of data on the fly wit
 Since GEE came online, several ground-breaking studies have emerged that
 demonstrate the power of bringing large-scale computing to bear on environmental and social problems. The following three examples show the datasets, high-impact publications and web-based data explorers that have been generated from research conducted in GEE.
 
-
+***
 > Celebrity Use Case 1: Global Forest Watch
 
-The first major use case, known as Global Forest Watch, fundamentally changed our understanding of forest loss on a global scale. - [Global Forest Watch](http://www.globalforestwatch.org/) is a forest monitoring and conservation tool that maps forest gain and loss at a global scale. The underlying dataset, called the Hansen dataset, leverages the whole Landsat archive to dynamically create these maps all over the world back through time. This analysis was only possible because it was created using Google Earth Engine and is the first effort to map algorithms at global scales across entire satellite archives.
+Released in 2013, [Global Forest Watch](http://www.globalforestwatch.org/) fundamentally changed our understanding of planetary-scale forest loss. This forest monitoring and conservation tool interactively shows forest gain and loss at a global scale. The underlying Hansen deforestation dataset was created in Google Earth Engine and leverages over 3 million Landsat images to map global forest dynamics.
 
 Learn more here:
 
-- [High-Resolution Global Maps of 21st-Century Forest Cover Change](http://science.sciencemag.org/content/342/6160/850) original publication in Science by Hansen, et al (2013).
+  - [High-Resolution Global Maps of 21st-Century Forest Cover Change](http://science.sciencemag.org/content/342/6160/850) original publication in Science by Hansen, et al (2013).
 
-- [Hansen Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_forest_01) Learn GEE by stepping through these beginner-oriented tutorials that engage participants with the dataset.
+  - [Hansen Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_forest_01) Learn GEE by stepping through these beginner-oriented tutorials that engage participants with the dataset.
 
 <img src="https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/76fuygfd.gif" width="100%" height="100%" />
 <sub>*Forest loss in Sumatra's Riau province, Indonesia, 2000-2012. Credit: Hansen, Potapov, Moore, Hancher et al., 2013*</sub>
 
+
+***
 > Celebrity Use Case 2: Global Surface Water Occurrence
 
-The Global Surface Water Occurrence Dataset is a Surface Water Explorer developed by the European Commission's Joint Research Centre that maps the temporal and spatial distribution of water on a global scale over the past three decades.
+In 2016 the European Commission's Joint Research Centre released a dataset, the Global Surface Water Occurrence dataset, that showed the change intensity of surface water occurrence around the world. In other words, they mapped the loss and gain of water at a global scale since 1984.
 
-- The original paper published in *Nature* [High-resolution mapping of global surface water and its long-term changes](https://www.nature.com/articles/nature20584)
+  - [High-resolution mapping of global surface water and its long-term changes](https://www.nature.com/articles/nature20584) - The original paper published in *Nature*.
 
-- [Global Surface Water Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_global_surface_water_01)
+  - Online tutorial to play with the data.  [Global Surface Water Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_global_surface_water_01)
 
-- The [Global Surface Water Explorer](https://global-surface-water.appspot.com/) that was published in conjunction with the dataset to allow users to visualize changes in surface water.
+  - The [Global Surface Water Explorer](https://global-surface-water.appspot.com/) that was published in conjunction with the dataset to allow users to visualize changes in surface water.
 
-- [Data Users Guide](https://storage.googleapis.com/global-surface-water/downloads_ancillary/DataUsersGuidev2.pdf)  
+  - A [Data Users Guide](https://storage.googleapis.com/global-surface-water/downloads_ancillary/DataUsersGuidev2.pdf) describing the dataset in detail.
 
+***
 > Celebrity Use Case 3: Global Travel Times
 
 The Oxford Malaria Atlas Project, the European Commission’s Joint Research Centre, and the University of Twente teamed up to create a map of travel times from any point in the world to the nearest urban center. This work can pinpont areas with little access to services in order to inform policy decisions about serv
 
-- The original paper published in *Nature* [A global map of travel time to cities to assess inequalities in accessibility in 2015](https://www.nature.com/articles/nature25181) maps travel time to the nearest densely population area from any spot on the globe.
+- [A global map of travel time to cities to assess inequalities in accessibility in 2015](https://www.nature.com/articles/nature25181) - The original paper published in *Nature* that maps travel time to the nearest densely population area from any spot on the globe.
 
 - The [website](https://map.ox.ac.uk/research-project/accessibility_to_cities/) published in conjunction with the paper
 
 - Some example [GEE scripts](https://code.earthengine.google.com/d52c656d3098b2723b275cc0d113d05e) for visualizing the data
+
+***
 
 #### Reason # 2: Free cloud processing with built-in functions
 

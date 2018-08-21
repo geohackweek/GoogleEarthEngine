@@ -17,16 +17,16 @@ keypoints:
 
 Please complete this tutorial before arriving at geohackweek. Use the steps below to get registered for a Google Earth Engine account and to join our shared repository.
 
-## 1. Registering for a Google Earth Engine account
+### 1. Registering for a Google Earth Engine account
 
-> Go the the [GEE sign up page](https://signup.earthengine.google.com/#!/) and enter > > the email you want to use for your GEE account. A gmail is best if you have one.
-> Enter your email, your affiliation and country/region. Where it asks what you want > > to accomplish, mention you are at Geohackweek at the University of Washington.
-> Review the terms, verify your non-robot identify and click 'Submit'.
-> Check your email, including your spam folder, for a link from the Google Developer's > Team. The confirmation email will have directions on how to access the Code Editor.
+- Go the the [GEE sign up page](https://signup.earthengine.google.com/#!/) and enter > the email you want to use for your GEE account. A gmail is best if you have one.
+- Enter your email, your affiliation and country/region. Where it asks what you want > to accomplish, mention you are at Geohackweek at the University of Washington.
+- Review the terms, verify your non-robot identify and click 'Submit'.
+- Check your email, including your spam folder, for a link from the Google Developer's Team. The confirmation email will have directions on how to access the Code Editor.
 
 Not sure if you have access? Use [this link](https://code.earthengine.google.com/) to check. If you didn't get access you will get an authorization error that says your account isn't registered. If you do have access, the link will open up the Javascript IDE. This link is your permanent portal to GEE access.
 
-## 2. Joining our shared GEE code repository
+### 2. Joining our shared GEE code repository
 
 Google Earth Engine allows you to have shared group folders/repositories for scripts. We've organized the code presented in this tutorial this way. Get access to the shared code repository in the code editor by:
 
@@ -34,13 +34,13 @@ Google Earth Engine allows you to have shared group folders/repositories for scr
 - Accept the shared repository by clicking this link: [https://code.earthengine.google.com/?accept_repo=geohackweek2018](https://code.earthengine.google.com/?accept_repo=geohackweek2018)
 - Now, in the code editor, go to the **Scripts tab** in the top left panel, scroll down and expand the "Shared" section, and a directory called *geohackweek2018* should appear with read-only versions of the full scripts from each episode.
 
-## 3. Javascript Tips
+### 3. Javascript Tips
 
 JavaScript, not to be confused with Java, is a programming language widely used in web development alongside HTML and CSS. You can teach yourself JavaScript using any number of online tutorials, such as those offered by [w3schools](https://www.w3schools.com/js/).
 
 At geohackweek, we access Google Earth Engine by entering JavaScript commands into an online integrated development environment (IDE) called the Code Editor. It is not necessary to formally learn JavaScript to work with Google Earth Engine. Below we provide examples and resources for getting started.  
 
-### Basic JavaScript for GEE
+#### Basic JavaScript for GEE
  Here are a few basics useful for GEE, reproduced from the [Earth Engine 101 Beginner's Curriculum](https://docs.google.com/document/d/1ZxRKMie8dfTvBmUNOO0TFMkd7ELGWf3WjX0JvESZdOE/edit).
 
 {% highlight javascript %}
@@ -99,7 +99,7 @@ print(myHelloFunction('world'));
 {% endhighlight %}
 
 
-### Other JavaScript Resources
+#### Other JavaScript Resources
 JavaScript uses camelCase. JavaScript (according to W3 academy) is easy to learn. Like other programming languages, you can use style guides to learn how to write standard, reproducible (marketable!) code.
 
 For in-depth industry guidance, Google publishes their own definitive [JavaScript style guide](http://google.github.io/styleguide/jsguide.html).
