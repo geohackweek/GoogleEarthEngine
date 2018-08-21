@@ -16,7 +16,7 @@ keypoints:
 - Regional satellite data can be accessed by loading a full image collection and filtering based on criteria such as time period and location
 - Images can be manipulated similar to raster math, and new bands can be calculated by mapping functions over image collections
 - Image composites can be generated quite quickly
-- Images can be exported for future use within GEE or for outside software
+- Images and tables can be exported for future use within GEE or for outside software
 ---
 
 # Overview: Satellite Imagery at Regional Scales
@@ -98,7 +98,7 @@ Watershed of interest: The Republican River Basin
 <br><br>
 
 
-### Load an image collection based on filter criteria
+### Filter an Image Collection
 Here, we are selecting all imagery in the [Landsat 8 Surface Reflectance collection](https://code.earthengine.google.com/dataset/LANDSAT/LC08/C01/T1_SR) acquired over our watershed anytime during 2018.
 
 *Tip: Image collection IDs are found in the "Search" toolbar at the top of the code editor or through searching the [data archive](https://code.earthengine.google.com/datasets/).*
@@ -116,16 +116,19 @@ Printing our filtered collection to console tells us how many images are in our 
 <img src="../fig/03_collection.png" border = "10" width="50%" height="50%">
 <br><br>
 
-### Mapping functions: mask clouds, calculate new band
+### Mapping functions
 As you can see by browsing the `Docs` tab in the upper left panel of the code editor, there are GEE functions specific to both the `Image` and `ImageCollection` data types. There are a lot, including mathematical and boolean operators, convolutions and focal statistics, and spectral transformations and analyses of spatial texture. Browse the list, or read about general operations available in the [GEE Developer's Guide "Image Overview"" section](https://developers.google.com/earth-engine/image_overview).
 
-Often, we want to use a function specific to images on all images in an image collection. To do so, we need to essentially "loop" through each image in the image collection. In GEE, "loops" are accomplished with the .map() function. **Avoid actual loops at all costs.** Using imageCollection.map() sends the operation to Google's servers for distributed runs. Loops implemented in typical JavaScript fashion bring the operation into the browser, and won't work well, if at all.
+Often, we want to use a function over each image in an image collection. To do so, we need to essentially "loop" through each image in the image collection. In GEE, "loops" are accomplished with the .map() function.
+
+**Avoid actual loops at all costs.** Using a for loop brings the operation into the browser (bad).
+Using imageCollection.map() sends the operation to Google's servers for distributed runs (good). Loops implemented in typical for loop fashion bring the operation into the browser, and won't work well, if at all.
 
 More information about mapping functions over image collections can be found [here in the Developer's Guide](https://developers.google.com/earth-engine/ic_mapping).
 
 The .map() concept applies to `featureCollections` as well - to apply a function to each feature in a collection, we map that function across the featureCollection with featureCollection.map(). See ["Mapping over a Feature Collection"](https://developers.google.com/earth-engine/feature_collection_mapping) in the Developer's Guide.
 
-#### Mask clouds over an image collection
+### Masking clouds
 Here, we'll make use of the `pixel_qa` cloud band provided with the SR products to mask pixels with clouds, cloud shadows, and snow. We will mask pixels in the image based on the value of pixel_qa.
 
 We explicitly define a new function called "maskClouds" and apply it to each image in the imageCollection by using `imageCollection.map()`. Functions need to explicitly **return** the final output.
@@ -160,7 +163,7 @@ Map.addLayer(ee.Image(l8collection.first()), visParams, 'original', false)
 <img src="../fig/03_masked.png" border = "10">
 <br><br>
 
-#### Calculate NDVI and Add Band to Images
+### Calculating NDVI as a New Band
 Similarly, if we want to calculate the NDVI in each image and add it as a new band, we need to create a function and map it over the collection. Here, we use the `normalizedDifference()` function. The [Mathematical Operations page in the GEE Developer's Guide](https://developers.google.com/earth-engine/image_math) provides more information about simple and complex raster calculations.
 
 {% highlight javascript %}
@@ -182,7 +185,7 @@ var l8ndvi = l8masked.map(getNDVI);
 print(ee.Image(l8ndvi.first()));
 {% endhighlight %}
 
-### Image Mosaics: Create an Image Composite from Collection
+### Create an "Greenest Pixel" Composite
 We now need to assemble the image collection to create one continuous image across the watershed. There are several mosaicking/compositing options available, from simple maximum value composites (`imageCollection.max()`) and straightforward mosaics with the most recent image on top (`imageCollection.mosaic()`). The [Compositing and Mosaicking page on the Developer's Guide](https://developers.google.com/earth-engine/ic_composite_mosaic) provides examples of these.
 
 Here, we will use the `imageCollection.qualityMosaic()` function. By prioritizing the image to use based on one specific band, this method ensures that the values across all bands are taken from the same image. Each pixel gets assigned the values from the image with the highest value of the desired band.
@@ -220,96 +223,124 @@ Map.addLayer(composite, {bands: ['B4', 'B3', 'B2'], min: 0, max: 2000}, 'true co
 <img src="../fig/03_tcc.png" border = "10">
 <br><br>
 
-## Bonus: Playing with Charts
+## Visualize Data in a Chart
 To briefly illustrate GEE's ability to display data charts, we load a MODIS NDVI data product to chart the annual time series of mean NDVI for our watershed. Charting is also covered in the [Spatial and Temporal Reducers Module](https://geohackweek.github.io/GoogleEarthEngine/04-reducers/).
 
 {% highlight javascript %}
-// add satellite time series: MODIS NDVI 250m 16 day product
-var modis = ee.ImageCollection('MODIS/MOD13Q1')
-          .filterBounds(watershed)
-          .filterDate('2016-01-01', '2016-12-31')
-          .select("NDVI");
 
 // Chart annual time series of mean NDVI in watershed
-// Option 1: Straight to a chart object
-var chart = ui.Chart.image.seriesByRegion({
-    imageCollection: modis,
-    regions: watershed,
+// from our Landsat 8 computed NDVI
+var chart = ui.Chart.image.series({
+    imageCollection: l8ndvi.select('NDVI'),
+    region: watershed,
     reducer: ee.Reducer.mean(),
+    scale: 250,
+})
+print(chart)  //** Can export the figure or data in the pop-out
+
+
+// You can also compare to the MODIS 16 day product
+
+// add satellite time series: MODIS NDVI 250m 16 day product
+var modis = ee.ImageCollection('MODIS/006/MOD13Q1')
+          .filterBounds(watershed)
+          .filterDate('2018-01-01', '2018-12-31')
+          .select('NDVI');
+
+// Chart annual time series of mean NDVI in watershed
+// from the smoothed MODIS 16 day product
+var chart = ui.Chart.image.series({
+    imageCollection: modis,
+    region: watershed,
+    reducer: ee.Reducer.mean(),
+    scale: 250
 })
 print(chart)
+
 {% endhighlight %}
 
 Note you can export the chart's underlying data using the arrow pop-out icon..
 <br>
-<img src="../fig/03_chart.png" border = "10">
+<img src="../fig/03_chart.png" border = "10" width="50%" height="50%">
 <br><br>
 
-### Scripting the table export
-Here's another way to export the mean NDVI for our watershed by MODIS date. This way has the benefit of being scripted and thus fully reproducible.
+### Exporting Data as a Table
+The most memory-efficient way to get data out of GEE is in a table. This way has the benefit of being scripted and thus fully reproducible. Table exports also require much less compute power than exporting a whole image. When you are constructing an analysis, think hard about how you can leave the raster in the cloud and just extract the data you need as an array.
 
 {% highlight javascript %}
-// Option 2: sample to a feature collection and export
+
+// Use the buttons on the pop-out chart to export the .csv, or you can script
+// the export as follows using a reducer:
+
 // get the mean value for the region from each image
- var ts = modis.map(function(image){
-   var date = image.get('system:time_start');
-   var mean = image.reduceRegion({
-     reducer: ee.Reducer.mean(),
-     geometry: watershed,
-     scale: 250
-   });
-   // and return a feature with 'null' geometry with properties (dictionary)  
-   return ee.Feature(null, {'mean': mean.get('NDVI'),
+var ts = modis.map(function(image){
+  var date = image.get('system:time_start');
+  var mean = image.reduceRegion({
+    reducer: ee.Reducer.mean(),
+    geometry: watershed,
+    scale: 250
+  });
+  // and return a feature with 'null' geometry with properties (dictionary)  
+  return ee.Feature(null, {'mean': mean.get('NDVI'),
                             'date': date})
 });
 
 // Export a .csv table of date, mean NDVI for watershed
 Export.table.toDrive({
   collection: ts,
-  description: 'MODIS_NDVI_watershedMean',
+  description: '2018_geohack_MODIS_NDVI_stats',
   folder: 'GEE_geohackweek',
   fileFormat: 'CSV'
 });
+
+// AND HIT 'RUN' IN THE TASKS TAB IN THE UPPER RIGHT PANEL
+
 {% endhighlight %}
 
 To execute export tasks, you need to then go to the 'Tasks' tab in the upper right panel and hit 'Run'.
 
 <br>
-<img src="../fig/03_runTask.png" border = "10">
+<img src="../fig/03_runTask.png" border = "10" width="50%" height="50%">
 <br><br>
 
 ## Exporting Composite Images
-Users can export the results of their image manipulations to their GEE Asset folder for downstream use within GEE or to their personal Google Drive or Google Cloud Storage accounts. Here, we export a single-band image of annual maximum NDVI for Washington state. Examples are provided for asset and Google Drive exports. More information can be found [here in the Developers Guide](https://developers.google.com/earth-engine/exporting).
+Users can export the results of their image manipulations to their GEE Asset folder for downstream use within GEE or to their personal Google Drive or Google Cloud Storage accounts. Here, we export a single-band image of annual maximum NDVI for our watershed. Examples are provided for asset and Google Drive exports. More information on exporting can be found [here in the Developers Guide](https://developers.google.com/earth-engine/exporting).
 
-In the JavaScript API, all exports are sent to the 'Tasks' tab in the upper right panel. To prevent users from inadvertently overwhelming the system with gratuitous, accidental tasks, you need to explicitly run individual exports from the 'Tasks' tab. YOu can change filenames and other parameters here if necessary, or hard code these into your script.
+In the JavaScript API, all exports are sent to the 'Tasks' tab in the upper right panel. To prevent users from inadvertently overwhelming the system with gratuitous, accidental tasks, you need to explicitly run individual exports from the 'Tasks' tab. You can change filenames and other parameters here if necessary, or hard code these into your script.
 
 When exporting to Google Drive, GEE will find the named folder specified and does not need the full file path. If this folder does not yet exist, it will create it for you in your Drive.
 
 {% highlight javascript %}
-// select only the ndvi band
-var ndvi = greenest.select('NDVI');
 
-// Export to your folder on Google Drive
+// Export is unnecessary, but here are code examples for out to save a
+// image composite if desired.  
+
+// select only the ndvi band
+var ndvi = composite.select('NDVI');
+
+// Google Drive Export Example
 // (note: need to hit 'Run' in the task tab in upper right panel)
 Export.image.toDrive({
   image: ndvi,
-  description: 'Washington_NDVI_2016',
+  description: '2018_geohack_NDVI_image',
   scale: 30,
-  region: boundary.geometry().bounds(), // .geometry().bounds() needed for multipolygon
+  region: watershed.geometry().bounds(), // .geometry().bounds() needed for multipolygon
   crs: 'EPSG:5070',
   folder: 'GEE_geohackweek',
   maxPixels: 2000000000
 });
 
-// Export to your ASSET folder
+// Asset Folder Export Example
 // (note: need to hit 'Run' in the task tab in upper right panel)
 Export.image.toAsset({
   image: ndvi,
-  description: 'Washington_NDVI_2016_asset',
-  assetId: 'users/yourname/2016_WA_ndvi',    // can add subfolders if needed
+  description: '2018_geohack_NDVI_image',
+  assetId: 'users/yourname/2018_geohack_ndvi',
   scale: 30,
-  region: boundary.geometry().bounds(),
+  region: watershed.geometry().bounds(),
   pyramidingPolicy: {'.default':'mean'}, // use {'.default':'sample'} for discrete data
   maxPixels: 2000000000
 });
+
+
 {% endhighlight %}
