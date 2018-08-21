@@ -64,7 +64,7 @@ By printing the resulting collection to the Console, we can see we've accessed 3
 The `imageCollection.reduce()` operator allows you to apply any function of class `ee.Reducer()` to all images in the collection. If your `ImageCollection` had multiple bands, the reducer is applied separately to all bands (unless the reducer uses multiple bands as inputs, in which case the number of bands in the image collection must match the number of inputs required by the reducer). You can find available reducers and their descriptions in the searchable API reference under the **Docs** tab in the upper left panel of the code editor.
 
 <br>
-<img src="../fig/05_reducerMenu.PNG" border = "10">
+<img src="../fig/04_reducerMenu.PNG" border = "10">
 <br><br>
 
 Some commonly used reducers have shortcut syntax, such as `imageCollection.mean()`, `imageCollection.min()`, and conveniently, `imageCollection.sum()`. Both syntaxes are demonstrated in the following code chunk.
@@ -93,7 +93,7 @@ Map.addLayer(annualPrecip, {min: 60, max: 3000, palette: precipPal}, 'precip');
 By printing the resulting image to the Console, we can see we now have 1 image with 1 band named 'pr_sum'. Here's what it looks like:
 
 <br>
-<img src="../fig/05_annualPrecipMap.PNG" border = "10">
+<img src="../fig/04_annualPrecipMap.PNG" border = "10">
 <br><br>
 
 ### Spatial Reducer: Get Image Statistics By Regions
@@ -124,7 +124,7 @@ Map.addLayer(counties,{},'counties');
 By printing the county featureCollection, we see there are 3108 county polygons and 11 columns of attribute data.
 
 <br>
-<img src="../fig/05_countyMap.png" border = "10">
+<img src="../fig/04_countyMap.png" border = "10">
 <br><br>
 
 #### Apply the spatial reducer
@@ -180,7 +180,7 @@ In order to actually export your data, you have to explicitly hit the "Run" butt
 A new, helpful feature has been added where you can hold your mouse over right side of the completed task and click on the question mark to open a window with details on the task as in the diagram below.
 
 <br>
-<img src="../fig/05_runTask.png" border = "10">
+<img src="../fig/04_runTask.png" border = "10">
 <br><br>
 
 Link to a static version of the full script used in this module:
