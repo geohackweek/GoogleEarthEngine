@@ -43,17 +43,12 @@ In order to generate images that cover large spatial areas and to fill in image 
 ### Load Vector Boundary
 We'll work on making a composite satellite image for a US watershed. The easiest way to filter for an irregular location without having to identify the paths and rows of the satellite image tiles is to use a vector polygon.
 
-There are four ways to use vector data in GEE:
+There are four ways to obtain vector data in GEE:
 
-  * 1. [Upload your own](https://developers.google.com/earth-engine/importing) to your **Asset** folder. You can set sharing permissions on these as needed.
-      * When you upload a vector file (called a table) to your asset folder using the "New" button under the **Assets tab** in the upper left panel of the code editor, it will be stored in 'users/yourUserName/filename' unless you create new folders within your Assets space.
-      * Load your asset using its GEE filepath: "users/yourUserName/subFolder/datasetName", where you can have as many or as few subfolders as you wish.
-      * For more on importing vector files, see the [Developer's Guide section on Importing Table Data](https://developers.google.com/earth-engine/importing).
-      * **Tip**: when uploading a shapefile, you need to select all associated files (.dbf, .shx, .prf, etc) or upload a zipped file containing only one shapefile.
-  * 2. Use an existing vector dataset in GEE. (Browse the vector dataset catalog here)[https://developers.google.com/earth-engine/vector_datasets].
-  *  3. Import an existing [Google Fusion Table](https://support.google.com/fusiontables#topic=1652595), or [create your own](https://fusiontables.google.com/data?dsrcid=implicit).  Each fusion table has a unique Id (File > About this table) that can be used to load it into GEE. You also need to set sharing permissions similar to other items in your Google Drive if you want others to be able to access your fusion table.
-    * *Note: GEE only recently added the Asset option, so you may see folks still using fusion tables in the forums, etc. If you have the choice, I'd use an asset. See an example of fusion tables being used in the [Spatial and Temporal Reducers Module](https://geohackweek.github.io/GoogleEarthEngine/04-reducers/).*
-  * 4. Manually draw points, lines, and polygons using the geometry tools in the code editor. We do this in the [Classify Imagery Module](https://geohackweek.github.io/GoogleEarthEngine/05-classify-imagery/).
+  * [Upload a shapefile](https://developers.google.com/earth-engine/importing) directly to your personal *Asset* folder in the top left panel. You can create subfolders and set sharing permissions on these as needed. We use an asset vector file in the [Accessing Satellite Imagery module](https://geohackweek.github.io/GoogleEarthEngine/03-load-imagery/).
+  * Import an existing [Google Fusion Table](https://support.google.com/fusiontables#topic=1652595), or [create your own](https://fusiontables.google.com/data?dsrcid=implicit) fusion table from a KML in WGS84.  Each fusion table has a unique Id (File > About this table) that can be used to load it into GEE. GEE only recently added the Asset option, so you may see folks still using fusion tables in the forums, etc. If you have the choice, I'd use an asset.
+  * Use an existing vector dataset in GEE. (Browse the vector dataset catalog here)[https://developers.google.com/earth-engine/vector_datasets].
+  * Manually draw points, lines, and polygons using the geometry tools in the code editor. We do this in the [Classify Imagery Module](https://geohackweek.github.io/GoogleEarthEngine/05-classify-imagery/).
 
 Here, we will use an existing vector asset, the [USGS Watershed Boundaries - HUC12](https://code.earthengine.google.com/dataset/USGS/WBD/2017/HUC12)
 
@@ -99,15 +94,15 @@ Watershed of interest: The Republican River Basin
 
 
 ### Filter an Image Collection
-Here, we are selecting all imagery in the [Landsat 8 Surface Reflectance collection](https://code.earthengine.google.com/dataset/LANDSAT/LC08/C01/T1_SR) acquired over our watershed anytime during 2018.
+Here, we are selecting all imagery in the [Landsat 8 Surface Reflectance collection](https://code.earthengine.google.com/dataset/LANDSAT/LC08/C01/T1_SR) acquired over our watershed anytime during last year.
 
 *Tip: Image collection IDs are found in the "Search" toolbar at the top of the code editor or through searching the [data archive](https://code.earthengine.google.com/datasets/).*
 
 {% highlight javascript %}
-// load all Landsat 8 SR image within polygon boundary for 2018
+// load all Landsat 8 SR image within polygon boundary for last year
 var l8collection = ee.ImageCollection('LANDSAT/LC08/C01/T1_SR')
           .filterBounds(watershed)
-          .filterDate('2018-01-01', '2018-12-31');
+          .filterDate('2017-01-01', '2017-12-31');
 print(l8collection);
 {% endhighlight %}
 
@@ -223,7 +218,7 @@ Map.addLayer(composite, {bands: ['B4', 'B3', 'B2'], min: 0, max: 2000}, 'true co
 <img src="../fig/03_tcc.png" border = "10">
 <br><br>
 
-## Visualize Data in a Chart
+### Visualize Data in a Chart
 To briefly illustrate GEE's ability to display data charts, we load a MODIS NDVI data product to chart the annual time series of mean NDVI for our watershed. Charting is also covered in the [Spatial and Temporal Reducers Module](https://geohackweek.github.io/GoogleEarthEngine/04-reducers/).
 
 {% highlight javascript %}
@@ -244,7 +239,7 @@ print(chart)  //** Can export the figure or data in the pop-out
 // add satellite time series: MODIS NDVI 250m 16 day product
 var modis = ee.ImageCollection('MODIS/006/MOD13Q1')
           .filterBounds(watershed)
-          .filterDate('2018-01-01', '2018-12-31')
+          .filterDate('2017-01-01', '2017-12-31')
           .select('NDVI');
 
 // Chart annual time series of mean NDVI in watershed
@@ -288,7 +283,7 @@ var ts = modis.map(function(image){
 // Export a .csv table of date, mean NDVI for watershed
 Export.table.toDrive({
   collection: ts,
-  description: '2018_geohack_MODIS_NDVI_stats',
+  description: 'geohack_2017_MODIS_NDVI_stats',
   folder: 'GEE_geohackweek',
   fileFormat: 'CSV'
 });
@@ -303,7 +298,7 @@ To execute export tasks, you need to then go to the 'Tasks' tab in the upper rig
 <img src="../fig/03_runTask.png" border = "10" width="50%" height="50%">
 <br><br>
 
-## Exporting Composite Images
+### Exporting Images
 Users can export the results of their image manipulations to their GEE Asset folder for downstream use within GEE or to their personal Google Drive or Google Cloud Storage accounts. Here, we export a single-band image of annual maximum NDVI for our watershed. Examples are provided for asset and Google Drive exports. More information on exporting can be found [here in the Developers Guide](https://developers.google.com/earth-engine/exporting).
 
 In the JavaScript API, all exports are sent to the 'Tasks' tab in the upper right panel. To prevent users from inadvertently overwhelming the system with gratuitous, accidental tasks, you need to explicitly run individual exports from the 'Tasks' tab. You can change filenames and other parameters here if necessary, or hard code these into your script.
@@ -322,7 +317,7 @@ var ndvi = composite.select('NDVI');
 // (note: need to hit 'Run' in the task tab in upper right panel)
 Export.image.toDrive({
   image: ndvi,
-  description: '2018_geohack_NDVI_image',
+  description: 'geohack_2017_L8_NDVI_image',
   scale: 30,
   region: watershed.geometry().bounds(), // .geometry().bounds() needed for multipolygon
   crs: 'EPSG:5070',
@@ -334,13 +329,12 @@ Export.image.toDrive({
 // (note: need to hit 'Run' in the task tab in upper right panel)
 Export.image.toAsset({
   image: ndvi,
-  description: '2018_geohack_NDVI_image',
-  assetId: 'users/yourname/2018_geohack_ndvi',
+  description: 'geohack_2017_L8_NDVI_image',
+  assetId: 'users/yourname/geohack_2017_L8_NDVI_image',
   scale: 30,
   region: watershed.geometry().bounds(),
   pyramidingPolicy: {'.default':'mean'}, // use {'.default':'sample'} for discrete data
   maxPixels: 2000000000
 });
-
 
 {% endhighlight %}

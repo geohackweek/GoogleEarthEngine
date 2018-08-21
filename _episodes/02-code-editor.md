@@ -72,7 +72,7 @@ print("Hola Mundo!");
 Save scripts by clicking the **Save** button. To include a commit message, use the dropdown arrow and select "Save with a description."  Messages are stored in the revision history of each saved script.
 
 <br>
-<img src="../fig/02_getlink.png" border = "10" width="100%" height="100%" >
+<img src="../fig/02_getlink.png" border = "10" width="75%" height="75%" >
 <br><br>
 
 *Note: If you didn't make any changes to the script, the* **Save** *button will be greyed out.*
@@ -96,7 +96,7 @@ You should have already accessed the shared code repository in the Code Editor w
 - Accept the shared repository by clicking this link: [https://code.earthengine.google.com/?accept_repo=geohackweek2018](https://code.earthengine.google.com/?accept_repo=geohackweek2018)
 - In the code editor, go to the **Scripts tab** in the top left panel, scroll down and expand the "Shared" section. A directory called *geohackweek2018* should appear with read-only versions of the full scripts from each episode.
 
-Any updates will be reflected in these versions of the code. Just like the other scripts, these are also version controlled through git. Read or write permissions for individuals or groups can be set in the Code Editor using the little grey share icon that appears to the right if you move your mouse over the directory name in the *Scripts* tab. You should have read-only access to this repo.
+Any updates will be reflected in these versions of the code. Like all GEE scripts, these are version controlled. Read or write permissions for individuals or groups can be set in the Code Editor using the little grey share icon that appears to the right if you move your mouse over the directory name in the *Scripts* tab. You should have read-only access to this repo.
 
 <br>
 

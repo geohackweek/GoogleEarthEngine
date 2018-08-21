@@ -100,7 +100,7 @@ The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, incl
 You can upload your own raster **and** vector data to the platform. You can also recommend datasets from the Javascript API Code Editor window by going the *Help* button on the top right and selecting *Suggest a dataset*.
 
 <br>
-<img src="../fig/01_datasetsuggest.png" border = "10" width="100%" height="100%">
+<img src="../fig/01_datasetsuggest.png" border = "10" width="50%" height="50%">
 <br><br>
 
 #### Reason # 5: Let them take care of version control
@@ -115,11 +115,10 @@ For this class we are using the JavaScript API, but [training materials on acces
 
 
 <br>
-<img src="../fig/01_GEEinterfaces.png" border = "10" width="100%" height="100%" >
+<img src="../fig/01_GEEinterfaces.png" border = "10" width="75%" height="75%" >
 <br><br>
 
-
-Still not sure what GEE is for? You can check out the [What is Google Earth Engine?](https://docs.google.com/presentation/d/1hT9q6kWigM1MM3p7IEcvNQlpPvkedW-lgCCrIqbNeis/edit#slide=id.gf251d1053_0_1005) slide deck available from GEE team.
+Many figures on this page are from the GEE training materials. If you still are not sure what GEE is useful for, you can see more by viewing the [What is Google Earth Engine?](https://docs.google.com/presentation/d/1hT9q6kWigM1MM3p7IEcvNQlpPvkedW-lgCCrIqbNeis/edit#slide=id.gf251d1053_0_1005) slide deck available from GEE team.
 
 
 ***
@@ -131,7 +130,7 @@ Using the Code Editor, you write commands that are sent as an object to Google f
 Using one of the APIs, users can filter huge collections of images to dates and areas of their interest, map algorithms over collections of images, apply algorithms to individual images or image collections, and compute aggregate statistics through time and space without having to download a single thing to their computer.
 
 <br>
-<img src="../fig/What is Google Earth Engine_.png" border = "10">
+<img src="../fig/01_What is Google Earth Engine_.png" border = "10">
 <br><br>
 
 
