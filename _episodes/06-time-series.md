@@ -49,14 +49,14 @@ Here we are loading three different types of high resolution crop imagery. The f
 // CDL: USDA Cropland Data Layers
 var cdl = ee.Image('USDA/NASS/CDL/2010').select('cropland').clip(setExtent);
 
-// NAIP aerial photos 
+// NAIP aerial photos
 var StartDate = '2010-01-01';
 var EndDate = '2010-12-31';
 
 var naip = ee.ImageCollection('USDA/NAIP/DOQQ')
     .filterBounds(setExtent)
     .filterDate(StartDate, EndDate);
-    
+
 // Derived Landsat Composites --------------------
 
 // annual max greenness image for background (previously exported asset)
@@ -72,13 +72,13 @@ NDVI and EVI are two different vegetation indices that can be calculated from re
 {% highlight javascript %}
 
 // add satellite time series: MODIS EVI 250m 16 day -------------
-var collectionModEvi = ee.ImageCollection('MODIS/MOD13Q1')
+var collectionModEvi = ee.ImageCollection('MODIS/006/MOD13Q1')
     .filterDate(StartDate,EndDate)
     .filterBounds(setExtent)
     .select("EVI");
 
 // add satellite time series: MODIS NDVI 250m 16 day -------------
-var collectionModNDVI = ee.ImageCollection('MODIS/MOD13Q1')
+var collectionModNDVI = ee.ImageCollection('MODIS/006/MOD13Q1)
     .filterDate(StartDate,EndDate)
     .filterBounds(setExtent)
     .select("NDVI");
@@ -202,4 +202,4 @@ If you are computing the indices on the fly, or you have many points or areas of
 
 
 Link to a static version of the full script used in this module:
-[https://code.earthengine.google.com/9454f7e376ea86fac80ba893fb0d622f](https://code.earthengine.google.com/9454f7e376ea86fac80ba893fb0d622f)
+[https://code.earthengine.google.com/38eb7a083e4e9a664c63e4f67c2a4101](https://code.earthengine.google.com/38eb7a083e4e9a664c63e4f67c2a4101)
