@@ -21,6 +21,8 @@ keypoints:
 
 This code allows users to dynamically generate time series plots for from points that are dynamically chosen on a map on the fly. The time series show the 16 day composites of Normalized Difference Vegetation Index and Enhanced Vegetation Index at 250 m resolution. These indices are derived from MODIS.
 
+Link to a static version of the full script used in this module:
+[https://code.earthengine.google.com/a47b635ed6a11a99199674364afb9944](https://code.earthengine.google.com/a47b635ed6a11a99199674364afb9944)
 
 ## Define User Specifications
 
@@ -187,7 +189,7 @@ ui.root.insert(0, panel);
 You should see something like this appear in the bottom left:
 
 <br>
-<img src="../fig/06_twoChart.png" border = "10">
+<img src="../fig/06_twoChart.png" border = "10" width="75%" height="75%">
 <br><br>
 
 ## Exploring the NDVI and EVI plots for different crop types.
@@ -199,7 +201,3 @@ Toggle the Greenness, CDL and NAIP imagery layers on and off. Use the inspector 
 ## Extracting Time Series Data for larger regions or more points
 
 If you are computing the indices on the fly, or you have many points or areas of interest, you may have the unpleasant experience of your code timing out. One way to avoid that is to just export the time series as a .csv to Google Drive or Cloud Storage. An example of how to do this can be found in [Episode 04: Reducers](https://geohackweek.github.io/GoogleEarthEngine/04-reducers/) of this tutorial.
-
-
-Link to a static version of the full script used in this module:
-[https://code.earthengine.google.com/38eb7a083e4e9a664c63e4f67c2a4101](https://code.earthengine.google.com/38eb7a083e4e9a664c63e4f67c2a4101)

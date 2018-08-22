@@ -33,7 +33,7 @@ For most regional-scale applications, you will need to combine multiple satellit
 # Exercise: Acquire Landsat Data for a Watershed
 Here, we will leverage GEE to create a composite satellite image representing the peak growing season for a watershed of interest.
 
-Full module code for later reference can be found in the shared code repository. Instructions to join this folder can be found on the [GEE Access page](https://geohackweek.github.io/GoogleEarthEngine/00-access-javascript/). A static version of the code can be accessed here: [https://code.earthengine.google.com/8dea6acc73e01afc7d3bad8d86fa1994](https://code.earthengine.google.com/8dea6acc73e01afc7d3bad8d86fa1994)*
+Full module code for later reference can be found in the shared code repository. Instructions to join this folder can be found on the [GEE Access page](https://geohackweek.github.io/GoogleEarthEngine/00-access-javascript/). A static version of the code can be accessed here: [https://code.earthengine.google.com/cbb204bbe485986b63485ee39c8382cc](https://code.earthengine.google.com/cbb204bbe485986b63485ee39c8382cc)*
 
 ### Image Collections
 A stack or time series of images are called `Image Collections`. Each data source available on GEE has it's own Image Collection and ID (for example, the [Landsat 5 SR collection](https://code.earthengine.google.com/dataset/LANDSAT/LT5_SR), or the [GRIDMET meteorological data collection](https://code.earthengine.google.com/dataset/IDAHO_EPSCOR/GRIDMET)). You can also create image collections from individual images or merge existing collections. More information on Image Collections can be found [here in the GEE Developer's Guide](https://developers.google.com/earth-engine/ic_creating).
