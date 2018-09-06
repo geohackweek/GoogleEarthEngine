@@ -18,18 +18,25 @@ keypoints:
 - "Use the Docs tab, Example scripts and the HELP button to access the User Guides and Help Forum"
 
 ---
+<a href="https://goo.gl/JsnWZH" target="_blank">https://goo.gl/JsnWZH</a>
+
 
 # Code Editor Overview
 
-GEE has an integrated development environment (IDE) called the Code Editor. The Code Editor has number of features to help make programming in this environment easier that we will explore in this tutorial. For an exhaustive description see the [Earth Engine Code Editor help page](https://developers.google.com/earth-engine/playground#api-reference-docs-tab) in the GEE User Guides.  
+GEE has an integrated development environment (IDE) called the Code Editor. The Code Editor has number of features to help make programming in this environment easier that we will explore in this tutorial. For an exhaustive description see the <a href="https://developers.google.com/earth-engine/playground#api-reference-docs-tab" target="_blank">Earth Engine Code Editor help page</a>
+in the GEE User Guides.  
 
-Link to the full code we used in this lesson: [https://code.earthengine.google.com/5b548677928552fde2cc8b83a60bea40](https://code.earthengine.google.com/5b548677928552fde2cc8b83a60bea40)
+
+
+Link to the full code we used in this lesson:
+<a href="https://code.earthengine.google.com/5b548677928552fde2cc8b83a60bea40" target="_blank">https://code.earthengine.google.com/5b548677928552fde2cc8b83a60bea40</a>
+
 
 # Exercise: Exploring the Code Editor
 
 ## 1. Getting Started
 
-**To access the Code Editor, type the following url into your browser: [https://code.earthengine.google.com](https://code.earthengine.google.com)** A  webpage programming interface like the one below should appear. The diagram below has annotations pointing to many of the functionalities we will cover today.
+**To access the Code Editor, type the following url into your browser: <a href="https://code.earthengine.google.com" target="_blank">https://code.earthengine.google.com</a>** A webpage programming interface like the one below should appear. The diagram below has annotations pointing to many of the functionalities we will cover today.
 
 <br>
 <img src="../fig/02_codeeditor.png" border = "10">
@@ -93,7 +100,9 @@ To collaborate interactively on shared scripts with other users, you can create 
 You should have already accessed the shared code repository in the Code Editor with the following steps:
 
 - Join our Google group to access the shared code repository by clicking this link [https://goo.gl/maZwVa](https://goo.gl/maZwVa). Don't worry about posting permissions; we won't  be posting anything.
-- Accept the shared repository by clicking this link: [https://code.earthengine.google.com/?accept_repo=geohackweek2018](https://code.earthengine.google.com/?accept_repo=geohackweek2018)
+- Accept the shared repository by clicking this link: <a href="https://code.earthengine.google.com/?accept_repo=users/kuhniculous/geohackweek2018" target="_blank">https://code.earthengine.google.com/?accept_repo=users/kuhniculous/geohackweek2018</a>
+
+
 - In the code editor, go to the **Scripts tab** in the top left panel, scroll down and expand the "Shared" section. A directory called *geohackweek2018* should appear with read-only versions of the full scripts from each episode.
 
 Any updates will be reflected in these versions of the code. Like all GEE scripts, these are version controlled. Read or write permissions for individuals or groups can be set in the Code Editor using the little grey share icon that appears to the right if you move your mouse over the directory name in the *Scripts* tab. You should have read-only access to this repo.
@@ -104,7 +113,7 @@ Any updates will be reflected in these versions of the code. Like all GEE script
 
 #### Search toolbar: Finding datasets and loading them as `ImageCollections`
 
-To query the [GEE data catalog](https://code.earthengine.google.com/datasets/), you can enter key words into the search toolbar at the top of the code editor.
+To query the <a href="https://code.earthengine.google.com/datasets/" target="_blank">GEE data catalog</a>, you can enter key words into the search toolbar at the top of the code editor.
 
 For practice, let's load some imagery into the code editor. We are going to search for and import the **Landsat Top of the Atmosphere (TOA) Reflectance Collection 1 Tier 1** product.
   - To do this, go to the *Search* toolbar and type in **Landsat 8 tier 1 TOA**.
@@ -151,7 +160,8 @@ You have now created a new point object and cast it as a `FeatureCollection`. Yo
 <br><br>
 
 
-Having fun? You can further explore how to configure geometries in the [Classifying Imagery](https://geohackweek.github.io/GoogleEarthEngine/05-classify-imagery/) section of this tutorial.  
+Having fun? You can further explore how to configure geometries in the <a href="https://geohackweek.github.io/GoogleEarthEngine/05-classify-imagery/" target="_blank">Classifying Imagery</a> section of this tutorial.  
+
 
 #### Filtering the Image Collection
 
@@ -212,7 +222,8 @@ More often then not, though, you may not know the optimal min, max and stretch. 
 
 You can also toggle between the **Map** or **Satellite** buttons in the top right of the map panel to change the baselayer.
 
-For more on image visualization, see the [GEE Visualization Guide](https://developers.google.com/earth-engine/image_visualization) or the [GEE Visualization tutorial](https://developers.google.com/earth-engine/tutorial_api_02)
+For more on image visualization, see the <a href="https://developers.google.com/earth-engine/image_visualization" target="_blank">GEE Visualization Guide</a> or the <a href="https://developers.google.com/earth-engine/tutorial_api_02" target="_blank">GEE Visualization tutorial</a>
+
 
 #### Inspector Tab
 
@@ -241,11 +252,12 @@ Next to the **Scripts** tab is the **Docs** tab, which has the complete, searcha
 
 The **Help** button is a gateway to many resources, including links to:
 
- - the [**Developers Guide**](https://developers.google.com/earth-engine/) for official GEE tutorials, reference and guides. This is the first place I go when I need to look up how to write some code.
+ - the <a href="https://developers.google.com/earth-engine/" target="_blank">**Developers Guide**</a>
+for official GEE tutorials, reference and guides. This is the first place I go when I need to look up how to write some code.
 
  - the **Help Forum** where you can post questions and get answers. If I can't find a guide for my specific question on the GEE Guides, I then go search for key words from my problem/question on the forum. Since people share links to their codes, you can often find great examples of solutions here.
 
- - [Existing tutorials](https://developers.google.com/earth-engine/tutorials) and the [Earth Engine for Higher Education resources](https://developers.google.com/earth-engine/edu) written by the GEE team and others (even some in Japanese!)
+ -  <a href="https://developers.google.com/earth-engine/tutorials" target="_blank">Existing tutorials</a> and the <a href="https://developers.google.com/earth-engine/edu" target="_blank">Earth Engine for Higher Education resources</a> written by the GEE team and others (even some in Japanese!)
 
  - A list of keyboard shortcuts
 
@@ -268,16 +280,20 @@ When posting on the forum, make sure you check the "Anyone Can Read" box on the 
 <img src="../fig/02_sharingassets.png" border = "10">
 <br><br>
 
-For an example script that uses imported data, see [Episode 06 Time Series](https://geohackweek.github.io/GoogleEarthEngine/06-time-series/). For detailed instructions from Google on uploading, sharing and managing assets, see the [Assets Manager page](https://developers.google.com/earth-engine/asset_manager) on the GEE website .
+For an example script that uses imported data, see <a href="https://geohackweek.github.io/GoogleEarthEngine/06-time-series/" target="_blank">Episode 06 Time Series</a>. For detailed instructions from Google on uploading, sharing and managing assets, see the <a href="https://developers.google.com/earth-engine/asset_manager" target="_blank">Assets Manager page</a> on the GEE website .
+
+
 
 #### Exporting & the Tasks Tab
 Instead of printing to the console, for larger tasks you may want to just export the outputs to your Google Drive or Cloud Storage using the `Export` functions in your code. When run, these generate a new task in the `Task` tab in the upper right panel. You will need to then "Run" this task in order to actually start the export. Once you start an export task, you will be prompted to enter details about the resolution, size, format and destination if you did not include this in your code. You can hover your mouse over the task and click the "?" icon to see the status and also to get the task number. If your task isn't executing, you can share this number as a reference on the developers forum.
 
-We will do an example table export in [Episode 3: Load Imagery](https://geohackweek.github.io/GoogleEarthEngine/03-load-imagery/) of this tutorial.
+We will do an example table export in <a href="https://geohackweek.github.io/GoogleEarthEngine/03-load-imagery/" target="_blank">Episode 3: Load Imagery</a> of this tutorial.
 
-For detailed instructions on exports, see the [Exporting Data page](https://developers.google.com/earth-engine/exporting) on the GEE website. We will also have small export examples in subsequent modules of this tutorial.
+For detailed instructions on exports, see the <a href="https://developers.google.com/earth-engine/exporting" target="_blank">Exporting Data page</a> on the GEE website. We will also have small export examples in subsequent modules of this tutorial.
+
 <br>
 <br>
+
 
 
 ### Enjoy!!!

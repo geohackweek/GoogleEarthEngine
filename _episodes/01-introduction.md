@@ -15,10 +15,11 @@ keypoints:
 
 ---
 
+<a href="https://goo.gl/JsnWZH" target="_blank">https://goo.gl/JsnWZH</a>
 
 ## What is Google Earth Engine?
 
-As Gorelick et al. (2017) write in the new *[Remote Sensing of the Environment](http://www.sciencedirect.com/science/article/pii/S0034425717302900)* article:
+As Gorelick et al. (2017) write in the new *<a href="http://www.sciencedirect.com/science/article/pii/S0034425717302900" target="_blank">Remote Sensing of the Environment</a>*:
 
 > Google Earth Engine is a cloud-based platform for planetary-scale
 > geospatial analysis that brings Google's massive computational
@@ -39,13 +40,15 @@ demonstrate the power of bringing large-scale computing to bear on environmental
 ***
 > **Celebrity Use Case 1: Global Forest Watch**
 
-Released in 2013, [Global Forest Watch](http://www.globalforestwatch.org/) fundamentally changed our understanding of planetary-scale forest loss. This forest monitoring and conservation tool interactively shows forest gain and loss at a global scale. The underlying Hansen deforestation dataset was created in Google Earth Engine and leverages over 3 million Landsat images to map global forest dynamics.
+Released in 2013, <a href="http://www.globalforestwatch.org/" target="_blank">Global Forest Watch</a> fundamentally changed our understanding of planetary-scale forest loss. This forest monitoring and conservation tool interactively shows forest gain and loss at a global scale. The underlying Hansen deforestation dataset was created in Google Earth Engine and leverages over 3 million Landsat images to map global forest dynamics.
+
+
 
 Learn more here:
 
-  - [High-Resolution Global Maps of 21st-Century Forest Cover Change](http://science.sciencemag.org/content/342/6160/850) original publication in Science by Hansen, et al (2013).
+  - <a href="http://science.sciencemag.org/content/342/6160/850" target="_blank">High-Resolution Global Maps of 21st-Century Forest Cover Change</a> original publication in Science by Hansen, et al (2013).
 
-  - [Hansen Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_forest_01) Learn GEE by stepping through these beginner-oriented tutorials that engage participants with the dataset.
+  - <a href="https://developers.google.com/earth-engine/tutorial_forest_01" target="_blank">Hansen Tutorial for GEE</a> Learn GEE by stepping through these beginner-oriented tutorials that engage participants with the dataset.
 
 <img src="https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2013/76fuygfd.gif" width="100%" height="100%" />
 <sub>*Forest loss in Sumatra's Riau province, Indonesia, 2000-2012. Credit: Hansen, Potapov, Moore, Hancher et al., 2013*</sub>
@@ -56,24 +59,24 @@ Learn more here:
 
 In 2016 the European Commission's Joint Research Centre released a dataset, the Global Surface Water Occurrence dataset, that showed the change intensity of surface water occurrence around the world. In other words, they mapped the loss and gain of water at a global scale since 1984.
 
-  - [High-resolution mapping of global surface water and its long-term changes](https://www.nature.com/articles/nature20584) - The original paper published in *Nature*.
+  - <a href="https://www.nature.com/articles/nature20584" target="_blank">High-resolution mapping of global surface water and its long-term changes</a> - The original paper published in *Nature*.
 
-  - Online tutorial to play with the data.  [Global Surface Water Tutorial for GEE](https://developers.google.com/earth-engine/tutorial_global_surface_water_01)
+  - Online tutorial to play with the data.  <a href="https://developers.google.com/earth-engine/tutorial_global_surface_water_01" target="_blank">Global Surface Water Tutorial for GEE</a>
 
-  - The [Global Surface Water Explorer](https://global-surface-water.appspot.com/) that was published in conjunction with the dataset to allow users to visualize changes in surface water.
+  - The <a href="https://global-surface-water.appspot.com/" target="_blank">Global Surface Water Data Explorer</a> that was published in conjunction with the dataset to allow users to visualize changes in surface water.
 
-  - A [Data Users Guide](https://storage.googleapis.com/global-surface-water/downloads_ancillary/DataUsersGuidev2.pdf) describing the dataset in detail.
+  - A <a href="https://storage.googleapis.com/global-surface-water/downloads_ancillary/DataUsersGuidev2.pdf" target="_blank">Data Users Guide</a> describing the dataset in detail.  
 
 ***
 > **Celebrity Use Case 3: Global Travel Times**
 
 The Oxford Malaria Atlas Project, the European Commission’s Joint Research Centre, and the University of Twente teamed up to create a map of travel times from any point in the world to the nearest urban center. This work can pinpont areas with little access to services in order to inform public health efforts and policy decisions.
 
-- [A global map of travel time to cities to assess inequalities in accessibility in 2015](https://www.nature.com/articles/nature25181) - The original paper published in *Nature* describing the distribution of travel times to the nearest densely population area from any spot on the globe.
+  - <a href="https://www.nature.com/articles/nature25181" target="_blank">A global map of travel time to cities to assess inequalities in accessibility in 2015</a> - The original paper published in *Nature* describing the distribution of travel times to the nearest densely population area from any spot on the globe.
 
-- The [website](https://map.ox.ac.uk/research-project/accessibility_to_cities/) published in conjunction with the paper
+  - The <a href="https://map.ox.ac.uk/research-project/accessibility_to_cities/" target="_blank">website</a> published in conjunction with the paper
 
-- Some example [GEE scripts](https://code.earthengine.google.com/d52c656d3098b2723b275cc0d113d05e) for visualizing the data
+  - Some example <a href="https://code.earthengine.google.com/d52c656d3098b2723b275cc0d113d05e" target="_blank">GEE scripts</a> for visualizing the data
 
 ***
 
@@ -87,9 +90,11 @@ Using GEE, you can call a wide set of functions that have been developed specifi
 #### Reason # 3: Massive online public data archive
 
 The GEE catalog hosts multiple petabytes of satellite imagery in the cloud, including the entire Landsat mission (!!). Other remote sensing missions represented include Sentinel 1, Sentinel 2, MODIS and others. In addition to earth observing images, GEE also hosts produced datasets for precipitation, population density, topography, land cover and climate. Over 6000 scenes are added daily from active satellite missions.
-- [Table 1](http://www.sciencedirect.com/science/article/pii/S0034425717302900) in Gorelick et al. (2017) describes the frequently used datasets.
-- The [Google Earth Engine](https://earthengine.google.com/datasets/) website has general dataset descriptions.
-- You can browse the datasets directly through the [Google Earth Engine API](https://explorer.earthengine.google.com/#index).
+  - <a href="http://www.sciencedirect.com/science/article/pii/S0034425717302900" target="_blank">Table 1</a> in Gorelick et al. (2017) describes the frequently used datasets.
+  - The <a href="https://earthengine.google.com/datasets/" target="_blank">Google Earth Engine</a>
+  website has general dataset descriptions.
+  - You can browse the datasets directly through the <a href="https://explorer.earthengine.google.com/#index" target="_blank">Google Earth Engine API</a>.
+
 
 <br>
 <img src="../fig/01_datasets.png" border = "10" width="50%" height="50%">
@@ -111,13 +116,16 @@ GEE will back up on your code in a git repository without you having to think ab
 
 The GEE development team has worked hard to make GEE easy to access. Google Earth Engine can be accessed through a few different channels, including a non-programming GUI, the JavaScript API and the Python API.
 
-  - The [Google Earth Engine Explorer](https://explorer.earthengine.google.com/#workspace) is great for getting non-specialists on board to view datasets but has limited capabilities for analysis.
+
+  - The <a href="https://explorer.earthengine.google.com/#workspace" target="_blank">Google Earth Engine Explorer</a> is great for getting non-specialists on board to view datasets but has limited capabilities for analysis.
   - The JavaScript API is a fully built web platform that you make requests through to the main GEE API. The developers have spent years refining this platform to make it easier for users to store, share and version code results, execute tasks and most importantly visualize results on the fly in charts and maps rendered directly in the browser window. They also handle the user authentication just by logging you in through your gmail.
   - The Python API requires users to handle authentication and visualization of results on their end with the benefit of allowing users to more fully customize requests beyond the library of functions natively available in GEE. There is no website you log into to conduct your analysis - code is built from the ground up using workflows that are developed on an individual basis.
 
-For this class we are using the JavaScript API, but [training materials on accessing GEE using Python](https://developers.google.com/earth-engine/python_install) are now available on the GEE website.
+For this class we are using the JavaScript API, but <a href="https://developers.google.com/earth-engine/python_install" target="_blank"> training materials on accessing GEE using Python</a> are now available on the GEE website. If you are interested in using the Python API, follow that link for installation instructions or check out an example notebooks <a href="https://github.com/g07kore/Google-Earth-Engine-Python-Examples/blob/master/001_ee_classification_ls8_toa.ipynb " target="_blank">here</a>. The Javascript API has built in map visualization tools already in place, so that is what we use to learn the platform initially.
 
-If you still are not sure what GEE is useful for, you can see more by viewing the [What is Google Earth Engine?](https://docs.google.com/presentation/d/1hT9q6kWigM1MM3p7IEcvNQlpPvkedW-lgCCrIqbNeis/edit#slide=id.gf251d1053_0_1005) slide deck available from GEE team.
+
+If you still are not sure what GEE is useful for, you can see more by viewing the <a href="https://docs.google.com/presentation/d/1hT9q6kWigM1MM3p7IEcvNQlpPvkedW-lgCCrIqbNeis/edit#slide=id.gf251d1053_0_1005" target="_blank">What is Google Earth Engine?</a> slide deck available from GEE team.
+
 
 
 ***
