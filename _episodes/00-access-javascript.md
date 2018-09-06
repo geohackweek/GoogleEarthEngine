@@ -30,21 +30,25 @@ Not sure if you have access? Use [this link](https://code.earthengine.google.com
 
 Google Earth Engine allows you to have shared group folders/repositories for scripts. We've organized the code presented in this tutorial this way. Get access to the shared code repository in the code editor by:
 
-  - Join our Google group to access the shared code repository by clicking this link [https://goo.gl/JsnWZH](https://goo.gl/JsnWZH). Don't worry about posting permissions; we won't  be posting anything.
-  - Accept the shared repository by clicking this link: [https://code.earthengine.google.com/?accept_repo=geohackweek2018](https://code.earthengine.google.com/?accept_repo=users/kuhniculous/geohackweek2018)
+  - Join our Google group to access the shared code repository by clicking this link <a href="https://goo.gl/JsnWZH" target="_blank">https://goo.gl/JsnWZH</a> . Don't worry about posting permissions; we won't  be posting anything.
+  - Accept the shared repository by clicking this link:
+  <a href="https://code.earthengine.google.com/?accept_repo=users/kuhniculous/geohackweek2018" target="_blank">https://code.earthengine.google.com/?accept_repo=users/kuhniculous/geohackweek2018</a>
   - In the code editor, go to the **Scripts tab** in the top left panel, scroll down and expand the "Shared" section. A directory called *geohackweek2018* should appear with read-only versions of the full scripts from each episode.
 
-Test Link: 
-<a href="https://goo.gl/JsnWZH" target="_blank">https://goo.gl/JsnWZH</a>
+Test Link:
+
 
 ### 3. Javascript Tips
 
-JavaScript, not to be confused with Java, is a programming language widely used in web development alongside HTML and CSS. You can teach yourself JavaScript using any number of online tutorials, such as those offered by [w3schools](https://www.w3schools.com/js/).
+JavaScript, not to be confused with Java, is a programming language widely used in web development alongside HTML and CSS. You can teach yourself JavaScript using any number of online tutorials, such as those offered by <a href="https://www.w3schools.com/js/" target="_blank">w3schools</a> .
+
 
 At geohackweek, we access Google Earth Engine by entering JavaScript commands into an online integrated development environment (IDE) called the Code Editor. It is not necessary to formally learn JavaScript to work with Google Earth Engine. Below we provide examples and resources for getting started.  
 
 #### Basic JavaScript for GEE
- Here are a few basics useful for GEE, reproduced from the [Earth Engine 101 Beginner's Curriculum](https://docs.google.com/document/d/1ZxRKMie8dfTvBmUNOO0TFMkd7ELGWf3WjX0JvESZdOE/edit).
+ Here are a few basics useful for GEE, reproduced from the <a href="https://docs.google.com/document/d/1ZxRKMie8dfTvBmUNOO0TFMkd7ELGWf3WjX0JvESZdOE/edit" target="_blank">Earth Engine 101 Beginner's Curriculum</a>.
+
+
 
 {% highlight javascript %}
 // Line comments start with two forward slashes. Like this line.
@@ -105,9 +109,10 @@ print(myHelloFunction('world'));
 #### Other JavaScript Resources
 JavaScript uses camelCase. JavaScript (according to W3 academy) is easy to learn. Like other programming languages, you can use style guides to learn how to write standard, reproducible (marketable!) code.
 
-For in-depth industry guidance, Google publishes their own definitive [JavaScript style guide](http://google.github.io/styleguide/jsguide.html).
+For in-depth industry guidance, Google publishes their own definitive <a href="http://google.github.io/styleguide/jsguide.html" target="_blank">JavaScript style guide</a>.
 
-Dana Tomlin has also created a short [JavaScript Quick Start Guide](https://drive.google.com/file/d/0B3H1GYZLzLKCckwwVjZfVmdPNDA/view) which only takes a few minutes to work through but hits some of the basics. You can find it clicking that link or by going to the GEE homepage, clicking on the EDU tab in the upper left, and scrolling down to the Geospatial Software Design Exercises section.
+Dana Tomlin has also created a short <a href="https://drive.google.com/file/d/0B3H1GYZLzLKCckwwVjZfVmdPNDA/view)" target="_blank">JavaScript Quick Start Guide/a> which only takes a few minutes to work through but hits some of the basics. You can find it clicking that link or by going to the GEE homepage, clicking on the EDU tab in the upper left, and scrolling down to the Geospatial Software Design Exercises section.
+
 
 <br>
 <img src="../fig/00_spaceland.png" border = "10">
