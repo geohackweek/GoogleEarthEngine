@@ -38,7 +38,7 @@ demonstrate the power of bringing large-scale computing to bear on environmental
 ***
 > **Celebrity Use Case 1: Global Forest Watch**
 
-Released in 2013, <a href="http://www.globalforestwatch.org/" target="_blank">Global Forest Watch</a> fundamentally changed our understanding of planetary-scale forest loss. This forest monitoring and conservation tool interactively shows forest gain and loss at a global scale. The underlying Hansen deforestation dataset was created in Google Earth Engine and leverages over 3 million Landsat images to map global forest dynamics.
+Released in 2013, <a href="http://www.globalforestwatch.org/" target="_blank">Global Forest Watch</a> fundamentally changed our understanding of planetary-scale forest loss. This forest monitoring and conservation tool interactively shows forest gain and loss at a global scale. The underlying Hansen deforestation dataset is available in Google Earth Engine and leverages over 3 million Landsat images to map global forest dynamics.
 
 
 
@@ -110,7 +110,7 @@ You can upload your own raster **and** vector data to the platform. You can also
 
 GEE will back up on your code in a git repository without you having to think about it. You can share those repositories with other users and view older versions of scripts easily from the Code Editor.
 
-#### Reason # 6: Flexible access through APIS
+#### Reason # 6: Flexible access through APIs
 
 The GEE development team has worked hard to make GEE easy to access. Google Earth Engine can be accessed through a few different channels, including a non-programming GUI, the JavaScript API and the Python API.
 

@@ -1,7 +1,7 @@
 ---
 title: "Supervised Classification of Satellite Imagery"
-teaching: 0
-exercises: 0
+teaching: 5
+exercises: 10
 questions:
 - "What machine learning techniques are available in GEE?"
 - "How do I perform supervised classification of satellite imagery?"

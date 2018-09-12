@@ -1,7 +1,7 @@
 ---
 title: "Time Series"
-teaching: 0
-exercises: 0
+teaching: 5
+exercises: 10
 questions:
 - How do I create a time series for a given location?
 - How can I plot that time series within Google Earth Engine?

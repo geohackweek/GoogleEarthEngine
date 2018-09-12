@@ -1,7 +1,7 @@
 ---
 title: "Code Editor"
 teaching: 5
-exercises: 15
+exercises: 10
 questions:
 - "What are the key features of the online code editor?"
 - "Where can I go for help while learning GEE?"
@@ -18,8 +18,6 @@ keypoints:
 - "Use the Docs tab, Example scripts and the HELP button to access the User Guides and Help Forum"
 
 ---
-<a href="https://goo.gl/JsnWZH" target="_blank">https://goo.gl/JsnWZH</a>
-
 
 # Code Editor Overview
 
@@ -149,7 +147,7 @@ This will show you just the first five images so you can preview the collection.
 The geometry drawing tools located on the upper left side of the map viewer can be used to manually create points, line or polygons. We are now going to define a study area using a point we select on the map. We will use the **Geometry Tools** to create that point.
 
 1. Type "Lake Powell, AZ" into the search toolbar and hit enter. This will zoom you to Lake Powell in Arizona, USA.
-2. On the left side of the map, click the little Google Pin icon. Your cursor should then turn into crosshairs.
+2. On the left side of the map, click the little marker icon. Your cursor should then turn into crosshairs.
 3. Toggle around the map and drop the pin in the center of the lake, which is right next to Lee Vining.
 4. Now, go to the Geometry Imports window that has now appeared. In that window, name the point "roi" and change the dropdown from **Geometry** to **FeatureCollection**.
 

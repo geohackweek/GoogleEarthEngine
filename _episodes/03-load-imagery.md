@@ -1,7 +1,7 @@
 ---
 title: "Accessing Satellite Imagery"
 teaching: 5
-exercises: 30
+exercises: 10
 questions:
 - How do I acquire satellite imagery at regional scales?
 - How can I make image mosaics?
@@ -33,7 +33,7 @@ For most regional-scale applications, you will need to combine multiple satellit
 A static version of the code can be accessed here: [https://code.earthengine.google.com/cbb204bbe485986b63485ee39c8382cc](https://code.earthengine.google.com/cbb204bbe485986b63485ee39c8382cc)*
 
 
-# Exercise: Basic GEE Workflow 
+# Exercise: Basic GEE Workflow
 Here, we will leverage GEE to create a composite satellite image representing the peak growing season for a watershed of interest.
 
 
