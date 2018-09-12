@@ -77,13 +77,13 @@ NDVI and EVI are two different vegetation indices that can be calculated from re
 var collectionModEvi = ee.ImageCollection('MODIS/006/MOD13Q1')
     .filterDate(StartDate,EndDate)
     .filterBounds(setExtent)
-    .select("EVI");
+    .select('EVI');
 
 // add satellite time series: MODIS NDVI 250m 16 day -------------
-var collectionModNDVI = ee.ImageCollection('MODIS/006/MOD13Q1)
+var collectionModNDVI = ee.ImageCollection('MODIS/006/MOD13Q1')
     .filterDate(StartDate,EndDate)
     .filterBounds(setExtent)
-    .select("NDVI");
+    .select('NDVI');
 {% endhighlight %}
 
 

@@ -15,11 +15,9 @@ keypoints:
 
 ---
 
-<a href="https://goo.gl/JsnWZH" target="_blank">https://goo.gl/JsnWZH</a>
-
 ## What is Google Earth Engine?
 
-As Gorelick et al. (2017) write in the new *<a href="http://www.sciencedirect.com/science/article/pii/S0034425717302900" target="_blank">Remote Sensing of the Environment</a>*:
+As Gorelick et al. (2017) write in the 2017  *<a href="http://www.sciencedirect.com/science/article/pii/S0034425717302900" target="_blank">Remote Sensing of the Environment</a>* article:
 
 > Google Earth Engine is a cloud-based platform for planetary-scale
 > geospatial analysis that brings Google's massive computational
