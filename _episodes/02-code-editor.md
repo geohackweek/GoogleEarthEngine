@@ -27,7 +27,7 @@ in the GEE User Guides.
 
 
 Link to the full code we used in this lesson:
-<a href="https://code.earthengine.google.com/5b548677928552fde2cc8b83a60bea40" target="_blank">https://code.earthengine.google.com/5b548677928552fde2cc8b83a60bea40</a>
+<a href="https://code.earthengine.google.com/926160c96272a205b91b5ed7b68981ab" target="_blank">https://code.earthengine.google.com/926160c96272a205b91b5ed7b68981ab</a>
 
 
 # Exercise: Exploring the Code Editor
@@ -98,7 +98,7 @@ To collaborate interactively on shared scripts with other users, you can create 
 You should have already accessed the shared code repository in the Code Editor with the following steps:
 
 - Join our Google group to access the shared code repository by clicking this link [https://goo.gl/maZwVa](https://goo.gl/maZwVa). Don't worry about posting permissions; we won't  be posting anything.
-- Accept the shared repository by clicking this link: <a href="https://code.earthengine.google.com/?accept_repo=users/kuhniculous/geohackweek2018" target="_blank">https://code.earthengine.google.com/?accept_repo=users/kuhniculous/geohackweek2018</a>
+- Accept the shared repository by clicking this link: <a href="https://code.earthengine.google.com/?accept_repo=users/victorialy/geohackweek2019" target="_blank">https://code.earthengine.google.com/?accept_repo=users/victorialy/geohackweek2019</a>
 
 
 - In the code editor, go to the **Scripts tab** in the top left panel, scroll down and expand the "Shared" section. A directory called *geohackweek2018* should appear with read-only versions of the full scripts from each episode.
