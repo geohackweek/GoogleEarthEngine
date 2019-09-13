@@ -93,7 +93,7 @@ You can share a static version of scripts by clicking **Get Link**. A url will a
 
 #### Joining the shared repository
 
-To collaborate interactively on shared scripts with other users, you can create a shared folder, invite your collaborators and place scripts in that folder. We have created a shared folder for geohackweek2018.
+To collaborate interactively on shared scripts with other users, you can create a shared folder, invite your collaborators and place scripts in that folder. We have created a shared folder for geohackweek2019.
 
 You should have already accessed the shared code repository in the Code Editor with the following steps:
 
@@ -101,7 +101,7 @@ You should have already accessed the shared code repository in the Code Editor w
 - Accept the shared repository by clicking this link: <a href="https://code.earthengine.google.com/?accept_repo=users/victorialy/geohackweek2019" target="_blank">https://code.earthengine.google.com/?accept_repo=users/victorialy/geohackweek2019</a>
 
 
-- In the code editor, go to the **Scripts tab** in the top left panel, scroll down and expand the "Shared" section. A directory called *geohackweek2018* should appear with read-only versions of the full scripts from each episode.
+- In the code editor, go to the **Scripts tab** in the top left panel, scroll down and expand the "Shared" section. A directory called *geohackweek2019* should appear with read-only versions of the full scripts from each episode.
 
 Any updates will be reflected in these versions of the code. Like all GEE scripts, these are version controlled. Read or write permissions for individuals or groups can be set in the Code Editor using the little grey share icon that appears to the right if you move your mouse over the directory name in the *Scripts* tab. You should have read-only access to this repo.
 
