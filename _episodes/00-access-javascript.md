@@ -34,7 +34,7 @@ Google Earth Engine allows you to have shared group folders/repositories for scr
   - Accept the shared repository by clicking this link:
   <a href="https://code.earthengine.google.com/?accept_repo=users/victorialy/geohackweek2019
 " target="_blank">https://code.earthengine.google.com/?accept_repo=users/victorialy/geohackweek2019</a>
-  - In the code editor, go to the **Scripts tab** in the top left panel, scroll down and expand the "Reader" section. A directory called *users/kuhniculous/geohackweek2018* should appear with read-only versions of the full scripts from each episode.
+  - In the code editor, go to the **Scripts tab** in the top left panel, scroll down and expand the "Reader" section. A directory called *users/victorialy/geohackweek2019* should appear with read-only versions of the full scripts from each episode.
 
 Test Link:
 
