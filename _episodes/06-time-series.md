@@ -1,7 +1,7 @@
 ---
 title: "Time Series"
-teaching: 0
-exercises: 0
+teaching: 5
+exercises: 10
 questions:
 - How do I create a time series for a given location?
 - How can I plot that time series within Google Earth Engine?
@@ -21,6 +21,8 @@ keypoints:
 
 This code allows users to dynamically generate time series plots for from points that are dynamically chosen on a map on the fly. The time series show the 16 day composites of Normalized Difference Vegetation Index and Enhanced Vegetation Index at 250 m resolution. These indices are derived from MODIS.
 
+Link to a static version of the full script used in this module:
+[https://code.earthengine.google.com/a47b635ed6a11a99199674364afb9944](https://code.earthengine.google.com/a47b635ed6a11a99199674364afb9944)
 
 ## Define User Specifications
 
@@ -49,14 +51,14 @@ Here we are loading three different types of high resolution crop imagery. The f
 // CDL: USDA Cropland Data Layers
 var cdl = ee.Image('USDA/NASS/CDL/2010').select('cropland').clip(setExtent);
 
-// NAIP aerial photos 
+// NAIP aerial photos
 var StartDate = '2010-01-01';
 var EndDate = '2010-12-31';
 
 var naip = ee.ImageCollection('USDA/NAIP/DOQQ')
     .filterBounds(setExtent)
     .filterDate(StartDate, EndDate);
-    
+
 // Derived Landsat Composites --------------------
 
 // annual max greenness image for background (previously exported asset)
@@ -72,16 +74,16 @@ NDVI and EVI are two different vegetation indices that can be calculated from re
 {% highlight javascript %}
 
 // add satellite time series: MODIS EVI 250m 16 day -------------
-var collectionModEvi = ee.ImageCollection('MODIS/MOD13Q1')
+var collectionModEvi = ee.ImageCollection('MODIS/006/MOD13Q1')
     .filterDate(StartDate,EndDate)
     .filterBounds(setExtent)
-    .select("EVI");
+    .select('EVI');
 
 // add satellite time series: MODIS NDVI 250m 16 day -------------
-var collectionModNDVI = ee.ImageCollection('MODIS/MOD13Q1')
+var collectionModNDVI = ee.ImageCollection('MODIS/006/MOD13Q1')
     .filterDate(StartDate,EndDate)
     .filterBounds(setExtent)
-    .select("NDVI");
+    .select('NDVI');
 {% endhighlight %}
 
 
@@ -187,7 +189,7 @@ ui.root.insert(0, panel);
 You should see something like this appear in the bottom left:
 
 <br>
-<img src="../fig/06_twoChart.png" border = "10">
+<img src="../fig/06_twoChart.png" border = "10" width="75%" height="75%">
 <br><br>
 
 ## Exploring the NDVI and EVI plots for different crop types.
@@ -199,7 +201,3 @@ Toggle the Greenness, CDL and NAIP imagery layers on and off. Use the inspector 
 ## Extracting Time Series Data for larger regions or more points
 
 If you are computing the indices on the fly, or you have many points or areas of interest, you may have the unpleasant experience of your code timing out. One way to avoid that is to just export the time series as a .csv to Google Drive or Cloud Storage. An example of how to do this can be found in [Episode 04: Reducers](https://geohackweek.github.io/GoogleEarthEngine/04-reducers/) of this tutorial.
-
-
-Link to a static version of the full script used in this module:
-[https://code.earthengine.google.com/9454f7e376ea86fac80ba893fb0d622f](https://code.earthengine.google.com/9454f7e376ea86fac80ba893fb0d622f)
