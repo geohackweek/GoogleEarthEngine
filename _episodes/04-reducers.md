@@ -26,7 +26,7 @@ Link to a static version of the full script used in this module:
 In Google Earth Engine (GEE), [reducers](https://developers.google.com/earth-engine/reducers_intro) are used to aggregate data over time, space, and other data structures. They belong to the `ee.Reducer` class and include summary statistics, histograms, and linear regression, among others. Here's a visual from Google demonstrating a reducer applied to an `ImageCollection`:
 
 <br>
-<img src="../fig/04_reducers" border = "10">
+<img src="../fig/04_reducers.png" border = "10">
 <br><br>
 
 Reductions can also occur in space, over bands within an image, or over the attributes of a `FeatureCollection`. See the [Reducer Overview](https://developers.google.com/earth-engine/reducers_intro) in the Google Developer's Guide for more information.
@@ -57,7 +57,7 @@ From the [GRIDMET description](https://code.earthengine.google.com/dataset/IDAHO
 // load precip data (mm, daily total): 365 images per year
 var precipCollection = ee.ImageCollection('IDAHO_EPSCOR/GRIDMET')
                     .select('pr')   // select  precip band only
-                    .filterDate('2017-01-01', '2017-12-31');
+                    .filterDate('2017-01-01', '2018-01-01');
 print(precipCollection, 'precipCollection');
 
 {% endhighlight %}
