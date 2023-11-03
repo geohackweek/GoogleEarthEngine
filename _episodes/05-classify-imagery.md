@@ -27,7 +27,7 @@ Google Earth Engine provides users with the opportunity to conduct many advanced
 The purpose is to get a classified map of land cover in an area of interest. We will examine Landsat imagery and manually identify a set of training points for three classes (water, forest, urban). We will then use those training points to train a classifier. The classifier will be used to classify the rest of the Landsat image into those three categories. We can then assess the accuracy of our classification using `classifier.confusionMatrix()`.
 
 Link to full code we used in this session:
-[https://code.earthengine.google.com/84027208bf2a94e77b5f14075fc5a938](https://code.earthengine.google.com/84027208bf2a94e77b5f14075fc5a938)
+[https://code.earthengine.google.com/82d2ce3f4927e6894969dc1e0e264d71](https://code.earthengine.google.com/82d2ce3f4927e6894969dc1e0e264d71)
 
 
 *Adapted from the [Earth Engine 201 Intermediate workshop](https://developers.google.com/earth-engine/classification)*
@@ -108,13 +108,20 @@ var training = composite.select(bands).sampleRegions({
 The `FeatureCollection` called **training** has the reflectance value from each band stored for every training point along with its class label.
 
 ### Train the classifier
-We will now instantiate a `classifier` using `ee.Classifier.randomForest()` and `train` it on the training data specifying the features to use (training), the landcover categories as the `classProperty` we want to categorize the imagery into, and the reflectance in B2 - B7 of the Landsat imagery as the `inputProperties`.
+We will now instantiate a `classifier` using `ee.Classifier.smileRandomForest()` and `train` it on the training data specifying the features to use (training), the landcover categories as the `classProperty` we want to categorize the imagery into, and the reflectance in B2 - B7 of the Landsat imagery as the `inputProperties`.
+
+[About smileRandomForest](https://developers.google.com/earth-engine/apidocs/ee-classifier-smilerandomforest)
 
 {% highlight javascript %}
-// Make a Random Forest classifier and train it.
-var classifier = ee.Classifier.randomForest().train({
-  features: training,
-  classProperty: 'landcover',
+// Make a SmileRandom Forest classifier and train it.
+var classifier = ee.Classifier.smileRandomForest({
+  numberOfTrees: 100,
+  minLeafPopulation: 1,
+  bagFraction: 0.5,
+  maxNodes: 100
+}).train({
+  features: training, 
+  classProperty: 'landcover', 
   inputProperties: bands
 });
 {% endhighlight %}
